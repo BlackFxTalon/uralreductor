@@ -1,0 +1,621 @@
+<!DOCTYPE html>
+<html lang="ru">
+	@@include('../parts/head.html',{
+	"title":"Каталог"
+	})
+	<body x-data="{mobileMenu: false, mobileSubMenu: false, searchMenu: false, headerSubMenu:false, catalogFilter: false}" :class="{'mobileMenuOpened': mobileMenu === true || searchMenu === true || catalogFilter === true}">
+		<script src="https://unpkg.com/aos@2.3.1/dist/aos.js" defer></script>
+		<script src="js/main.min.js" defer></script>
+		@@include('../parts/header.html')
+		<main>
+		<div class="mobile-menu-overlay" :class="{'active':mobileMenu === true || searchMenu === true || catalogFilter === true}"></div>
+        <nav class="breadcrumbs">
+            <div class="container">
+            <ul role="list">
+                <li><a href="#">Каталог</a></li>
+                <li><a href="#">Крошка</a></li>
+                <li><a href="#">Крошка</a></li>
+            </ul>
+        </div>
+        </nav>
+        <section class="catalog">
+         <div class="container catalog__container">
+            <aside class="catalog__aside">
+                <nav class="catalog-filter">
+                    <ul role="list">
+                        <li>
+                            <details>
+                                <summary>Тип передачи
+                                    <svg width="16" height="16">
+                                        <use xlink:href="resources/svgSprites/svgSprite.svg#catalog-filter-arrow"></use>
+                                        </svg>
+                                </summary>
+                                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Beatae necessitatibus molestiae mollitia voluptas tempore quidem eius maxime impedit tenetur aliquid a odit recusandae corrupti assumenda explicabo eveniet esse, vitae obcaecati.</p>
+                            </details>
+                        </li>
+                        <li>
+                            <details>
+                                <summary>Количество ступеней
+                                    <svg width="16" height="16">
+                                        <use xlink:href="resources/svgSprites/svgSprite.svg#catalog-filter-arrow"></use>
+                                        </svg>
+                                </summary>
+                                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Beatae necessitatibus molestiae mollitia voluptas tempore quidem eius maxime impedit tenetur aliquid a odit recusandae corrupti assumenda explicabo eveniet esse, vitae obcaecati.</p>
+                            </details>
+                        </li>
+                        <li>
+                            <details>
+                                <summary>Передаточное отношение
+                                    <svg width="16" height="16">
+                                        <use xlink:href="resources/svgSprites/svgSprite.svg#catalog-filter-arrow"></use>
+                                        </svg>
+                                </summary>
+                                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Beatae necessitatibus molestiae mollitia voluptas tempore quidem eius maxime impedit tenetur aliquid a odit recusandae corrupti assumenda explicabo eveniet esse, vitae obcaecati.</p>
+                            </details>
+                        </li>
+                        <li>
+                            <details>
+                                <summary>Расположение осей
+                                    <svg width="16" height="16">
+                                        <use xlink:href="resources/svgSprites/svgSprite.svg#catalog-filter-arrow"></use>
+                                        </svg>
+                                </summary>
+                                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Beatae necessitatibus molestiae mollitia voluptas tempore quidem eius maxime impedit tenetur aliquid a odit recusandae corrupti assumenda explicabo eveniet esse, vitae obcaecati.</p>
+                            </details>
+                        </li>
+                        <li>
+                            <details>
+                                <summary>Консольная нагрузка
+                                    <svg width="16" height="16">
+                                        <use xlink:href="resources/svgSprites/svgSprite.svg#catalog-filter-arrow"></use>
+                                        </svg>
+                                </summary>
+                                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Beatae necessitatibus molestiae mollitia voluptas tempore quidem eius maxime impedit tenetur aliquid a odit recusandae corrupti assumenda explicabo eveniet esse, vitae obcaecati.</p>
+                            </details>
+                        </li>
+                        <li>
+                            <details>
+                                <summary>Масса
+                                    <svg width="16" height="16">
+                                        <use xlink:href="resources/svgSprites/svgSprite.svg#catalog-filter-arrow"></use>
+                                        </svg>
+                                </summary>
+                                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Beatae necessitatibus molestiae mollitia voluptas tempore quidem eius maxime impedit tenetur aliquid a odit recusandae corrupti assumenda explicabo eveniet esse, vitae obcaecati.</p>
+                            </details>
+                        </li>
+                    </ul>
+                    <button class="catalog-filter__clear-btn" type="button"><svg width="16" height="16">
+                        <use xlink:href="resources/svgSprites/svgSprite.svg#clear-filter-icon"></use>
+                        </svg>Удалить фильтры</button>
+                </nav>
+            </aside>
+        <div class="catalog__main">
+          <h2 class="title title-h2 catalog-title"><svg width="68" height="48">
+            <use xlink:href="resources/svgSprites/svgSprite.svg#icon-motor"></use>
+            </svg>Червячные мотор-редукторы</h2>  
+           <button class="catalog-filter-btn" type="button" @click="catalogFilter = true"><svg width="68" height="48">
+            <use xlink:href="resources/svgSprites/svgSprite.svg#filter-btn-icon"></use>
+            </svg>Фильтры</button>
+            <nav class="catalog-filter catalog-filter--mobile" :class="{'active': catalogFilter === true}">
+                <button class="catalog-filter__close-btn" type="button" @click="catalogFilter = false">
+                    <svg width="20" height="28" class="catalog-filter__close-btn-icon catalog-filter__close-btn-icon--mobile">
+                    <use xlink:href="resources/svgSprites/svgSprite.svg#catalog-filter-arrow"></use>
+                    </svg>
+                    <svg width="36" height="36" class="catalog-filter__close-btn-icon catalog-filter__close-btn-icon--tablet">
+                        <use xlink:href="resources/svgSprites/svgSprite.svg#icon-exit"></use>
+                        </svg>
+                </button>
+                    <div class="container">
+                <ul role="list">
+                    <li>
+                        <details>
+                            <summary>Тип передачи
+                                <svg width="16" height="16">
+                                    <use xlink:href="resources/svgSprites/svgSprite.svg#catalog-filter-arrow"></use>
+                                    </svg>
+                            </summary>
+                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Beatae necessitatibus molestiae mollitia voluptas tempore quidem eius maxime impedit tenetur aliquid a odit recusandae corrupti assumenda explicabo eveniet esse, vitae obcaecati.</p>
+                        </details>
+                    </li>
+                    <li>
+                        <details>
+                            <summary>Количество ступеней
+                                <svg width="16" height="16">
+                                    <use xlink:href="resources/svgSprites/svgSprite.svg#catalog-filter-arrow"></use>
+                                    </svg>
+                            </summary>
+                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Beatae necessitatibus molestiae mollitia voluptas tempore quidem eius maxime impedit tenetur aliquid a odit recusandae corrupti assumenda explicabo eveniet esse, vitae obcaecati.</p>
+                        </details>
+                    </li>
+                    <li>
+                        <details>
+                            <summary>Передаточное отношение
+                                <svg width="16" height="16">
+                                    <use xlink:href="resources/svgSprites/svgSprite.svg#catalog-filter-arrow"></use>
+                                    </svg>
+                            </summary>
+                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Beatae necessitatibus molestiae mollitia voluptas tempore quidem eius maxime impedit tenetur aliquid a odit recusandae corrupti assumenda explicabo eveniet esse, vitae obcaecati.</p>
+                        </details>
+                    </li>
+                    <li>
+                        <details>
+                            <summary>Расположение осей
+                                <svg width="16" height="16">
+                                    <use xlink:href="resources/svgSprites/svgSprite.svg#catalog-filter-arrow"></use>
+                                    </svg>
+                            </summary>
+                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Beatae necessitatibus molestiae mollitia voluptas tempore quidem eius maxime impedit tenetur aliquid a odit recusandae corrupti assumenda explicabo eveniet esse, vitae obcaecati.</p>
+                        </details>
+                    </li>
+                    <li>
+                        <details>
+                            <summary>Консольная нагрузка
+                                <svg width="16" height="16">
+                                    <use xlink:href="resources/svgSprites/svgSprite.svg#catalog-filter-arrow"></use>
+                                    </svg>
+                            </summary>
+                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Beatae necessitatibus molestiae mollitia voluptas tempore quidem eius maxime impedit tenetur aliquid a odit recusandae corrupti assumenda explicabo eveniet esse, vitae obcaecati.</p>
+                        </details>
+                    </li>
+                    <li>
+                        <details>
+                            <summary>Масса
+                                <svg width="16" height="16">
+                                    <use xlink:href="resources/svgSprites/svgSprite.svg#catalog-filter-arrow"></use>
+                                    </svg>
+                            </summary>
+                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Beatae necessitatibus molestiae mollitia voluptas tempore quidem eius maxime impedit tenetur aliquid a odit recusandae corrupti assumenda explicabo eveniet esse, vitae obcaecati.</p>
+                        </details>
+                    </li>
+                </ul>
+                <button class="catalog-filter__clear-btn" type="button"><svg width="16" height="16">
+                    <use xlink:href="resources/svgSprites/svgSprite.svg#clear-filter-icon"></use>
+                    </svg>Удалить фильтры</button>
+            </div>
+            <button type="submit" class="catalog-filter__submit-btn">Применить</button>
+            </nav>
+            <ul class="catalog-list" role="list">
+              <li data-aos="fade-in" data-aos-delay="200">
+                <figure class="catalog-card">
+                    <div class="catalog-card__main">
+                    <div class="catalog-card__top">
+                        <picture>
+                            <img src="resources/images/catalog-card-img.png" loading="lazy" decoding="async" alt="image" width="328" height="264">
+                          </picture>
+                          <ul class="catalog-card__descr catalog-card__descr--pos-abs">
+                              <li><span>Тип передачи</span><span>Планетарный</span></li>
+                              <li><span>Передаточные ступени</span><span>4</span></li>
+                              <li><span>Передаточное<br>отношение</span><span>от 1 до 80</span></li>
+                              <li><span>Расположение осей</span><span>Соосные</span></li>
+                              <li><span>Климатическое<br>исполнение</span><span>У, Т
+                            </span></li>
+                            <li><span>Масса</span><span>от 1 до 100
+                            </span></li>
+                          </ul>
+                      </div>
+                    <figcaption>
+                        <h3 class="title title-h3">Мотор-редуктор 1МПз2-40 (3МП-40)</h3>
+                    </figcaption>
+                </div>
+                <div class="catalog-card__aside">
+                    <ul class="catalog-card__descr">
+                        <li><span>Тип передачи</span><span>Планетарный</span></li>
+                        <li><span>Передаточные ступени</span><span>4</span></li>
+                        <li><span>Передаточное<br> отношение</span><span>от 1 до 80</span></li>
+                        <li><span>Расположение осей</span><span>Соосные</span></li>
+                        <li><span>Климатическое<br> исполнение</span><span>У, Т
+                      </span></li>
+                      <li><span>Масса</span><span>от 1 до 100
+                      </span></li>
+                    </ul>
+                </div>
+                </figure>
+              </li>
+              <li data-aos="fade-in" data-aos-delay="200">
+                <figure class="catalog-card">
+                    <div class="catalog-card__main">
+                    <div class="catalog-card__top">
+                        <picture>
+                            <img src="resources/images/catalog-card-img.png" loading="lazy" decoding="async" alt="image" width="328" height="264">
+                          </picture>
+                          <ul class="catalog-card__descr catalog-card__descr--pos-abs">
+                              <li><span>Тип передачи</span><span>Планетарный</span></li>
+                              <li><span>Передаточные ступени</span><span>4</span></li>
+                              <li><span>Передаточное<br>отношение</span><span>от 1 до 80</span></li>
+                              <li><span>Расположение осей</span><span>Соосные</span></li>
+                              <li><span>Климатическое<br>исполнение</span><span>У, Т
+                            </span></li>
+                            <li><span>Масса</span><span>от 1 до 100
+                            </span></li>
+                          </ul>
+                      </div>
+                    <figcaption>
+                        <h3 class="title title-h3">Мотор-редуктор 1МПз2-40 (3МП-40)</h3>
+                    </figcaption>
+                </div>
+                <div class="catalog-card__aside">
+                    <ul class="catalog-card__descr">
+                        <li><span>Тип передачи</span><span>Планетарный</span></li>
+                        <li><span>Передаточные ступени</span><span>4</span></li>
+                        <li><span>Передаточное<br> отношение</span><span>от 1 до 80</span></li>
+                        <li><span>Расположение осей</span><span>Соосные</span></li>
+                        <li><span>Климатическое<br> исполнение</span><span>У, Т
+                      </span></li>
+                      <li><span>Масса</span><span>от 1 до 100
+                      </span></li>
+                    </ul>
+                </div>
+                </figure>
+              </li>
+              <li data-aos="fade-in" data-aos-delay="200">
+                <figure class="catalog-card">
+                    <div class="catalog-card__main">
+                    <div class="catalog-card__top">
+                        <picture>
+                            <img src="resources/images/catalog-card-img.png" loading="lazy" decoding="async" alt="image" width="328" height="264">
+                          </picture>
+                          <ul class="catalog-card__descr catalog-card__descr--pos-abs">
+                              <li><span>Тип передачи</span><span>Планетарный</span></li>
+                              <li><span>Передаточные ступени</span><span>4</span></li>
+                              <li><span>Передаточное<br>отношение</span><span>от 1 до 80</span></li>
+                              <li><span>Расположение осей</span><span>Соосные</span></li>
+                              <li><span>Климатическое<br>исполнение</span><span>У, Т
+                            </span></li>
+                            <li><span>Масса</span><span>от 1 до 100
+                            </span></li>
+                          </ul>
+                      </div>
+                    <figcaption>
+                        <h3 class="title title-h3">Мотор-редуктор 1МПз2-40 (3МП-40)</h3>
+                    </figcaption>
+                </div>
+                <div class="catalog-card__aside">
+                    <ul class="catalog-card__descr">
+                        <li><span>Тип передачи</span><span>Планетарный</span></li>
+                        <li><span>Передаточные ступени</span><span>4</span></li>
+                        <li><span>Передаточное<br> отношение</span><span>от 1 до 80</span></li>
+                        <li><span>Расположение осей</span><span>Соосные</span></li>
+                        <li><span>Климатическое<br> исполнение</span><span>У, Т
+                      </span></li>
+                      <li><span>Масса</span><span>от 1 до 100
+                      </span></li>
+                    </ul>
+                </div>
+                </figure>
+              </li>
+              <li data-aos="fade-in" data-aos-delay="200">
+                <figure class="catalog-card">
+                    <div class="catalog-card__main">
+                    <div class="catalog-card__top">
+                        <picture>
+                            <img src="resources/images/catalog-card-img.png" loading="lazy" decoding="async" alt="image" width="328" height="264">
+                          </picture>
+                          <ul class="catalog-card__descr catalog-card__descr--pos-abs">
+                              <li><span>Тип передачи</span><span>Планетарный</span></li>
+                              <li><span>Передаточные ступени</span><span>4</span></li>
+                              <li><span>Передаточное<br>отношение</span><span>от 1 до 80</span></li>
+                              <li><span>Расположение осей</span><span>Соосные</span></li>
+                              <li><span>Климатическое<br>исполнение</span><span>У, Т
+                            </span></li>
+                            <li><span>Масса</span><span>от 1 до 100
+                            </span></li>
+                          </ul>
+                      </div>
+                    <figcaption>
+                        <h3 class="title title-h3">Мотор-редуктор 1МПз2-40 (3МП-40)</h3>
+                    </figcaption>
+                </div>
+                <div class="catalog-card__aside">
+                    <ul class="catalog-card__descr">
+                        <li><span>Тип передачи</span><span>Планетарный</span></li>
+                        <li><span>Передаточные ступени</span><span>4</span></li>
+                        <li><span>Передаточное<br> отношение</span><span>от 1 до 80</span></li>
+                        <li><span>Расположение осей</span><span>Соосные</span></li>
+                        <li><span>Климатическое<br> исполнение</span><span>У, Т
+                      </span></li>
+                      <li><span>Масса</span><span>от 1 до 100
+                      </span></li>
+                    </ul>
+                </div>
+                </figure>
+              </li>
+              <li data-aos="fade-in" data-aos-delay="200">
+                <figure class="catalog-card">
+                    <div class="catalog-card__main">
+                    <div class="catalog-card__top">
+                        <picture>
+                            <img src="resources/images/catalog-card-img.png" loading="lazy" decoding="async" alt="image" width="328" height="264">
+                          </picture>
+                          <ul class="catalog-card__descr catalog-card__descr--pos-abs">
+                              <li><span>Тип передачи</span><span>Планетарный</span></li>
+                              <li><span>Передаточные ступени</span><span>4</span></li>
+                              <li><span>Передаточное<br>отношение</span><span>от 1 до 80</span></li>
+                              <li><span>Расположение осей</span><span>Соосные</span></li>
+                              <li><span>Климатическое<br>исполнение</span><span>У, Т
+                            </span></li>
+                            <li><span>Масса</span><span>от 1 до 100
+                            </span></li>
+                          </ul>
+                      </div>
+                    <figcaption>
+                        <h3 class="title title-h3">Мотор-редуктор 1МПз2-40 (3МП-40)</h3>
+                    </figcaption>
+                </div>
+                <div class="catalog-card__aside">
+                    <ul class="catalog-card__descr">
+                        <li><span>Тип передачи</span><span>Планетарный</span></li>
+                        <li><span>Передаточные ступени</span><span>4</span></li>
+                        <li><span>Передаточное<br> отношение</span><span>от 1 до 80</span></li>
+                        <li><span>Расположение осей</span><span>Соосные</span></li>
+                        <li><span>Климатическое<br> исполнение</span><span>У, Т
+                      </span></li>
+                      <li><span>Масса</span><span>от 1 до 100
+                      </span></li>
+                    </ul>
+                </div>
+                </figure>
+              </li>
+              <li data-aos="fade-in" data-aos-delay="200">
+                <figure class="catalog-card">
+                    <div class="catalog-card__main">
+                    <div class="catalog-card__top">
+                        <picture>
+                            <img src="resources/images/catalog-card-img.png" loading="lazy" decoding="async" alt="image" width="328" height="264">
+                          </picture>
+                          <ul class="catalog-card__descr catalog-card__descr--pos-abs">
+                              <li><span>Тип передачи</span><span>Планетарный</span></li>
+                              <li><span>Передаточные ступени</span><span>4</span></li>
+                              <li><span>Передаточное<br>отношение</span><span>от 1 до 80</span></li>
+                              <li><span>Расположение осей</span><span>Соосные</span></li>
+                              <li><span>Климатическое<br>исполнение</span><span>У, Т
+                            </span></li>
+                            <li><span>Масса</span><span>от 1 до 100
+                            </span></li>
+                          </ul>
+                      </div>
+                    <figcaption>
+                        <h3 class="title title-h3">Мотор-редуктор 1МПз2-40 (3МП-40)</h3>
+                    </figcaption>
+                </div>
+                <div class="catalog-card__aside">
+                    <ul class="catalog-card__descr">
+                        <li><span>Тип передачи</span><span>Планетарный</span></li>
+                        <li><span>Передаточные ступени</span><span>4</span></li>
+                        <li><span>Передаточное<br> отношение</span><span>от 1 до 80</span></li>
+                        <li><span>Расположение осей</span><span>Соосные</span></li>
+                        <li><span>Климатическое<br> исполнение</span><span>У, Т
+                      </span></li>
+                      <li><span>Масса</span><span>от 1 до 100
+                      </span></li>
+                    </ul>
+                </div>
+                </figure>
+              </li>
+              <li data-aos="fade-in" data-aos-delay="200">
+                <figure class="catalog-card">
+                    <div class="catalog-card__main">
+                    <div class="catalog-card__top">
+                        <picture>
+                            <img src="resources/images/catalog-card-img.png" loading="lazy" decoding="async" alt="image" width="328" height="264">
+                          </picture>
+                          <ul class="catalog-card__descr catalog-card__descr--pos-abs">
+                              <li><span>Тип передачи</span><span>Планетарный</span></li>
+                              <li><span>Передаточные ступени</span><span>4</span></li>
+                              <li><span>Передаточное<br>отношение</span><span>от 1 до 80</span></li>
+                              <li><span>Расположение осей</span><span>Соосные</span></li>
+                              <li><span>Климатическое<br>исполнение</span><span>У, Т
+                            </span></li>
+                            <li><span>Масса</span><span>от 1 до 100
+                            </span></li>
+                          </ul>
+                      </div>
+                    <figcaption>
+                        <h3 class="title title-h3">Мотор-редуктор 1МПз2-40 (3МП-40)</h3>
+                    </figcaption>
+                </div>
+                <div class="catalog-card__aside">
+                    <ul class="catalog-card__descr">
+                        <li><span>Тип передачи</span><span>Планетарный</span></li>
+                        <li><span>Передаточные ступени</span><span>4</span></li>
+                        <li><span>Передаточное<br> отношение</span><span>от 1 до 80</span></li>
+                        <li><span>Расположение осей</span><span>Соосные</span></li>
+                        <li><span>Климатическое<br> исполнение</span><span>У, Т
+                      </span></li>
+                      <li><span>Масса</span><span>от 1 до 100
+                      </span></li>
+                    </ul>
+                </div>
+                </figure>
+              </li>
+              <li data-aos="fade-in" data-aos-delay="200">
+                <figure class="catalog-card">
+                    <div class="catalog-card__main">
+                    <div class="catalog-card__top">
+                        <picture>
+                            <img src="resources/images/catalog-card-img.png" loading="lazy" decoding="async" alt="image" width="328" height="264">
+                          </picture>
+                          <ul class="catalog-card__descr catalog-card__descr--pos-abs">
+                              <li><span>Тип передачи</span><span>Планетарный</span></li>
+                              <li><span>Передаточные ступени</span><span>4</span></li>
+                              <li><span>Передаточное<br>отношение</span><span>от 1 до 80</span></li>
+                              <li><span>Расположение осей</span><span>Соосные</span></li>
+                              <li><span>Климатическое<br>исполнение</span><span>У, Т
+                            </span></li>
+                            <li><span>Масса</span><span>от 1 до 100
+                            </span></li>
+                          </ul>
+                      </div>
+                    <figcaption>
+                        <h3 class="title title-h3">Мотор-редуктор 1МПз2-40 (3МП-40)</h3>
+                    </figcaption>
+                </div>
+                <div class="catalog-card__aside">
+                    <ul class="catalog-card__descr">
+                        <li><span>Тип передачи</span><span>Планетарный</span></li>
+                        <li><span>Передаточные ступени</span><span>4</span></li>
+                        <li><span>Передаточное<br> отношение</span><span>от 1 до 80</span></li>
+                        <li><span>Расположение осей</span><span>Соосные</span></li>
+                        <li><span>Климатическое<br> исполнение</span><span>У, Т
+                      </span></li>
+                      <li><span>Масса</span><span>от 1 до 100
+                      </span></li>
+                    </ul>
+                </div>
+                </figure>
+              </li>
+              <li data-aos="fade-in" data-aos-delay="200">
+                <figure class="catalog-card">
+                    <div class="catalog-card__main">
+                    <div class="catalog-card__top">
+                        <picture>
+                            <img src="resources/images/catalog-card-img.png" loading="lazy" decoding="async" alt="image" width="328" height="264">
+                          </picture>
+                          <ul class="catalog-card__descr catalog-card__descr--pos-abs">
+                              <li><span>Тип передачи</span><span>Планетарный</span></li>
+                              <li><span>Передаточные ступени</span><span>4</span></li>
+                              <li><span>Передаточное<br>отношение</span><span>от 1 до 80</span></li>
+                              <li><span>Расположение осей</span><span>Соосные</span></li>
+                              <li><span>Климатическое<br>исполнение</span><span>У, Т
+                            </span></li>
+                            <li><span>Масса</span><span>от 1 до 100
+                            </span></li>
+                          </ul>
+                      </div>
+                    <figcaption>
+                        <h3 class="title title-h3">Мотор-редуктор 1МПз2-40 (3МП-40)</h3>
+                    </figcaption>
+                </div>
+                <div class="catalog-card__aside">
+                    <ul class="catalog-card__descr">
+                        <li><span>Тип передачи</span><span>Планетарный</span></li>
+                        <li><span>Передаточные ступени</span><span>4</span></li>
+                        <li><span>Передаточное<br> отношение</span><span>от 1 до 80</span></li>
+                        <li><span>Расположение осей</span><span>Соосные</span></li>
+                        <li><span>Климатическое<br> исполнение</span><span>У, Т
+                      </span></li>
+                      <li><span>Масса</span><span>от 1 до 100
+                      </span></li>
+                    </ul>
+                </div>
+                </figure>
+              </li>
+              <li data-aos="fade-in" data-aos-delay="200">
+                <figure class="catalog-card">
+                    <div class="catalog-card__main">
+                    <div class="catalog-card__top">
+                        <picture>
+                            <img src="resources/images/catalog-card-img.png" loading="lazy" decoding="async" alt="image" width="328" height="264">
+                          </picture>
+                          <ul class="catalog-card__descr catalog-card__descr--pos-abs">
+                              <li><span>Тип передачи</span><span>Планетарный</span></li>
+                              <li><span>Передаточные ступени</span><span>4</span></li>
+                              <li><span>Передаточное<br>отношение</span><span>от 1 до 80</span></li>
+                              <li><span>Расположение осей</span><span>Соосные</span></li>
+                              <li><span>Климатическое<br>исполнение</span><span>У, Т
+                            </span></li>
+                            <li><span>Масса</span><span>от 1 до 100
+                            </span></li>
+                          </ul>
+                      </div>
+                    <figcaption>
+                        <h3 class="title title-h3">Мотор-редуктор 1МПз2-40 (3МП-40)</h3>
+                    </figcaption>
+                </div>
+                <div class="catalog-card__aside">
+                    <ul class="catalog-card__descr">
+                        <li><span>Тип передачи</span><span>Планетарный</span></li>
+                        <li><span>Передаточные ступени</span><span>4</span></li>
+                        <li><span>Передаточное<br> отношение</span><span>от 1 до 80</span></li>
+                        <li><span>Расположение осей</span><span>Соосные</span></li>
+                        <li><span>Климатическое<br> исполнение</span><span>У, Т
+                      </span></li>
+                      <li><span>Масса</span><span>от 1 до 100
+                      </span></li>
+                    </ul>
+                </div>
+                </figure>
+              </li>
+              <li data-aos="fade-in" data-aos-delay="200">
+                <figure class="catalog-card">
+                    <div class="catalog-card__main">
+                    <div class="catalog-card__top">
+                        <picture>
+                            <img src="resources/images/catalog-card-img.png" loading="lazy" decoding="async" alt="image" width="328" height="264">
+                          </picture>
+                          <ul class="catalog-card__descr catalog-card__descr--pos-abs">
+                              <li><span>Тип передачи</span><span>Планетарный</span></li>
+                              <li><span>Передаточные ступени</span><span>4</span></li>
+                              <li><span>Передаточное<br>отношение</span><span>от 1 до 80</span></li>
+                              <li><span>Расположение осей</span><span>Соосные</span></li>
+                              <li><span>Климатическое<br>исполнение</span><span>У, Т
+                            </span></li>
+                            <li><span>Масса</span><span>от 1 до 100
+                            </span></li>
+                          </ul>
+                      </div>
+                    <figcaption>
+                        <h3 class="title title-h3">Мотор-редуктор 1МПз2-40 (3МП-40)</h3>
+                    </figcaption>
+                </div>
+                <div class="catalog-card__aside">
+                    <ul class="catalog-card__descr">
+                        <li><span>Тип передачи</span><span>Планетарный</span></li>
+                        <li><span>Передаточные ступени</span><span>4</span></li>
+                        <li><span>Передаточное<br> отношение</span><span>от 1 до 80</span></li>
+                        <li><span>Расположение осей</span><span>Соосные</span></li>
+                        <li><span>Климатическое<br> исполнение</span><span>У, Т
+                      </span></li>
+                      <li><span>Масса</span><span>от 1 до 100
+                      </span></li>
+                    </ul>
+                </div>
+                </figure>
+              </li>
+              <li data-aos="fade-in" data-aos-delay="200">
+                <figure class="catalog-card">
+                    <div class="catalog-card__main">
+                    <div class="catalog-card__top">
+                        <picture>
+                            <img src="resources/images/catalog-card-img.png" loading="lazy" decoding="async" alt="image" width="328" height="264">
+                          </picture>
+                          <ul class="catalog-card__descr catalog-card__descr--pos-abs">
+                              <li><span>Тип передачи</span><span>Планетарный</span></li>
+                              <li><span>Передаточные ступени</span><span>4</span></li>
+                              <li><span>Передаточное<br>отношение</span><span>от 1 до 80</span></li>
+                              <li><span>Расположение осей</span><span>Соосные</span></li>
+                              <li><span>Климатическое<br>исполнение</span><span>У, Т
+                            </span></li>
+                            <li><span>Масса</span><span>от 1 до 100
+                            </span></li>
+                          </ul>
+                      </div>
+                    <figcaption>
+                        <h3 class="title title-h3">Мотор-редуктор 1МПз2-40 (3МП-40)</h3>
+                    </figcaption>
+                </div>
+                <div class="catalog-card__aside">
+                    <ul class="catalog-card__descr">
+                        <li><span>Тип передачи</span><span>Планетарный</span></li>
+                        <li><span>Передаточные ступени</span><span>4</span></li>
+                        <li><span>Передаточное<br> отношение</span><span>от 1 до 80</span></li>
+                        <li><span>Расположение осей</span><span>Соосные</span></li>
+                        <li><span>Климатическое<br> исполнение</span><span>У, Т
+                      </span></li>
+                      <li><span>Масса</span><span>от 1 до 100
+                      </span></li>
+                    </ul>
+                </div>
+                </figure>
+              </li>
+            </ul>
+            <ul class="pagination catalog-pagination" role="list">
+                <li><a href="#">1</a></li>
+                <li><a href="#" class="active">2</a></li>
+            </ul>
+        </div>
+        </div>         
+        </section>
+		</main>
+		@@include('../parts/footer.html')
+	</body>
+</html>

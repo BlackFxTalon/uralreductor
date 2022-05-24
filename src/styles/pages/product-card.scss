@@ -1,0 +1,126 @@
+// product-card styles
+.product-card {
+    padding-top: 28px;
+
+    &__title {
+        display: flex;
+        align-items: center;
+        padding-bottom: 52px;
+    
+        svg {
+            margin-right: 24px;
+        }
+    }
+
+    &__gallery {
+        display: grid;
+        gap: 24px;
+        padding-bottom: 32px;
+    }
+
+    &__gallery-main {
+        border: 1px solid var(--grey-dark-color);
+        border-radius: 6px;
+        height: 220px;
+
+        .swiper-wrapper {
+            padding: 0;
+            margin: 0;
+        }
+
+        .swiper-slide {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        img {
+            width: 100%;
+            object-fit: cover;
+            height: 100%;
+            max-width: 257px;
+        }
+    }
+
+    &__gallery-thumbs {
+        
+        .swiper-wrapper {
+            padding: 0;
+            margin: 0;
+        }
+    }
+}
+.order-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--primary-color);
+    border-color: transparent;
+    border-radius: 4px;
+    font-family: 'Montserrat',sans-serif;
+font-weight: 700;
+font-size: 14px;
+line-height: 16px;
+color: var(--white-color);
+height: 52px;
+max-width: 208px;
+width: 100%;
+margin: auto;
+}
+.order-form {
+    position: fixed;
+    top: 0;
+    left: 0;
+    display: flex;
+    opacity: 0;
+    transform: translateX(-100%);
+    align-items: center;
+    justify-content: center;
+    transition: .3s ease-in-out;
+
+    &.active {
+        opacity: 1;
+        transform: translateX(0);
+    }
+
+    &__content {
+        background-color: var(--white-color);
+        box-shadow: -2px 1px 4px 2px rgba(0, 0, 0, 0.15);
+        border-radius: 4px;
+        padding-top: 22px;
+        padding-left: 16px;
+        padding-right: 16px;
+    }
+
+    &__step-top {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding-bottom: 32px;
+    }
+
+    &__step-1 {
+        fieldset {
+            padding-top: 16px;
+        }
+    }
+
+    
+}
+
+.order-form-controls-group {
+    padding: 0 16px;
+
+    &__title {
+        font-family: 'Roboto',sans-serif;
+font-weight: 400;
+font-size: 16px;
+line-height: 19px;
+color: var(--dark-color);
+padding-bottom: 12px;
+
+span {
+    color: var(--primary-color);
+}
+    }
+}

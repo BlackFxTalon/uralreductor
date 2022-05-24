@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="ru">
+	@@include('../parts/head.html',{
+	"title":"Главная"
+	})
+	<body x-data="{mobileMenu: false, mobileSubMenu: false, searchMenu: false, headerSubMenu:false}" :class="{'mobileMenuOpened': mobileMenu === true || searchMenu === true}">
+		<script src="https://unpkg.com/aos@2.3.1/dist/aos.js" defer></script>
+		<script src="js/main.min.js" defer></script>
+		@@include('../parts/header.html')
+		<main>
+		<div class="mobile-menu-overlay" :class="{'active':mobileMenu === true || searchMenu === true}"></div>
+			<section class="cta">
+				<div class="container cta__container">
+					<div class="cta__img">
+					<picture>
+						<source type="image/png" srcset="resources/images/cta-img--desktop-large.png" media="(min-width:1440px)">
+						<source type="image/png" srcset="resources/images/cta-img--desktop.png" media="(min-width:1024px)">
+						<source type="image/png" srcset="resources/images/cta-img--tablet.png" media="(min-width:768px)">
+					  <img src="resources/images/cta-img--mobile.png" loading="lazy" decoding="async" alt="image" width="550" height="322">
+					</picture>
+				</div>
+					<div class="cta__info">
+						<h1 class="title title-h1">Уралредуктор</h1>
+						<p class="cta__descr">Производство, подбор и ремонт  всех типов общепромышленных и крановых редукторов.</p>
+					</div>
+				</div>
+			</section>
+			<section class="reductor-types">
+				<div class="container reductor-types__container">
+					<h2 class="title title-h2">Типы редукторов</h2>
+					<!-- Slider main container -->
+<div class="swiper reductor-types__slider">
+	<!-- Additional required wrapper -->
+	<ul class="swiper-wrapper reductor-types__slider-wrapper" role="list">
+	  <!-- Slides -->
+	  <li class="swiper-slide reductor-types__card" data-aos="fade-in" data-aos-delay="200">
+		  <figure>
+			  <div class="reductor-types__card-top">
+				<picture>
+					<img src="resources/images/reductor-types-img-1.png" loading="lazy" decoding="async" alt="image" width="241" height="300">
+				  </picture>
+				  <div class="reductor-types__descr">
+					  <p>для использования крутящих моментов в качестве комплектующих в приводах машин, оборудования и механизмов.</p>
+				  </div>
+			  </div>
+			  <figcaption>
+				  <h3 class="title title-h3">Конические</h3>
+			  </figcaption>
+		  </figure>
+	  </li>
+	  <li class="swiper-slide reductor-types__card" data-aos="fade-in" data-aos-delay="400">
+		<figure>
+			<div class="reductor-types__card-top">
+				<picture>
+					<img src="resources/images/reductor-types-img-2.png" loading="lazy" decoding="async" alt="image" width="241" height="300">
+				  </picture>
+				  <div class="reductor-types__descr">
+					  <p>для использования крутящих моментов в качестве комплектующих в приводах машин, оборудования и механизмов.</p>
+				  </div>
+			  </div>
+			<figcaption>
+				<h3 class="title title-h3">Планетарные</h3>
+			</figcaption>
+		</figure>
+	</li>
+	<li class="swiper-slide reductor-types__card" data-aos="fade-in" data-aos-delay="600">
+		<figure>
+			<div class="reductor-types__card-top">
+				<picture>
+					<img src="resources/images/reductor-types-img-3.png" loading="lazy" decoding="async" alt="image" width="241" height="300">
+				  </picture>
+				  <div class="reductor-types__descr">
+					  <p>для использования крутящих моментов в качестве комплектующих в приводах машин, оборудования и механизмов.</p>
+				  </div>
+			  </div>
+			<figcaption>
+				<h3 class="title title-h3">Червячные</h3>
+			</figcaption>
+		</figure>
+	</li>
+	<li class="swiper-slide reductor-types__card" data-aos="fade-in" data-aos-delay="800">
+		<figure>
+			<div class="reductor-types__card-top">
+				<picture>
+					<img src="resources/images/reductor-types-img-4.png" loading="lazy" decoding="async" alt="image" width="241" height="300">
+				  </picture>
+				  <div class="reductor-types__descr">
+					  <p>для использования крутящих моментов в качестве комплектующих в приводах машин, оборудования и механизмов.</p>
+				  </div>
+			  </div>
+			<figcaption>
+				<h3 class="title title-h3">Червячные 
+					мотор-редукторы</h3>
+			</figcaption>
+		</figure>
+	</li>
+	<li class="swiper-slide reductor-types__card" data-aos="fade-in" data-aos-delay="1000">
+		<figure>
+			<div class="reductor-types__card-top">
+				<picture>
+					<img src="resources/images/reductor-types-img-5.png" loading="lazy" decoding="async" alt="image" width="241" height="300">
+				  </picture>
+				  <div class="reductor-types__descr">
+					  <p>для использования крутящих моментов в качестве комплектующих в приводах машин, оборудования и механизмов.</p>
+				  </div>
+			  </div>
+			<figcaption>
+				<h3 class="title title-h3">Цилиндрические</h3>
+			</figcaption>
+		</figure>
+	</li>
+	<li class="swiper-slide reductor-types__card" data-aos="fade-in" data-aos-delay="1200">
+		<figure>
+			<div class="reductor-types__card-top">
+				<picture>
+					<img src="resources/images/reductor-types-img-5.png" loading="lazy" decoding="async" alt="image" width="241" height="300">
+				  </picture>
+				  <div class="reductor-types__descr">
+					  <p>для использования крутящих моментов в качестве комплектующих в приводах машин, оборудования и механизмов.</p>
+				  </div>
+			  </div>
+			<figcaption>
+				<h3 class="title title-h3">Цилиндрические</h3>
+			</figcaption>
+		</figure>
+	</li>
+	</ul>
+  </div>
+
+  <!-- If we need navigation buttons -->
+	<div class="swiper-button-prev reductor-types__button-prev">
+		<svg width="24" height="46">
+            <use xlink:href="resources/svgSprites/svgSprite.svg#icon-slider-left"></use>
+            </svg>
+	</div>
+	<div class="swiper-button-next reductor-types__button-next">
+		<svg width="24" height="46">
+            <use xlink:href="resources/svgSprites/svgSprite.svg#icon-slider-right"></use>
+        </svg>
+	</div>
+
+  <!-- If we need pagination -->
+	<div class="swiper-pagination reductor-types__pagination"></div>
+				</div>
+			</section>
+			<section class="pros">
+				<div class="container pros__container">
+					<ul role="list">
+						<li>
+							<figure>
+								<svg width="88" height="80">
+									<use xlink:href="resources/svgSprites/svgSprite.svg#pros-icon-1"></use>
+								</svg>
+								<figcaption>
+									<h3 class="title title-h3">Проектирование и изготовление</h3>
+									<p>Работаем с нестандартными редукторами по чертежам и образцам заказчика с использованием современных технологий и оборудования.</p>
+								</figcaption>
+							</figure>
+						</li>
+						<li>
+							<figure>
+								<svg width="88" height="80">
+									<use xlink:href="resources/svgSprites/svgSprite.svg#pros-icon-2"></use>
+								</svg>
+								<figcaption>
+									<h3 class="title title-h3">Продажа и консультирование </h3>
+									<p>Предоставляем консультацию нашими квалифицированными техническими специалистами по вопросам замены и подбора редуктора, тем самым наши клиенты всегда получают оптимальные для них решения.</p>
+								</figcaption>
+							</figure>
+						</li>
+						<li>
+							<figure>
+								<svg width="88" height="80">
+									<use xlink:href="resources/svgSprites/svgSprite.svg#pros-icon-3"></use>
+								</svg>
+								<figcaption>
+									<h3 class="title title-h3">Замена и модернизация</h3>
+									<p>Мы производим замену зарубежных редукторов на отечественные аналоги, а также проводим модернизацию устаревших редукторов с учетом потребностей заказчика.</p>
+								</figcaption>
+							</figure>
+						</li>
+						<li>
+							<figure>
+								<svg width="88" height="80">
+									<use xlink:href="resources/svgSprites/svgSprite.svg#pros-icon-4"></use>
+								</svg>
+								<figcaption>
+									<h3 class="title title-h3">Собственное производство</h3>
+									<p>Наша компания имеет большую клиентскую базу и множество постоянных заказчиков, которые имеют в нашем лице надежного и стабильного поставщика 
+										с собственным производственными мощностями по изготовлению редукторов.</p>
+								</figcaption>
+							</figure>
+						</li>
+					</ul>
+				</div>
+			</section>
+			<article class="news">
+				<div class="container">
+					<div class="news__title-row">
+						<h2 class="title title-h2">Новости</h2>
+						<a class="news__link" href="#">все новости</a>
+					</div>
+					<ul role="list">
+						<li><a href="#">
+							<figure>
+								<picture>
+								  <img src="resources/images/news-img.jpg" loading="lazy" decoding="async" alt="image" width="241" height="180">
+								</picture>
+								<figcaption>
+									<time datetime="2022-03-15">15.03.2022</time>
+									<h3 class="title title-h3">Заголовок новости на две строки</h3>
+								</figcaption>
+							</figure>
+						</a></li>
+						<li><a href="#">
+							<figure>
+								<picture>
+								  <img src="resources/images/news-img.jpg" loading="lazy" decoding="async" alt="image" width="241" height="180">
+								</picture>
+								<figcaption>
+									<time datetime="2022-03-15">15.03.2022</time>
+									<h3 class="title title-h3">Заголовок новости на две строки</h3>
+								</figcaption>
+							</figure>
+						</a></li>
+						<li><a href="#">
+							<figure>
+								<picture>
+								  <img src="resources/images/news-img.jpg" loading="lazy" decoding="async" alt="image" width="241" height="180">
+								</picture>
+								<figcaption>
+									<time datetime="2022-03-15">15.03.2022</time>
+									<h3 class="title title-h3">Заголовок новости на две строки</h3>
+								</figcaption>
+							</figure>
+						</a></li>
+						<li><a href="#">
+							<figure>
+								<picture>
+								  <img src="resources/images/news-img.jpg" loading="lazy" decoding="async" alt="image" width="241" height="180">
+								</picture>
+								<figcaption>
+									<time datetime="2022-03-15">15.03.2022</time>
+									<h3 class="title title-h3">Заголовок новости на две строки</h3>
+								</figcaption>
+							</figure>
+						</a></li>
+					</ul>
+				</div>
+			</article>
+		</main>
+		@@include('../parts/footer.html')
+	</body>
+</html>
