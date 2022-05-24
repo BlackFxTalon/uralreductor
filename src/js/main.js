@@ -113,7 +113,7 @@ function targetsForMagicMouse(elems) {
   elems.classList.add('magic-hover','magic-hover__square');
 }
 
-document.querySelectorAll('a, button, .reductor-types__card, .header__search').forEach(targetsForMagicMouse);
+document.querySelectorAll('a, button, .reductor-types__card, .header__search, .catalog-card, summary').forEach(targetsForMagicMouse);
 
 const customCursor = document.querySelector('#magicMouseCursor');
 
