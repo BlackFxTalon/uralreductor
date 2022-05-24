@@ -207,15 +207,36 @@ a.active {
   color: var(--dark-color);
 }
 }
+body #magicMouseCursor {
+  border: 1px solid var(--primary-color) !important;
+  transition: transform 0.07s, width 0.3s, height 0.3s, opacity 150ms !important;
+}
+body #magicMouseCursor.hovered {
+  width: 36px !important;
+  height: 36px !important;
+  border-radius: 50% !important;
+}
+body #magicMouseCursor.clicked {
+  width: 16px !important;
+  height: 16px !important;
+}
+body #magicMouseCursor.faded {
+  opacity: 0;
+  transform: scale(0);
+}
 // header styles
 .header {
-  padding-top: 20px;
+  padding: 16px 0;
   position: relative;
   background-color: white;
   position: sticky;
   top: 0;
   left: 0;
   z-index: 99;
+
+  &--box-shadow {
+    box-shadow: 0px 2px 2px rgb(0 0 0 / 10%);
+  }
 
   &__container {
     display: flex;
@@ -237,6 +258,16 @@ a.active {
     @include media-custom(1024px) {
       display: flex;
     }
+  }
+
+  &__search--adaptive {
+    @include media-custom(1024px) {
+      display: none;
+    }
+  }
+
+  &__search--desktop {
+    margin-left: 8px;
   }
   
   &__menu {
@@ -290,7 +321,7 @@ a:focus {
   }
 
   &__dropdown-menu {
-    display: none;
+    display: flex;
     flex-direction: column;
     position: absolute;
     transform: translateY(7px);
@@ -316,6 +347,10 @@ li {
 
 li:not(:last-child) {
     border-bottom: 1px solid var(--grey-light-color);
+}
+
+span {
+  padding-right: 20px;
 }
 
 a {
@@ -591,23 +626,62 @@ ul.header__list {
 }
 
 .header-search-menu {
-  position: absolute;
-  left: -100%;
-  background-color: white;
   width: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  z-index: 99;
   transition: .3s ease-in-out;
+
+  &--adaptive {
+    position: absolute;
+    left: -100%;
+    background-color: white;
+    padding-top: 10px;
+    z-index: 99;
+  }
+
+  &__bottom-line {
+    position: relative;
+    width: 100%;
+    display: flex;
+    align-items: center;
+  }
+  &__bottom-line::after {
+    content: '';
+    position: absolute;
+    bottom: -5px;
+    height: 2px;
+    width: 0;
+    background-color: var(--primary-color);
+    left: 0;
+    transition: .3s ease-in-out;
+  }
+  &__bottom-line.active::after {
+    width: 100%;
+  }
 
   &__wrapper {
     display: flex;
     align-items: flex-end;
     justify-content: center;
-    width: 90%;
-    margin: 1rem;
+
+    &--adaptive {
+      width: 90%;
+      margin: 1rem;
+    }
+
+    &--desktop {
+      align-items: flex-start;
+
+      button {
+        opacity: 0;
+        transition: .3s ease-in-out;
+      }
+      button.active {
+        opacity: 1;
+      }
+    }
   
     button {
       width: 32px;
@@ -624,7 +698,10 @@ ul.header__list {
 
   input {
     border-color: transparent;
-    border-bottom: 1px solid var(--primary-color);
+    border-bottom: 1px solid;
+    border-bottom-width: 1px;
+    border-bottom-style: solid;
+    border-bottom-color: var(--primary-color);
     font-family: 'Roboto',sans-serif;
 font-style: normal;
 font-weight: 400;
@@ -636,6 +713,24 @@ color: var(--dark-color);
   padding-left: 1rem;
   padding-bottom: 2px;
 
+  }
+
+  &--desktop {
+    display: none;
+    width: toRem(356);
+    height: 38px;
+
+    @include media-custom(1024px) {
+      display: block;
+      position: relative;
+      margin-top: 5px;
+    }
+
+    input {
+      padding-left: 12px;
+      border-bottom: unset;
+      transition: .3s ease-in-out;
+    }
   }
 
   &__list {
@@ -650,6 +745,14 @@ font-size: 16px;
 line-height: 20px;
 color: var(--dark-color);
 width: 100%;
+
+&--desktop {
+  position: absolute;
+  border: 1px solid var(--grey-light-color);
+  border-radius: 4px;
+  margin-top: 4px;
+  background-color: var(--white-color);
+}
   }
 
   &__item {
@@ -709,8 +812,8 @@ width: 100%;
   }
 
   &__media {
-    display: grid;
-    gap: 16px;
+    display: flex;
+    flex-direction: column;
 
     @include media-medium() {
       justify-self: flex-end;
@@ -731,6 +834,7 @@ font-size: 16px;
 line-height: 20px;
 color: var(--dark-color);
 text-decoration: none;
+margin-bottom: 16px;
     }
   }
 

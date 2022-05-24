@@ -4,11 +4,8 @@
 	"title":"Каталог"
 	})
 	<body x-data="{mobileMenu: false, mobileSubMenu: false, searchMenu: false, headerSubMenu:false, catalogFilter: false}" :class="{'mobileMenuOpened': mobileMenu === true || searchMenu === true || catalogFilter === true}">
-		<script src="https://unpkg.com/aos@2.3.1/dist/aos.js" defer></script>
-		<script src="js/main.min.js" defer></script>
 		@@include('../parts/header.html')
 		<main>
-		<div class="mobile-menu-overlay" :class="{'active':mobileMenu === true || searchMenu === true || catalogFilter === true}"></div>
         <nav class="breadcrumbs">
             <div class="container">
             <ul role="list">

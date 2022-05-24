@@ -1,6 +1,9 @@
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js" defer></script>
+<script src="js/main.min.js" defer></script>
+
 <header class="header">
     <div class="container header__container">
-    <button type="button" class="header__hamb-btn" @click="mobileMenu = !mobileMenu" :class="{'active': mobileMenu === true}"><span>
+    <button type="button" class="header__hamb-btn" @click="mobileMenu = !mobileMenu;searchMenu = false" :class="{'active': mobileMenu === true}"><span>
     </span></button>
     <div class="header__left">
       <div class="header__logo">
@@ -10,13 +13,14 @@
             </svg>
         </a>
       </div>
-      <nav class="header__menu">
+      <nav class="header__menu" x-data="{headerSubMenu:false}">
         <ul class="header__menu-list" role="list">
           <li @click="headerSubMenu = !headerSubMenu" :class="{'active': headerSubMenu === true}"><a>Каталог</a></li>
           <li><a href="#">О компании</a></li>
           <li><a href="#">Контакты</a></li>
         </ul>
-        <ul class="header__dropdown-menu" role="list" :class="{'active': headerSubMenu === true}">
+        <nav class="header__dropdown-menu-wrapper" x-show="headerSubMenu" @click.outside="headerSubMenu = false" x-transition.origin.top.left.duration.300ms style="display:none;">
+        <ul class="header__dropdown-menu" role="list">
             <li><a href="#">
               <svg width="68" height="48">
                 <use xlink:href="resources/svgSprites/svgSprite.svg#submenu-icon-1"></use>
@@ -48,14 +52,72 @@
                 <span>Червячные мотор-редукторы</span>
             </a></li>
         </ul>
+       </nav>
       </nav>
     </div>
     <ul class="header__search-phone-list" role="list">
-        <li @click="searchMenu = !searchMenu" :class="{'active': searchMenu === true}">
-<svg class="header__search" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 32 32" width="32" height="32">
+        <li>
+<svg class="header__search header__search--adaptive" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 32 32" width="32" height="32" @click="searchMenu = !searchMenu; mobileMenu = false">
   <path stroke="#07012E" stroke-width="2" d="M22.38 11.69c0 5.904-4.786 10.69-10.69 10.69S1 17.594 1 11.69 5.786 1 11.69 1s10.69 4.786 10.69 10.69Z"/>
   <path fill="#07012E" d="m19.601 17.535 12.4 12.4L29.933 32l-12.4-12.399z"/>
 </svg>
+<nav class="header-search-menu header-search-menu--desktop" x-data="{searchInputText:'',searchMenuDesktop: false}" @click.outside="searchInputText = '';searchMenuDesktop = false">
+  <div class="header-search-menu__wrapper header-search-menu__wrapper--desktop">
+    <div class="header-search-menu__bottom-line" :class="{'active': searchMenuDesktop === true}">
+    <svg class="header__search header__search--desktop" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 32 32" width="32" height="32" @click.self="searchMenuDesktop = true">
+      <path stroke="#07012E" stroke-width="2" d="M22.38 11.69c0 5.904-4.786 10.69-10.69 10.69S1 17.594 1 11.69 5.786 1 11.69 1s10.69 4.786 10.69 10.69Z"/>
+      <path fill="#07012E" d="m19.601 17.535 12.4 12.4L29.933 32l-12.4-12.399z"/>
+    </svg>
+  <input type="text" x-model.debounce.500ms="searchInputText" :class="{'active': searchMenuDesktop === true}">
+  </div>
+  <button type="button" @click="searchInputText = ''" :class="{'active': searchMenuDesktop === true}"><svg width="32" height="32">
+    <use xlink:href="resources/svgSprites/svgSprite.svg#search-icon-close"></use>
+    </svg></button>
+  </div>
+  <ul class="header-search-menu__list header-search-menu__list--desktop" role="list" x-show="searchInputText" style="display: none;">
+    <li class="header-search-menu__item header-search-menu__item--title"><h3><a href="#">Название раздела, который выдает поиск</a></h3></li>
+    <li class="header-search-menu__item">
+      <a href="#">
+        <picture>
+          <img src="resources/images/search-menu-list-img.png" loading="lazy" decoding="async" alt="image" width="48" height="48">
+        </picture>
+      <h3>Мотор-редуктор 1МПз2-40 (3МП-40)</h3>
+    </a>
+  </li>
+  <li class="header-search-menu__item">
+    <a href="#">
+      <picture>
+        <img src="resources/images/search-menu-list-img.png" loading="lazy" decoding="async" alt="image" width="48" height="48">
+      </picture>
+    <h3>Мотор-редуктор 1МПз2-40 (3МП-40)</h3>
+  </a>
+</li>
+<li class="header-search-menu__item">
+  <a href="#">
+    <picture>
+      <img src="resources/images/search-menu-list-img.png" loading="lazy" decoding="async" alt="image" width="48" height="48">
+    </picture>
+  <h3>Мотор-редуктор 1МПз2-40 (3МП-40)</h3>
+</a>
+</li>
+<li class="header-search-menu__item">
+  <a href="#">
+    <picture>
+      <img src="resources/images/search-menu-list-img.png" loading="lazy" decoding="async" alt="image" width="48" height="48">
+    </picture>
+  <h3>Мотор-редуктор 1МПз2-40 (3МП-40)</h3>
+</a>
+</li>
+<li class="header-search-menu__item">
+  <a href="#">
+    <picture>
+      <img src="resources/images/search-menu-list-img.png" loading="lazy" decoding="async" alt="image" width="48" height="48">
+    </picture>
+  <h3>Мотор-редуктор 1МПз2-40 (3МП-40)</h3>
+</a>
+</li>
+  </ul>
+</nav>
         </li>
         <li>
           <a href="tel:+7(343) 236–44–44" class="header__phone-text">+7(343) 236–44–44</a>
@@ -142,8 +204,8 @@
           </a></li>
   </ul>
 </nav>
-<nav class="header-search-menu" :class="{'active': searchMenu === true}" x-data="{searchInputText:''}">
-  <div class="header-search-menu__wrapper">
+<nav class="header-search-menu header-search-menu--adaptive" :class="{'active': searchMenu === true}" x-data="{searchInputText:''}">
+  <div class="header-search-menu__wrapper header-search-menu__wrapper--adaptive">
   <input type="text" x-model.debounce.500ms="searchInputText">
   <button type="button" @click="searchInputText = ''"><svg width="32" height="32">
     <use xlink:href="resources/svgSprites/svgSprite.svg#search-icon-close"></use>
@@ -194,3 +256,4 @@
   </ul>
 </nav>
 </header>
+<div class="mobile-menu-overlay" :class="{'active':mobileMenu === true || searchMenu === true}" @click="mobileMenu = false;searchMenu = false"></div>

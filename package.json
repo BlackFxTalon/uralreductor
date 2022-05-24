@@ -6,7 +6,9 @@
     "type": "module",
     "dependencies": {
         "alpinejs": "^3.9.5",
-        "gulp-cli": "^2.3.0"
+        "custom-cursor": "^2.1.0",
+        "gulp-cli": "^2.3.0",
+        "magicmouse.js": "^1.2.1"
     },
     "devDependencies": {
         "browser-sync": "^2.27.9",
