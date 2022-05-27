@@ -70,6 +70,7 @@ select {
 :root {
   --dark-color: #07012E;
   --primary-color:#BE054B;
+  --negative-color:#ED0610;
   --grey-light-color: #CDCCD5;
   --grey-light-color-1: #F1F1F2;
   --grey-dark-color:#77738C;
@@ -141,7 +142,7 @@ line-height: toRem(24);
   height: 100%;
 }
 .mobile-menu-overlay {
-  position: absolute;
+  position: fixed;
   width: 100%;
   height: 100%;
   background-color: rgba(0, 0, 0, 0.65);
@@ -224,6 +225,66 @@ body #magicMouseCursor.faded {
   opacity: 0;
   transform: scale(0);
 }
+.reduce {
+  transform: scale(0.9);
+}
+.primary-btn {
+  background-color: var(--primary-color);
+  color: var(--white-color);
+  border-width: 1px;
+  border-style: solid;
+  border-color: var(--primary-color);
+  transition: .3s ease-in-out;
+  border-radius: 4px;
+}
+.primary-btn:hover {
+  background-color: transparent;
+  color: var(--primary-color);
+  border-color: var(--primary-color);
+  transform: scale(0.9);
+
+  @include media-custom(968px) {
+    transform: unset;
+  }
+}
+.primary-btn.disable {
+  background-color: var(--red-light-color);
+  border-color: var(--red-light-color);
+  color: var(--white-color);
+  pointer-events: none;
+}
+.secondary-btn {
+  background-color: transparent;
+  color: var(--dark-color);
+  border-width: 1px;
+  font-weight: 700;
+  border-style: solid;
+  border-color: var(--dark-color);
+  transition: .3s ease-in-out;
+  border-radius: 4px;
+}
+.secondary-btn:hover {
+  background-color: var(--dark-color);
+  color: var(--white-color);
+  border-color: var(--dark-color);
+  transform: scale(0.9);
+
+  @include media-custom(968px) {
+    transform: unset;
+  }
+}
+.secondary-btn.disable {
+  background-color: var(--white-color);
+  border-color: var(--grey-dark-color);
+  color: var(--dark-color);
+  pointer-events: none;
+}
+.icon-error,
+.icon-correct {
+  width: 28px;
+  height: 28px;
+}
+
 // header styles
 .header {
   padding: 16px 0;

@@ -51,14 +51,17 @@ const reductorTypesSlider = new Swiper('.reductor-types__slider', {
   }
 });
 const productCardGalleryThumbs = new Swiper(".product-card__gallery-thumbs", {
-  loop: true,
   spaceBetween: 20,
   slidesPerView: 5,
   watchSlidesProgress: true,
+  breakpoints: {
+    768: {
+      spaceBetween: 0
+    }
+  }
 });
 
 const productCardGalleryMain = new Swiper(".product-card__gallery-main", {
-  loop: true,
   spaceBetween: 10,
   navigation: {
     nextEl: ".swiper-button-next",
@@ -118,27 +121,44 @@ document.querySelectorAll('a, button, .reductor-types__card, .header__search, .c
 const customCursor = document.querySelector('#magicMouseCursor');
 
 function toggleFadedClassOnCursor(elems) {
-  elems.addEventListener('focusin',()=>{
-    customCursor.classList.add('faded');
-  })
-  elems.addEventListener('focusout',()=>{
-    customCursor.classList.remove('faded');
-  })
+  if(window.innerWidth >= 980) {
+    elems.addEventListener('focusin',()=>{
+      customCursor.classList.add('faded');
+    })
+    elems.addEventListener('focusout',()=>{
+      customCursor.classList.remove('faded');
+    })
+  }
 }
 
 document.querySelectorAll('input').forEach(toggleFadedClassOnCursor);
 
 function toggleClassOnCursor(elems) {
-  elems.addEventListener('mouseover',()=>{
-    customCursor.classList.add('hovered');
-  })
-  elems.addEventListener('mouseout',()=>{
-    customCursor.classList.remove('hovered');
-    customCursor.classList.remove('clicked');
-  })
-  elems.addEventListener('click',()=>{
-    customCursor.classList.add('clicked');
-  })
+  if(window.innerWidth >= 980) {
+    elems.addEventListener('mouseover',()=>{
+      customCursor.classList.add('hovered');
+    })
+    elems.addEventListener('mouseout',()=>{
+      customCursor.classList.remove('hovered');
+      customCursor.classList.remove('clicked');
+    })
+    elems.addEventListener('click',()=>{
+      customCursor.classList.add('clicked');
+    })
+  }
 }
 
 document.querySelectorAll('.magic-hover').forEach(toggleClassOnCursor);
+
+function reduceButtonOnClick() {
+  if(window.innerWidth >= 980) {
+      const reduceBtn = (el) => {
+          el.addEventListener('click',()=>{
+              el.classList.add('reduce');
+          })
+        }
+        document.querySelectorAll('.primary-btn, .secondary-btn').forEach(reduceBtn);
+  }
+}
+
+reduceButtonOnClick();

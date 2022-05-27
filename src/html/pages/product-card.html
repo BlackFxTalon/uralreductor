@@ -1,9 +1,9 @@
 <!DOCTYPE html>
 <html lang="ru">
 	@@include('../parts/head.html',{
-	"title":"Каталог"
+	"title":"Карточка товара"
 	})
-	<body x-data="{mobileMenu: false, mobileSubMenu: false, searchMenu: false, headerSubMenu:false, catalogFilter: false, orderForm: false}" :class="{'mobileMenuOpened': mobileMenu === true || searchMenu === true || catalogFilter === true || orderForm}">
+	<body x-data="{mobileMenu: false, mobileSubMenu: false, searchMenu: false, headerSubMenu:false, catalogFilter: false, orderForm: false}" :class="{'mobileMenuOpened': mobileMenu === true || searchMenu === true || catalogFilter === true || orderForm === true}">
 		@@include('../parts/header.html')
 		<main>
         <nav class="breadcrumbs">
@@ -20,6 +20,8 @@
             <h2 class="title title-h2 product-card__title" onclick="history.back();"><svg width="18" height="32">
                 <use xlink:href="resources/svgSprites/svgSprite.svg#product-title-arrow"></use>
                 </svg>Мотор-редуктор 1МПз2-40 (3МП-40)</h2>
+                <div class="product-card__grid">
+                <div class="product-card__main">
                 <div class="product-card__gallery">
                     <div class="product-card__gallery-main swiper">
                     <ul class="swiper-wrapper" role="list">
@@ -38,6 +40,18 @@
                     <li class="swiper-slide">
                          <img loading="lazy" decoding="async" src="resources/images/product-card-img-2.png" alt="image" width="328" height="220">
                     </li>
+                    <li class="swiper-slide">
+                        <img loading="lazy" decoding="async" src="resources/images/product-card-img-2.png" alt="image" width="328" height="220">
+                   </li>
+                   <li class="swiper-slide">
+                    <img loading="lazy" decoding="async" src="resources/images/product-card-img-2.png" alt="image" width="328" height="220">
+               </li>
+               <li class="swiper-slide">
+                <img loading="lazy" decoding="async" src="resources/images/product-card-img-2.png" alt="image" width="328" height="220">
+           </li>
+           <li class="swiper-slide">
+            <img loading="lazy" decoding="async" src="resources/images/product-card-img-2.png" alt="image" width="328" height="220">
+       </li>
                     </ul>
                 </div>
                 <div class="product-card__gallery-thumbs swiper">
@@ -57,12 +71,26 @@
                     <li class="swiper-slide">
                         <img loading="lazy" decoding="async" src="resources/images/product-card-img-2.png" alt="image" width="50" height="50">
                     </li>
+                    <li class="swiper-slide">
+                        <img loading="lazy" decoding="async" src="resources/images/product-card-img-2.png" alt="image" width="50" height="50">
+                    </li>
+                    <li class="swiper-slide">
+                        <img loading="lazy" decoding="async" src="resources/images/product-card-img-2.png" alt="image" width="50" height="50">
+                    </li>
+                    <li class="swiper-slide">
+                        <img loading="lazy" decoding="async" src="resources/images/product-card-img-2.png" alt="image" width="50" height="50">
+                    </li>
+                    <li class="swiper-slide">
+                        <img loading="lazy" decoding="async" src="resources/images/product-card-img-2.png" alt="image" width="50" height="50">
+                    </li>
                     </ul>
                 </div>
                 </div>
-                <button class="order-btn" type="button">Заказать</button>
-                <div class="order-form" :class="{'active': orderForm}">
+                <button class="primary-btn order-btn order-btn--adaptive" type="button" @click="orderForm === true">Заказать</button>
+                </div>
+                <div class="order-form" :class="{'active': orderForm === true}" x-data="{toggleNextStepBtn: true}">
                     <div class="order-form__content">
+                    <form action="#">
                      <div class="order-form__step order-form__step-1">
                          <div class="order-form__step-top">
                             <p class="order-form__step">Шаг 1 из 2</p>
@@ -70,20 +98,21 @@
                                 <use xlink:href="resources/svgSprites/svgSprite.svg#icon-exit"></use>
                                 </svg>
                          </div>
-                         <form action="#">
                             <h3 class="title title-h3">Мотор-редуктор 1МПз2-40 (3МП-40)</h3>
                           <fieldset>
                          <div class="order-form-controls-group">
                           <h4 class="order-form-controls-group__title"><span>i</span> - передаточное отношение</h4>
-                         <div class="order-form__select-dropdown" x-data="{selectDropdowntext: ''}">
-                             <span x-text="selectDropdowntext">Вариант</span>
-                             <svg width="16" height="16">
+                         <div class="order-form__select-dropdown" x-data="{selectDropdowntext: '', toggleDropdownList: false}">
+                             <div class="order-form__select-dropdown-top" @click="toggleDropdownList = !toggleDropdownList">
+                             <span x-text="selectDropdowntext" :class="{'active':selectDropdowntext != null}">Вариант</span>
+                             <svg :class="{'active': toggleDropdownList}" width="16" height="16">
                                 <use xlink:href="resources/svgSprites/svgSprite.svg#icon-dropdown"></use>
                                 </svg>
-                            <ul class="order-form__select-dropdown__list">
-                                <li @click="$refs.selectDropdowntext = 'От 1 до 8'">От 1 до 8</li>
-                                <li @click="$refs.selectDropdowntext = 'От 1 до 8'">От 1 до 8</li>
-                                <li @click="$refs.selectDropdowntext = 'От 1 до 8'">От 1 до 8</li>
+                            </div>
+                            <ul class="order-form__select-dropdown__list" x-show="toggleDropdownList" x-transition.origin.top.300ms style="display:none;">
+                                <li @click="$refs.selectDropdowntext = 'От 1 до 8'" :class="{'active': selectDropdowntext === 'От 1 до 8'}">От 1 до 8</li>
+                                <li @click="$refs.selectDropdowntext = 'От 1 до 9'" :class="{'active': selectDropdowntext === 'От 1 до 9'}">От 1 до 9</li>
+                                <li @click="$refs.selectDropdowntext = 'От 1 до 10'" :class="{'active': selectDropdowntext === 'От 1 до 10'}">От 1 до 10</li>
                             </ul>
                          </div>
                          </div>
@@ -142,29 +171,33 @@
                            </div>
                            <div class="order-form-controls-group">
                             <h4 class="order-form-controls-group__title">Вал входной</h4>
-                            <div class="order-form__select-dropdown" x-data="{selectDropdowntext: ''}">
-                                <span x-text="selectDropdowntext">Вариант</span>
-                                <svg width="16" height="16">
+                            <div class="order-form__select-dropdown" x-data="{selectDropdowntext: '', toggleDropdownList: false}">
+                                <div class="order-form__select-dropdown-top" @click="toggleDropdownList = !toggleDropdownList">
+                                <span x-text="selectDropdowntext" :class="{'active':selectDropdowntext != null}">Вариант</span>
+                                <svg :class="{'active': toggleDropdownList}" width="16" height="16">
                                    <use xlink:href="resources/svgSprites/svgSprite.svg#icon-dropdown"></use>
                                    </svg>
-                               <ul class="order-form__select-dropdown__list">
-                                   <li @click="$refs.selectDropdowntext = 'От 1 до 8'">Выбранный вариант</li>
-                                   <li @click="$refs.selectDropdowntext = 'Выбранный вариант'">Выбранный вариант</li>
-                                   <li @click="$refs.selectDropdowntext = 'Выбранный вариант'">Выбранный вариант</li>
+                               </div>
+                               <ul class="order-form__select-dropdown__list" x-show="toggleDropdownList" x-transition.origin.top.300ms style="display:none;">
+                                   <li @click="$refs.selectDropdowntext = 'Выбранный вариант 1'" :class="{'active': selectDropdowntext === 'Выбранный вариант 1'}">Выбранный вариант 1</li>
+                                   <li @click="$refs.selectDropdowntext = 'Выбранный вариант 2'" :class="{'active': selectDropdowntext === 'Выбранный вариант 2'}">Выбранный вариант 2</li>
+                                   <li @click="$refs.selectDropdowntext = 'Выбранный вариант 3'" :class="{'active': selectDropdowntext === 'Выбранный вариант 3'}">Выбранный вариант 3</li>
                                </ul>
                             </div>
                            </div>
                            <div class="order-form-controls-group">
-                            <h4 class="order-form-controls-group__title">Вал входной</h4>
-                            <div class="order-form__select-dropdown" x-data="{selectDropdowntext: ''}">
-                                <span x-text="selectDropdowntext">Вариант</span>
-                                <svg width="16" height="16">
+                            <h4 class="order-form-controls-group__title">Вал выходной</h4>
+                            <div class="order-form__select-dropdown" x-data="{selectDropdowntext: '', toggleDropdownList: false}">
+                                <div class="order-form__select-dropdown-top" @click="toggleDropdownList = !toggleDropdownList">
+                                <span x-text="selectDropdowntext" :class="{'active':selectDropdowntext != null}">Вариант</span>
+                                <svg :class="{'active': toggleDropdownList}" width="16" height="16">
                                    <use xlink:href="resources/svgSprites/svgSprite.svg#icon-dropdown"></use>
                                    </svg>
-                               <ul class="order-form__select-dropdown__list">
-                                   <li @click="$refs.selectDropdowntext = 'От 1 до 8'">Выбранный вариант</li>
-                                   <li @click="$refs.selectDropdowntext = 'Выбранный вариант'">Выбранный вариант</li>
-                                   <li @click="$refs.selectDropdowntext = 'Выбранный вариант'">Выбранный вариант</li>
+                               </div>
+                               <ul class="order-form__select-dropdown__list" x-show="toggleDropdownList" x-transition.origin.top.300ms style="display:none;">
+                                   <li @click="$refs.selectDropdowntext = 'Выбранный вариант 1'" :class="{'active': selectDropdowntext === 'Выбранный вариант 1'}">Выбранный вариант 1</li>
+                                   <li @click="$refs.selectDropdowntext = 'Выбранный вариант 2'" :class="{'active': selectDropdowntext === 'Выбранный вариант 2'}">Выбранный вариант 2</li>
+                                   <li @click="$refs.selectDropdowntext = 'Выбранный вариант 3'" :class="{'active': selectDropdowntext === 'Выбранный вариант 3'}">Выбранный вариант 3</li>
                                </ul>
                             </div>
                            </div>
@@ -172,12 +205,197 @@
                                <input type="checkbox" name="accept" id="accept">
                             <label for="accept" @click="accept = !accept">Выберите этот вариант, чтобы сразу перейти к оформлению заявки.</label>    
                            </div>
-                           <button class="order-form__submit-btn order-form__next-step-btn" :disable="">Следующий шаг</button>
+                           <button class="primary-btn order-form__submit-btn order-form__next-step-btn" :class="{'disable': toggleNextStepBtn === false}">Следующий шаг</button>
                         </fieldset>
-                        </form>
                      </div>
+                    </form>
                     </div>
                 </div>
+                <aside class="product-card__aside">
+                <details class="product-card__details">
+                    <summary>
+                        <div class="product-card__details-title">
+                        <h3>Тип передачи</h3>
+                        <h4>Планетарный моторредуктор</h4>
+                        </div>
+                        <svg width="16" height="16">
+                            <use xlink:href="resources/svgSprites/svgSprite.svg#icon-dropdown"></use>
+                        </svg>
+                    </summary>
+                    <ul role="list">
+                     <li><p>Количество передаточных ступеней</p><span>Одноступенчатые</span></li>
+                     <li><p>Передаточное отношение</p><span>8-50</span></li>
+                     <li><p>Расположение осей</p><span>Соосные</span></li>
+                     <li><p>Климатическое исполнение</p><span>У</span></li>
+                     <li><p>Вариант сборки</p><span>11, 21, 31, 12, 22,</span></li>
+                     <li><p>ГОСТ</p><span>11, 21, 31, 12, 22,</span></li>
+                    </ul>
+                </details>
+                <ul role="list" class="product-card__list">
+                    <li><p>Тип передачи</p><span>Планетарный моторредуктор</span></li>
+                    <li><p>Количество передаточных ступеней</p><span>Одноступенчатые</span></li>
+                    <li><p>Передаточное отношение</p><span>8-50</span></li>
+                    <li><p>Расположение осей</p><span>Соосные</span></li>
+                    <li><p>Климатическое исполнение</p><span>У</span></li>
+                    <li><p>Вариант сборки</p><span>11, 21, 31, 12, 22,</span></li>
+                    <li><p>ГОСТ</p><span>11, 21, 31, 12, 22,</span></li>
+                </ul>
+                <button class="primary-btn order-btn order-btn--desktop" type="button" @click="orderForm === true">Заказать</button>
+                </aside>
+            </div>
+            <div x-data="{productCardTabs: 'descr'}">
+            <ul class="product-card__tabs" role="list">
+                <li @click="productCardTabs = 'descr'" :class="{'active': productCardTabs === 'descr'}"><h3>Описание</h3></li>
+                <li @click="productCardTabs = 'sizes'" :class="{'active': productCardTabs === 'sizes'}"><h3>Размеры</h3></li>
+                <li @click="productCardTabs = 'question-answer'" :class="{'active': productCardTabs === 'question-answer'}"><h3>Вопрос-ответ</h3></li>
+            </ul>
+            <div x-show="productCardTabs === 'descr'" x-transition.origin.top.300ms style="display:none;" class="product-card__descr">
+              <ul role="list">
+                  <li>
+                      <h4>Назначение</h4>
+                      <p>Мотор-редукторы планетарные одно-, двух-, трехступенчатые типа 1МПЗ предназначены для снижения частоты вращения и передачи крутящего момента механизмам общемашиностроительного назначения, (исключая механизмы для подъема груза).</p>
+                  </li>
+                  <li>
+                      <h4>Условия применения редукторов:
+                    </h4>
+                    <p>
+                        • режим работы – продолжительный, с продолжительностью работы 8-24 ч/сут;
+• нагрузка постоянная и переменная (в пределах номинального крутящего момента) одного направления и реверсивная;
+• высота над уровнем моря – до 1000 м;
+• внешняя среда – неагрессивная, невзрывоопасная с содержанием непроводящей пыли до 10 мг/мЗ
+• климатическое исполнение У – умеренный климат, категория размещения 3 – эксплуатация в помещениях, где колебания температуры и влажности воздуха существенно меньше, чем на открытом воздухе, рабочая температура окружающей среды от -45°С до +40°С, или Т – тропический климат, категория размещения 2 – эксплуатация под навесом или в помещении, где колебания температуры и влажности воздуха несущественно отличаются от колебаний на открытом воздухе, рабочая температура окружающей среды от -10°С
+до +45°С.
+</p>
+<p>
+Для комплектации мотор-редукторов применяются асинхронные двигатели серии 4АМ, серии АИР или серии АИ. По согласованию с изготовителем допускается комплектация мотор-редукторов двигателями сельскохозяйственного исполнения 4А...СУ1 и другими специальными двигателями (морского, взрывобезопасного исполнения, постоянного тока, пониженного напряжения).
+</p>
+                    
+                  </li>
+                  <li>
+                      <h4>Обозначения</h4>
+                      <p>1МПЗ2 – 40 – 45 – 115 – 111 – УЗ</p>
+                      <p>УЗ – климатическое исполнение и категория размещения
+                    </p>
+                    <p>111 – конструктивное исполнение по способу монтажа</p>
+                    <p>115 – допускаемый крутящий момент на выходном валу Н•м</p>
+                    <p>45 – частота вращения выходного вала, об/мин</p>
+                    <p>40 - радиус расположения сателлитов, мм </p>
+                    <p>МПО2М - тип мотор-редуктора</p>
+                  </li>
+              </ul>
+            </div>
+            <div x-show="productCardTabs === 'sizes'" x-transition.origin.top.300ms style="display:none;" class="product-card__sizes">
+                <ul role="list">
+                    <li>
+                        <h4>Габаритные и присоединительные размеры мотор-редукторов 1МПЗ
+                            на лапах, мм:</h4>
+                            <ul class="product-card__sizes-list">
+                            <li><img loading="lazy" decoding="async" src="resources/images/product-card-sizes-img.jpg" alt="image" width="550" height="224"></li>
+                           </ul>
+                    </li>
+                    <li>
+                        <h4>Габаритные и присоединительные размеры мотор-редукторов 1МПЗ
+                            на лапах, мм:</h4>
+                            <ul class="product-card__sizes-list">
+                                <li> <img loading="lazy" decoding="async" src="resources/images/product-card-sizes-img-2.jpg" alt="image" width="550" height="224"></li>
+                               </ul>
+                    </li>
+                </ul>
+              </div>
+              <div x-show="productCardTabs === 'question-answer'" x-transition.origin.top.300ms style="display:none;" class="product-card__question-answer">
+                <div class="product-card__question-answer-top">
+                 <h3>Нужно больше информации?</h3>
+                    <p>Напишите свой вопрос и наши менеджеры свяжутся с Вами в максимально короткое время.</p>
+                </div>
+                <div>
+                <form action="#" class="request-form" x-data="{inputTextValue: ''}">
+                    <fieldset>
+                        <div class="request-form__input-group">
+                        <label for="name">Ваше имя</label>
+                          <div class="request-form__input-wrapper">
+                            <input type="text" name="name" id="name" placeholder="Иван" x-model="inputTextValue" :class="{'correct': inputTextValue.length > 0}" required>
+                            <div class="request-form__icons">
+                            <svg class="icon-error" width="28" height="28">
+                                <use xlink:href="resources/svgSprites/svgSprite.svg#icon-error"></use>
+                            </svg>
+                            <svg class="icon-correct" width="28" height="28">
+                                <use xlink:href="resources/svgSprites/svgSprite.svg#icon-correct"></use>
+                            </svg>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="request-form__input-group">
+                        <label for="email">Ваш e-mail</label>
+                        <div class="request-form__input-wrapper">
+                            <input type="email" name="email" id="email" placeholder="ivan@mail.ru" required>
+                            <div class="request-form__icons">
+                                <svg class="icon-error" width="28" height="28">
+                                    <use xlink:href="resources/svgSprites/svgSprite.svg#icon-error"></use>
+                                </svg>
+                                <svg class="icon-correct" width="28" height="28">
+                                    <use xlink:href="resources/svgSprites/svgSprite.svg#icon-correct"></use>
+                                </svg>
+                                </div>
+                        </div>
+                    </div>
+                    <div class="request-form__input-group">
+                        <label for="textarea">Задайте вопрос</label>
+                            <textarea name="textarea" id="textarea" placeholder="Введите текст"></textarea>
+                    </div>
+                    <button type="submit" class="secondary-btn request-form__submit-btn">Задать вопрос</button>
+                    </fieldset>
+                </form>
+               </div>
+                <nav class="product-card-answers-list">
+                    <h3>Ответы</h3>
+                    <ul role="list">
+                        <li>
+                            <div class="product-card-answers-list__top">
+                                <p>Евгений</p>
+                                <time datetime="2022-04-25">25.04.2022</time>
+                            </div>
+                            <p class="product-card-answers-list__text">
+                                Здравствуйте, как можно получить конкретный прайс, чтобы сделать выбор, а не общие цены от и до.Прошу выслать если это возможно.Конкретно интерисуют в коридоре от 10 до 30 тысяч.Сколько будет стоить доставка вашим транспортом до Кургана. Надеюсь на быстрый ответ.
+                            </p>
+                            <div class="product-card-answers-list__answer">
+                                <p>Ответ:</p>
+                                <span>Запрос в отдел продаж.</span>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="product-card-answers-list__top">
+                                <p>Евгений Анатольевич</p>
+                                <time datetime="2022-04-25">25.04.2022</time>
+                            </div>
+                            <p class="product-card-answers-list__text">
+                                Здраствуйте. Планирую заменить два редуктора РМ-350, установленные на ход мостового крана на редуктора Ц2У -200. Такая замена возможна, если нет то почему.
+                            </p>
+                            <div class="product-card-answers-list__answer">
+                                <p>Ответ:</p>
+                                <span>Запрос в отдел продаж.</span>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="product-card-answers-list__top">
+                                <p>Степан Юрьевич</p>
+                                <time datetime="2022-04-25">25.04.2022</time>
+                            </div>
+                            <p class="product-card-answers-list__text">
+                                Прошу подобрать аналоги мотор-редукторов SEW по имеющейся технической информации. Информация будет выслана вам после отклика на мой запрос.
+                            </p>
+                            <div class="product-card-answers-list__answer">
+                                <p>Ответ:</p>
+                                <span>Запрос в отдел продаж.</span>
+                            </div>
+                        </li>
+                    </ul>
+                </nav>
+                <ul class="pagination product-card-answers-list__pagination" role="list">
+                    <li><a href="#">1</a></li>
+                    <li><a href="#" class="active">2</a></li>
+                </ul>
+              </div>
+           </div>
             </div>
         </section>
 		</main>
