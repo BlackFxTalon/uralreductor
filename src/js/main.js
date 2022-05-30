@@ -162,3 +162,5 @@ function reduceButtonOnClick() {
 }
 
 reduceButtonOnClick();
+
+new SimpleBar(document.querySelector('.articles-card-main-info__formula-lists'));
