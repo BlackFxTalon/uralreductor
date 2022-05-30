@@ -492,6 +492,45 @@ ul.filter__icon-list {
   padding: 0;
 }
 
+.errors-page {
+  padding-top: clampBuilder(360, 1440, 68, 157);
+  padding-bottom: clampBuilder(360, 1440, 148, 267);
+
+  &__container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+  h1 {
+    font-family: 'Montserrat',sans-serif;
+font-style: normal;
+font-weight: 700;
+font-size: 128px;
+line-height: 128px;
+letter-spacing: 0.05em;
+text-transform: uppercase;
+color: var(--dark-color);
+padding-bottom: 32px;
+  }
+  p {
+    font-family: 'Montserrat',sans-serif;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 18px;
+    line-height: 24px;
+    padding-bottom: 52px;
+  }
+}
+.error404-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  max-width: 219px;
+  height: 44px;
+  text-decoration: none;
+}
 
 // header styles
 .header {
