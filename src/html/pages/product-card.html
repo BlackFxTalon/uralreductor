@@ -3,7 +3,7 @@
 	@@include('../parts/head.html',{
 	"title":"Карточка товара"
 	})
-	<body x-data="{mobileMenu: false, mobileSubMenu: false, searchMenu: false, headerSubMenu:false, catalogFilter: false, orderForm: false}" :class="{'mobileMenuOpened': mobileMenu === true || searchMenu === true || catalogFilter === true || orderForm === true}">
+	<body x-data="{mobileMenu: false, mobileSubMenu: false, searchMenu: false, headerSubMenu:false, filter: false, orderForm: false}" :class="{'mobileMenuOpened': mobileMenu === true || searchMenu === true || filter === true || orderForm === true}">
 		@@include('../parts/header.html')
 		<main>
         <nav class="breadcrumbs">
