@@ -72,8 +72,6 @@ const productCardGalleryMain = new Swiper(".product-card__gallery-main", {
   },
 });
 
-
-
 function toggleToTopBtn() {
   window.addEventListener('scroll',()=>{
     if(window.scrollY >= 600) {
