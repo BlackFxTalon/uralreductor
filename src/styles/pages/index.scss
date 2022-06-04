@@ -4,6 +4,10 @@
     padding-bottom: clampBuilder(360, 1440, 140, 215);
     overflow: hidden;
 
+    @include media-custom(1440px) {
+        padding-top: 0;
+    }
+
     &__container {
 
         @include media-medium() {
@@ -71,7 +75,7 @@ color: var(--dark-color);
 
 }
 .reductor-types {
-    padding-bottom: clampBuilder(360, 1440, 124, 164);
+    padding-bottom: clampBuilder(360, 1440, 124, 220);
 
     &__container {
         position: relative;
@@ -89,11 +93,12 @@ color: var(--dark-color);
     &__slider {
         @include media-custom(1024px) {
             width: toRem(820);
+            height: 430px;
         }
 
         @include media-custom(1440px) {
             width: 1091px;
-            padding-bottom: 52px;
+            height: 460px;
         }
     }
     &__card {
@@ -128,14 +133,14 @@ color: var(--dark-color);
 
     &__slider-wrapper {
         padding: 0;
-
+        margin: 0;
     }
 
 
     .swiper-pagination.reductor-types__pagination {
         align-items: center;
         justify-content: center;
-        gap: 15px;
+        gap: 24px;
         bottom: -2rem;
 
         .swiper-pagination-bullet {
@@ -188,6 +193,10 @@ picture {
     justify-content: center;
     background-color: white;
     transition: .3s ease-in-out;
+
+    @include media-custom(1024px) {
+        height: 360px;
+    }
 }
 
 img {
@@ -195,8 +204,13 @@ img {
     transition: .3s ease-in-out;
     object-fit: cover;
 
-    @include media-custom(1440px) {
+    @include media-custom(1024px) {
         height: 360px;
+        object-fit: contain;
+    }
+
+    @include media-custom(1440px) {
+        object-fit: cover;
     }
 }
 
@@ -221,6 +235,10 @@ border-radius: 4px;
 padding: 12px;
 text-align: center;
 z-index: -1;
+
+@include media-custom(1440px) {
+    text-align: left;
+}
 }
 
 figcaption {
@@ -273,10 +291,11 @@ figcaption {
 
     figure {
         margin: 0;
+        display: grid;
+        gap: 20px;
 
         
         @include media-medium() {
-            display: grid;
             grid-template-columns: min-content 1fr;
             gap: 28px;
         }
@@ -285,19 +304,58 @@ figcaption {
             grid-template-columns: 1fr;
             gap: 20px;
         }
+
+        @include media-custom(1440px) {
+            gap: 16px;
+        }
     }
 
     h3 {
         padding-bottom: 8px;
     }
 
-    p {
+    &__text {
         font-family: 'Roboto',sans-serif;
 font-weight: 400;
 font-size: 16px;
 line-height: 20px;
 color: var(--dark-color);
-max-width: toRem(424);
+
+&--mobile {
+    display: none;
+    @include media-custom-max(767px) {
+        display: block;
+    }
+    
+}
+
+&--tablet {
+    display: none;
+    @include media-medium() {
+        display: block;
+    }
+    @include media-custom(1024px) {
+        display: none;
+    }
+}
+
+&--desktop {
+    display: none;
+    @include media-custom(1024px) {
+        display: block;
+    }
+    @include media-custom(1440px) {
+        display: none;
+    }
+}
+
+&--extra-desktop {
+    display: none;
+    @include media-custom(1440px) {
+        display: block;
+    }
+}
+
     }
 }
 
@@ -395,12 +453,13 @@ color: var(--dark-color);
     }
 
     time {
+        display: block;
         font-family: 'Roboto',sans-serif;
         font-weight: 400;
         font-size: 16px;
         line-height: 20px;
-        color: var(--dark-color);
-        padding-bottom: 8px;
+        color: var(--grey-dark-color);
+        padding: 8px 0;
     }
 
     h3 {

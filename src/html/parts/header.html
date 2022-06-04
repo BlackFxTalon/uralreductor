@@ -58,24 +58,24 @@
     </div>
     <ul class="header__search-phone-list" role="list">
         <li>
-<svg class="header__search header__search--adaptive" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 32 32" width="32" height="32" @click="searchMenu = !searchMenu; mobileMenu = false">
+<svg class="header__search header__search--adaptive" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 32 32" width="32" height="32" @click="searchMenu = !searchMenu; mobileMenu = false" :class="{'active': searchMenu === true}">
   <path stroke="#07012E" stroke-width="2" d="M22.38 11.69c0 5.904-4.786 10.69-10.69 10.69S1 17.594 1 11.69 5.786 1 11.69 1s10.69 4.786 10.69 10.69Z"/>
   <path fill="#07012E" d="m19.601 17.535 12.4 12.4L29.933 32l-12.4-12.399z"/>
 </svg>
-<nav class="header-search-menu header-search-menu--desktop" x-data="{searchInputText:'',searchMenuDesktop: false}" @click.outside="searchInputText = '';searchMenuDesktop = false">
+<nav class="header-search-menu header-search-menu--desktop" x-data="{searchInputText:'',searchMenuDesktop: false}" @mouseover.outside="searchInputText = '';searchMenuDesktop = false" @click.outside="searchInputText = '';searchMenuDesktop = false">
   <div class="header-search-menu__wrapper header-search-menu__wrapper--desktop">
     <div class="header-search-menu__bottom-line" :class="{'active': searchMenuDesktop === true}">
-    <svg class="header__search header__search--desktop" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 32 32" width="32" height="32" @click.self="searchMenuDesktop = true">
-      <path stroke="#07012E" stroke-width="2" d="M22.38 11.69c0 5.904-4.786 10.69-10.69 10.69S1 17.594 1 11.69 5.786 1 11.69 1s10.69 4.786 10.69 10.69Z"/>
-      <path fill="#07012E" d="m19.601 17.535 12.4 12.4L29.933 32l-12.4-12.399z"/>
-    </svg>
-  <input type="text" x-model.debounce.500ms="searchInputText" :class="{'active': searchMenuDesktop === true}">
+      <svg class="header__search header__search--desktop" width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg" @mouseover.self="searchMenuDesktop = true" :class="{'active': searchMenuDesktop === true}">
+        <path fill-rule="evenodd" clip-rule="evenodd" d="M12.2285 20.1238C16.589 20.1238 20.1238 16.589 20.1238 12.2285C20.1238 7.86814 16.589 4.33333 12.2285 4.33333C7.86814 4.33333 4.33333 7.86814 4.33333 12.2285C4.33333 16.589 7.86814 20.1238 12.2285 20.1238ZM12.2285 22.4571C17.8776 22.4571 22.4571 17.8776 22.4571 12.2285C22.4571 6.57948 17.8776 2 12.2285 2C6.57948 2 2 6.57948 2 12.2285C2 17.8776 6.57948 22.4571 12.2285 22.4571Z" fill="#07012E"/>
+        <path d="M19.151 17.3438L30 28.1928L28.1918 30.0009L17.3428 19.1519L19.151 17.3438Z" fill="#07012E"/>
+        </svg>
+  <input type="text" x-model.debounce.500ms="searchInputText" :class="{'active': searchMenuDesktop === true}" placeholder="Поиск по марке">
   </div>
-  <button type="button" @click="searchInputText = ''" :class="{'active': searchMenuDesktop === true}"><svg width="32" height="32">
+  <button type="button" @click="searchInputText = '';searchMenuDesktop = false" :class="{'active': searchMenuDesktop === true}"><svg width="32" height="32">
     <use xlink:href="resources/svgSprites/svgSprite.svg#search-icon-close"></use>
     </svg></button>
   </div>
-  <ul class="header-search-menu__list header-search-menu__list--desktop" role="list" x-show="searchInputText" style="display: none;">
+  <ul class="header-search-menu__list header-search-menu__list--desktop" role="list" x-show="searchInputText" style="display: none;" x-transition.origin.top.left.duration.300ms>
     <li class="header-search-menu__item header-search-menu__item--title"><h3><a href="#">Название раздела, который выдает поиск</a></h3></li>
     <li class="header-search-menu__item">
       <a href="#">
@@ -207,7 +207,7 @@
 </nav>
 <nav class="header-search-menu header-search-menu--adaptive" :class="{'active': searchMenu === true}" x-data="{searchInputText:''}">
   <div class="header-search-menu__wrapper header-search-menu__wrapper--adaptive">
-  <input type="text" x-model.debounce.500ms="searchInputText">
+  <input type="text" x-model.debounce.500ms="searchInputText" placeholder="Поиск по марке">
   <button type="button" @click="searchInputText = ''"><svg width="32" height="32">
     <use xlink:href="resources/svgSprites/svgSprite.svg#search-icon-close"></use>
     </svg></button>

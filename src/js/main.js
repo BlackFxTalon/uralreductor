@@ -31,6 +31,7 @@ const reductorTypesSlider = new Swiper('.reductor-types__slider', {
   // If we need pagination
   pagination: {
     el: '.reductor-types__pagination',
+    clickable: true,
   },
   // Navigation arrows
   navigation: {
@@ -48,8 +49,31 @@ const reductorTypesSlider = new Swiper('.reductor-types__slider', {
       slidesPerView: 3,
       slidesPerGroup: 3
     }
-  }
+  },
+
 });
+
+function restartAnimationOnClickOnReductorSlider() {
+  if(window.innerWidth >= 1024) {
+    const sliderCards = document.querySelectorAll('.reductor-types__card');
+
+    reductorTypesSlider.on('slideChangeTransitionStart',function () {
+      sliderCards.forEach(element => {
+        element.classList.remove('aos-animate');
+      });
+    });
+  
+    reductorTypesSlider.on('slideChangeTransitionEnd',()=>{
+      sliderCards.forEach((element) => {
+        element.classList.add('aos-animate');
+      });
+    });
+    
+  }
+}
+
+restartAnimationOnClickOnReductorSlider();
+
 const productCardGalleryThumbs = new Swiper(".product-card__gallery-thumbs", {
   spaceBetween: 20,
   slidesPerView: 5,
