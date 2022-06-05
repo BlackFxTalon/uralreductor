@@ -37,7 +37,7 @@
             </button>
         </li>
         <li>
-            <button type="button" class="chat-btn">
+            <button type="button" class="chat-btn" @click="questionModal = true">
                 <svg width="44" height="44">
                     <use xlink:href="resources/svgSprites/svgSprite.svg#chat-btn-icon"></use>
                     </svg>
@@ -46,3 +46,54 @@
     </ul>
 </div>
 </footer>
+<div class="question-modal" :class="{'active': questionModal === true}">
+    <ul class="question-modal__btn-group" role="list">
+        <li>
+            <button type="button" class="header__hamb-btn"><span>
+            </span></button>
+        </li>
+        <li>
+            <svg @click.self="questionModal = false" width="28" height="28">
+                <use xlink:href="resources/svgSprites/svgSprite.svg#icon-exit"></use>
+                </svg>
+        </li>
+    </ul>
+    <form method="post" name="questionForm" action="#">
+        <h3 class="title title-h3">Привет!</h3>
+        <p>Есть вопрос?</p>
+        <fieldset>
+            <div class="form-controls-wrapper question-modal__form-controls-wrapper">
+                <input type="text" name="questionName" id="questionName">
+                <label for="questionName">Имя <sup>*</sup></label>
+                <svg class="icon-error" width="28" height="28">
+                    <use xlink:href="resources/svgSprites/svgSprite.svg#icon-error"></use>
+                </svg>
+                <svg class="icon-correct" width="28" height="28">
+                    <use xlink:href="resources/svgSprites/svgSprite.svg#icon-correct"></use>
+                </svg>
+            </div>
+            <div class="form-controls-wrapper question-modal__form-controls-wrapper">
+                <input type="email" name="questionEmail" id="questionEmail">
+                <label for="questionEmail">E-mail <sup>*</sup></label>
+                <svg class="icon-error" width="28" height="28">
+                    <use xlink:href="resources/svgSprites/svgSprite.svg#icon-error"></use>
+                </svg>
+                <svg class="icon-correct" width="28" height="28">
+                    <use xlink:href="resources/svgSprites/svgSprite.svg#icon-correct"></use>
+                </svg>
+            </div>
+            <div class="form-controls-wrapper question-modal__form-controls-wrapper">
+                <input type="tel" name="questionTel" id="questionTel">
+                <label for="questionTel">Телефон</label>
+                <svg class="icon-error" width="28" height="28">
+                    <use xlink:href="resources/svgSprites/svgSprite.svg#icon-error"></use>
+                </svg>
+                <svg class="icon-correct" width="28" height="28">
+                    <use xlink:href="resources/svgSprites/svgSprite.svg#icon-correct"></use>
+                </svg>
+            </div>
+            <textarea placeholder="Комментарий"></textarea>
+        </fieldset>
+        <button type="submit" class="primary-btn question-modal__submit-btn">Отправить</button>
+    </form>
+</div>

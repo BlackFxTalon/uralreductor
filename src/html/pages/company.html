@@ -3,7 +3,7 @@
 	@@include('../parts/head.html',{
 	"title":"О компании"
 	})
-	<body x-data="{mobileMenu: false, mobileSubMenu: false, searchMenu: false, headerSubMenu:false, filter: false, orderForm: false}" :class="{'mobileMenuOpened': mobileMenu === true || searchMenu === true || filter === true || orderForm === true}">
+	<body x-data="{mobileMenu: false, mobileSubMenu: false, searchMenu: false, headerSubMenu:false, filter: false, orderForm: false, questionModal: false}" :class="{'mobileMenuOpened': mobileMenu === true || searchMenu === true || filter === true || orderForm === true || questionModal === true}">
 		@@include('../parts/header.html')
         <link rel="stylesheet" href="https://unpkg.com/flickity@2/dist/flickity.min.css">
         <script src="https://unpkg.com/flickity@2/dist/flickity.pkgd.min.js"></script>

@@ -185,4 +185,88 @@ function reduceButtonOnClick() {
 
 reduceButtonOnClick();
 
+function toggleLabelAnimation(el) {
+  const label = el.parentElement.querySelector('label');
+
+  el.addEventListener('focus',()=> {
+      label.classList.add('active');
+    });
+
+    el.addEventListener('blur',()=> {
+
+      label.classList.add('active');
+
+
+      if (el.value == '') {
+        label.classList.remove('active');
+      } 
+
+    });
+}
+document.querySelectorAll('.question-modal input').forEach(toggleLabelAnimation);
+
+function simpleClientSideFormValidation(form) {
+  const el = document.querySelector(form);
+
+  const inputs = el.querySelectorAll('input');
+
+
+  inputs.forEach(input => {
+    input.addEventListener('blur',()=>{
+      const parentEl = input.parentElement;
+
+      if (input.value !== null) {
+        parentEl.classList.remove('error');
+        parentEl.classList.add('correct');
+      } 
+
+      if (input.value == '') {
+        parentEl.classList.remove('correct');
+        parentEl.classList.add('error');
+      } 
+    }) 
+  }); 
+
+    inputs.forEach(input => {
+      input.addEventListener('change',()=>{
+        const parentEl = input.parentElement;
+
+        if (input.value !== null) {
+          parentEl.classList.remove('error');
+          parentEl.classList.add('correct');
+        } 
+
+        if (input.value == '') {
+          parentEl.classList.remove('correct');
+          parentEl.classList.add('error');
+        } 
+      }) 
+    }); 
+  
+  el.addEventListener('submit',function(event){
+      event.preventDefault();
+      inputs.forEach(input => {
+        const parentEl = input.parentElement;
+
+        if (input.value !== '') {
+          parentEl.classList.remove('error');
+        parentEl.classList.add('correct');
+        } 
+  
+        if (input.value == '') {
+          parentEl.classList.remove('correct');
+          parentEl.classList.add('error');
+          el.querySelector('input').focus();
+        } 
+  
+      });
+
+   }, false);
+ }
+
+ simpleClientSideFormValidation('.question-modal form');
+
+
+
+
 new SimpleBar(document.querySelector('.articles-card-main-info__formula-lists'));
