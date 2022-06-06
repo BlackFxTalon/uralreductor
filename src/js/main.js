@@ -138,7 +138,7 @@ function targetsForMagicMouse(elems) {
   elems.classList.add('magic-hover','magic-hover__square');
 }
 
-document.querySelectorAll('a, button, .reductor-types__card, .header__search, .catalog-card, summary').forEach(targetsForMagicMouse);
+document.querySelectorAll('a, button, .reductor-types__card, .header__search, .catalog-card, summary, .product-card__tabs h3').forEach(targetsForMagicMouse);
 
 const customCursor = document.querySelector('#magicMouseCursor');
 
@@ -179,7 +179,7 @@ function reduceButtonOnClick() {
               el.classList.add('reduce');
           })
         }
-        document.querySelectorAll('.primary-btn, .secondary-btn').forEach(reduceBtn);
+        document.querySelectorAll('.primary-btn:not(.order-btn), .secondary-btn:not(.request-form__submit-btn)').forEach(reduceBtn);
   }
 }
 
@@ -256,6 +256,10 @@ function simpleClientSideFormValidation(form) {
         if (input.value == '') {
           parentEl.classList.remove('correct');
           parentEl.classList.add('error');
+          document.querySelectorAll('.question-modal label').forEach((label)=>{
+            label.classList.add('active');
+          });
+          input.value = 'Введен неправильный текст';
           el.querySelector('input').focus();
         } 
   
@@ -266,7 +270,12 @@ function simpleClientSideFormValidation(form) {
 
  simpleClientSideFormValidation('.question-modal form');
 
+ simpleClientSideFormValidation('.request-form');
 
+const stickyFilter = new Sticksy('.filter--desktop', {
+  topSpacing: 70,
+  listen: true,
+})
 
 
 new SimpleBar(document.querySelector('.articles-card-main-info__formula-lists'));

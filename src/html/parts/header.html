@@ -1,5 +1,6 @@
 <script src="https://unpkg.com/aos@2.3.1/dist/aos.js" defer></script>
 <script src="https://cdn.jsdelivr.net/npm/simplebar@latest/dist/simplebar.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/sticksy/dist/sticksy.min.js"></script>
 <script src="js/main.min.js" defer></script>
 
 <header class="header">
@@ -257,4 +258,4 @@
   </ul>
 </nav>
 </header>
-<div class="mobile-menu-overlay" :class="{'active':mobileMenu === true || searchMenu === true || filter === true || orderForm === true || questionModal === true}" @click="mobileMenu = false;searchMenu = false;filter = false;orderForm = false; questionModal = false"></div>
+<div class="overlay" :class="{'active':mobileMenu === true || searchMenu === true || filter === true || orderForm === true || questionModal === true,'z-998': filter === true}" @click="mobileMenu = false;searchMenu = false;filter = false;orderForm = false; questionModal = false"></div>

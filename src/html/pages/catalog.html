@@ -18,150 +18,158 @@
         <section class="catalog">
          <div class="container catalog__container">
             <aside class="catalog__aside">
-                <nav class="filter">
+                <nav class="filter filter--desktop" x-data="{filterChoice: ''}">
                     <ul role="list">
-                        <li>
-                            <details x-data="{filter: ''}">
-                                <summary>Тип передачи
-                                    <ul class="filter__icon-list" role="list">
-                                        <svg class="filter__clear-list-icon" width="16" height="16" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg" @click="filter = ''">
+                        <li @click="filterChoice = '1'">
+                            <div class="filter-dropdown" x-data="{filter: ''}">
+                                <div class="filter-dropdown__top">
+                                <p>Тип передачи</p>
+                                    <ul class="filter-dropdown__icon-list" role="list">
+                                        <svg class="filter-dropdown__clear-list-icon" width="16" height="16" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg" @click="filter = ''" :class="{'active': filter !== ''}">
                                             <path d="M30.0003 4.66666C30.3685 4.29847 30.9655 4.29847 31.3337 4.66666C31.7018 5.03485 31.7018 5.6318 31.3337 5.99998L6.00055 31.3331C5.63236 31.7013 5.03541 31.7013 4.66723 31.3331C4.29904 30.9649 4.29904 30.368 4.66722 29.9998L30.0003 4.66666Z" fill="#07012E"/>
                                             <path d="M31.3333 29.9998C31.7015 30.368 31.7015 30.965 31.3333 31.3332C30.9652 31.7014 30.3682 31.7014 30 31.3332L4.66692 6.00006C4.29873 5.63187 4.29873 5.03493 4.66692 4.66674C5.03511 4.29855 5.63205 4.29855 6.00024 4.66674L31.3333 29.9998Z" fill="#07012E"/>
                                             </svg>
-                                            <svg class="filter__arrow-icon" width="16" height="16" viewBox="0 0 28 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                            <svg class="filter-dropdown__arrow-icon" width="16" height="16" viewBox="0 0 28 14" fill="none" xmlns="http://www.w3.org/2000/svg" :class="{'active': filterChoice === 1}">
                                                 <rect width="19.2237" height="1.20148" transform="matrix(0.728345 -0.685211 0.728345 0.685211 13.1235 13.1724)" fill="#07012E"/>
                                                 <rect width="19.2237" height="1.20148" transform="matrix(0.728345 0.685211 -0.728345 0.685211 0.875 0.00390625)" fill="#07012E"/>
                                         </svg>          
                                     </ul>
-                                </summary>
-                                <ul role="list" class="filter__list">
+                                </div>
+                                <ul role="list" class="filter-dropdown__list" x-show="filterChoice === '1'" x-transition.origin.top.duration.300ms>
                                     <li><button type="button" aria-label="button" @click="filter !==1 ?filter = 1: filter = null" :class="{'active': filter === 1}">Конический</button></li>
                                     <li><button type="button" @click="filter !==2 ?filter = 2: filter = null" :class="{'active': filter === 2}">Червячный</button></li>
                                     <li><button type="button" @click="filter !==3 ?filter = 3: filter = null" :class="{'active': filter === 3}">Цилиндрический</button></li>
                                     <li><button type="button" @click="filter !==4 ?filter = 4: filter = null" :class="{'active': filter === 4}">Планетарный</button></li>
                                     <li><button type="button" @click="filter !==5 ?filter = 5: filter = null" :class="{'active': filter === 5}">Червячный моторредуктор</button></li>
                                 </ul>
-                            </details>
+                            </div>
+                        </li>
+                        <li @click="filterChoice = '2'">
+                            <div class="filter-dropdown" x-data="{filter: ''}">
+                                <div class="filter-dropdown__top">
+                                <p>Количество ступеней</p>
+                                    <ul class="filter-dropdown__icon-list" role="list">
+                                        <svg class="filter-dropdown__clear-list-icon" width="16" height="16" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg" @click="filter = ''" :class="{'active': filter !== ''}">
+                                            <path d="M30.0003 4.66666C30.3685 4.29847 30.9655 4.29847 31.3337 4.66666C31.7018 5.03485 31.7018 5.6318 31.3337 5.99998L6.00055 31.3331C5.63236 31.7013 5.03541 31.7013 4.66723 31.3331C4.29904 30.9649 4.29904 30.368 4.66722 29.9998L30.0003 4.66666Z" fill="#07012E"/>
+                                            <path d="M31.3333 29.9998C31.7015 30.368 31.7015 30.965 31.3333 31.3332C30.9652 31.7014 30.3682 31.7014 30 31.3332L4.66692 6.00006C4.29873 5.63187 4.29873 5.03493 4.66692 4.66674C5.03511 4.29855 5.63205 4.29855 6.00024 4.66674L31.3333 29.9998Z" fill="#07012E"/>
+                                            </svg>
+                                            <svg class="filter-dropdown__arrow-icon" width="16" height="16" viewBox="0 0 28 14" fill="none" xmlns="http://www.w3.org/2000/svg" :class="{'active': filterChoice === 1}">
+                                                <rect width="19.2237" height="1.20148" transform="matrix(0.728345 -0.685211 0.728345 0.685211 13.1235 13.1724)" fill="#07012E"/>
+                                                <rect width="19.2237" height="1.20148" transform="matrix(0.728345 0.685211 -0.728345 0.685211 0.875 0.00390625)" fill="#07012E"/>
+                                        </svg>          
+                                    </ul>
+                                </div>
+                                <ul role="list" class="filter-dropdown__list" x-show="filterChoice === '2'" x-transition.origin.top.duration.300ms>
+                                    <li><button type="button" aria-label="button" @click="filter !==1 ?filter = 1: filter = null" :class="{'active': filter === 1}">Конический</button></li>
+                                    <li><button type="button" @click="filter !==2 ?filter = 2: filter = null" :class="{'active': filter === 2}">Червячный</button></li>
+                                    <li><button type="button" @click="filter !==3 ?filter = 3: filter = null" :class="{'active': filter === 3}">Цилиндрический</button></li>
+                                    <li><button type="button" @click="filter !==4 ?filter = 4: filter = null" :class="{'active': filter === 4}">Планетарный</button></li>
+                                    <li><button type="button" @click="filter !==5 ?filter = 5: filter = null" :class="{'active': filter === 5}">Червячный моторредуктор</button></li>
+                                </ul>
+                            </div>
+                        </li>
+                        <li @click="filterChoice = '3'">
+                            <div class="filter-dropdown" x-data="{filter: ''}">
+                                <div class="filter-dropdown__top">
+                                <p>Передаточное отношение</p>
+                                    <ul class="filter-dropdown__icon-list" role="list">
+                                        <svg class="filter-dropdown__clear-list-icon" width="16" height="16" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg" @click="filter = ''" :class="{'active': filter !== ''}">
+                                            <path d="M30.0003 4.66666C30.3685 4.29847 30.9655 4.29847 31.3337 4.66666C31.7018 5.03485 31.7018 5.6318 31.3337 5.99998L6.00055 31.3331C5.63236 31.7013 5.03541 31.7013 4.66723 31.3331C4.29904 30.9649 4.29904 30.368 4.66722 29.9998L30.0003 4.66666Z" fill="#07012E"/>
+                                            <path d="M31.3333 29.9998C31.7015 30.368 31.7015 30.965 31.3333 31.3332C30.9652 31.7014 30.3682 31.7014 30 31.3332L4.66692 6.00006C4.29873 5.63187 4.29873 5.03493 4.66692 4.66674C5.03511 4.29855 5.63205 4.29855 6.00024 4.66674L31.3333 29.9998Z" fill="#07012E"/>
+                                            </svg>
+                                            <svg class="filter-dropdown__arrow-icon" width="16" height="16" viewBox="0 0 28 14" fill="none" xmlns="http://www.w3.org/2000/svg" :class="{'active': filterChoice === 1}">
+                                                <rect width="19.2237" height="1.20148" transform="matrix(0.728345 -0.685211 0.728345 0.685211 13.1235 13.1724)" fill="#07012E"/>
+                                                <rect width="19.2237" height="1.20148" transform="matrix(0.728345 0.685211 -0.728345 0.685211 0.875 0.00390625)" fill="#07012E"/>
+                                        </svg>          
+                                    </ul>
+                                </div>
+                                <ul role="list" class="filter-dropdown__list" x-show="filterChoice === '3'" x-transition.origin.top.duration.300ms>
+                                    <li><button type="button" aria-label="button" @click="filter !==1 ?filter = 1: filter = null" :class="{'active': filter === 1}">Конический</button></li>
+                                    <li><button type="button" @click="filter !==2 ?filter = 2: filter = null" :class="{'active': filter === 2}">Червячный</button></li>
+                                    <li><button type="button" @click="filter !==3 ?filter = 3: filter = null" :class="{'active': filter === 3}">Цилиндрический</button></li>
+                                    <li><button type="button" @click="filter !==4 ?filter = 4: filter = null" :class="{'active': filter === 4}">Планетарный</button></li>
+                                    <li><button type="button" @click="filter !==5 ?filter = 5: filter = null" :class="{'active': filter === 5}">Червячный моторредуктор</button></li>
+                                </ul>
+                            </div>
+                        </li>
+                        <li @click="filterChoice = '4'">
+                            <div class="filter-dropdown" x-data="{filter: ''}">
+                                <div class="filter-dropdown__top">
+                                <p>Расположение осей</p>
+                                    <ul class="filter-dropdown__icon-list" role="list">
+                                        <svg class="filter-dropdown__clear-list-icon" width="16" height="16" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg" @click="filter = ''" :class="{'active': filter !== ''}">
+                                            <path d="M30.0003 4.66666C30.3685 4.29847 30.9655 4.29847 31.3337 4.66666C31.7018 5.03485 31.7018 5.6318 31.3337 5.99998L6.00055 31.3331C5.63236 31.7013 5.03541 31.7013 4.66723 31.3331C4.29904 30.9649 4.29904 30.368 4.66722 29.9998L30.0003 4.66666Z" fill="#07012E"/>
+                                            <path d="M31.3333 29.9998C31.7015 30.368 31.7015 30.965 31.3333 31.3332C30.9652 31.7014 30.3682 31.7014 30 31.3332L4.66692 6.00006C4.29873 5.63187 4.29873 5.03493 4.66692 4.66674C5.03511 4.29855 5.63205 4.29855 6.00024 4.66674L31.3333 29.9998Z" fill="#07012E"/>
+                                            </svg>
+                                            <svg class="filter-dropdown__arrow-icon" width="16" height="16" viewBox="0 0 28 14" fill="none" xmlns="http://www.w3.org/2000/svg" :class="{'active': filterChoice === 1}">
+                                                <rect width="19.2237" height="1.20148" transform="matrix(0.728345 -0.685211 0.728345 0.685211 13.1235 13.1724)" fill="#07012E"/>
+                                                <rect width="19.2237" height="1.20148" transform="matrix(0.728345 0.685211 -0.728345 0.685211 0.875 0.00390625)" fill="#07012E"/>
+                                        </svg>          
+                                    </ul>
+                                </div>
+                                <ul role="list" class="filter-dropdown__list" x-show="filterChoice === '4'" x-transition.origin.top.duration.300ms>
+                                    <li><button type="button" aria-label="button" @click="filter !==1 ?filter = 1: filter = null" :class="{'active': filter === 1}">Конический</button></li>
+                                    <li><button type="button" @click="filter !==2 ?filter = 2: filter = null" :class="{'active': filter === 2}">Червячный</button></li>
+                                    <li><button type="button" @click="filter !==3 ?filter = 3: filter = null" :class="{'active': filter === 3}">Цилиндрический</button></li>
+                                    <li><button type="button" @click="filter !==4 ?filter = 4: filter = null" :class="{'active': filter === 4}">Планетарный</button></li>
+                                    <li><button type="button" @click="filter !==5 ?filter = 5: filter = null" :class="{'active': filter === 5}">Червячный моторредуктор</button></li>
+                                </ul>
+                            </div>
+                        </li>
+                        <li @click="filterChoice = '5'">
+                            <div class="filter-dropdown" x-data="{filter: ''}">
+                                <div class="filter-dropdown__top">
+                                <p>Консольная нагрузка</p>
+                                    <ul class="filter-dropdown__icon-list" role="list">
+                                        <svg class="filter-dropdown__clear-list-icon" width="16" height="16" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg" @click="filter = ''" :class="{'active': filter !== ''}">
+                                            <path d="M30.0003 4.66666C30.3685 4.29847 30.9655 4.29847 31.3337 4.66666C31.7018 5.03485 31.7018 5.6318 31.3337 5.99998L6.00055 31.3331C5.63236 31.7013 5.03541 31.7013 4.66723 31.3331C4.29904 30.9649 4.29904 30.368 4.66722 29.9998L30.0003 4.66666Z" fill="#07012E"/>
+                                            <path d="M31.3333 29.9998C31.7015 30.368 31.7015 30.965 31.3333 31.3332C30.9652 31.7014 30.3682 31.7014 30 31.3332L4.66692 6.00006C4.29873 5.63187 4.29873 5.03493 4.66692 4.66674C5.03511 4.29855 5.63205 4.29855 6.00024 4.66674L31.3333 29.9998Z" fill="#07012E"/>
+                                            </svg>
+                                            <svg class="filter-dropdown__arrow-icon" width="16" height="16" viewBox="0 0 28 14" fill="none" xmlns="http://www.w3.org/2000/svg" :class="{'active': filterChoice === 1}">
+                                                <rect width="19.2237" height="1.20148" transform="matrix(0.728345 -0.685211 0.728345 0.685211 13.1235 13.1724)" fill="#07012E"/>
+                                                <rect width="19.2237" height="1.20148" transform="matrix(0.728345 0.685211 -0.728345 0.685211 0.875 0.00390625)" fill="#07012E"/>
+                                        </svg>          
+                                    </ul>
+                                </div>
+                                <ul role="list" class="filter-dropdown__list" x-show="filterChoice === '5'" x-transition.origin.top.duration.300ms>
+                                    <li><button type="button" aria-label="button" @click="filter !==1 ?filter = 1: filter = null" :class="{'active': filter === 1}">Конический</button></li>
+                                    <li><button type="button" @click="filter !==2 ?filter = 2: filter = null" :class="{'active': filter === 2}">Червячный</button></li>
+                                    <li><button type="button" @click="filter !==3 ?filter = 3: filter = null" :class="{'active': filter === 3}">Цилиндрический</button></li>
+                                    <li><button type="button" @click="filter !==4 ?filter = 4: filter = null" :class="{'active': filter === 4}">Планетарный</button></li>
+                                    <li><button type="button" @click="filter !==5 ?filter = 5: filter = null" :class="{'active': filter === 5}">Червячный моторредуктор</button></li>
+                                </ul>
+                            </div>
+                        </li>
+                        <li @click="filterChoice = '6'">
+                            <div class="filter-dropdown" x-data="{filter: ''}">
+                                <div class="filter-dropdown__top">
+                                <p>Консольная нагрузка</p>
+                                    <ul class="filter-dropdown__icon-list" role="list">
+                                        <svg class="filter-dropdown__clear-list-icon" width="16" height="16" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg" @click="filter = ''" :class="{'active': filter !== ''}">
+                                            <path d="M30.0003 4.66666C30.3685 4.29847 30.9655 4.29847 31.3337 4.66666C31.7018 5.03485 31.7018 5.6318 31.3337 5.99998L6.00055 31.3331C5.63236 31.7013 5.03541 31.7013 4.66723 31.3331C4.29904 30.9649 4.29904 30.368 4.66722 29.9998L30.0003 4.66666Z" fill="#07012E"/>
+                                            <path d="M31.3333 29.9998C31.7015 30.368 31.7015 30.965 31.3333 31.3332C30.9652 31.7014 30.3682 31.7014 30 31.3332L4.66692 6.00006C4.29873 5.63187 4.29873 5.03493 4.66692 4.66674C5.03511 4.29855 5.63205 4.29855 6.00024 4.66674L31.3333 29.9998Z" fill="#07012E"/>
+                                            </svg>
+                                            <svg class="filter-dropdown__arrow-icon" width="16" height="16" viewBox="0 0 28 14" fill="none" xmlns="http://www.w3.org/2000/svg" :class="{'active': filterChoice === 1}">
+                                                <rect width="19.2237" height="1.20148" transform="matrix(0.728345 -0.685211 0.728345 0.685211 13.1235 13.1724)" fill="#07012E"/>
+                                                <rect width="19.2237" height="1.20148" transform="matrix(0.728345 0.685211 -0.728345 0.685211 0.875 0.00390625)" fill="#07012E"/>
+                                        </svg>          
+                                    </ul>
+                                </div>
+                                <ul role="list" class="filter-dropdown__list" x-show="filterChoice === '6'" x-transition.origin.top.duration.300ms>
+                                    <li><button type="button" aria-label="button" @click="filter !==1 ?filter = 1: filter = null" :class="{'active': filter === 1}">Конический</button></li>
+                                    <li><button type="button" @click="filter !==2 ?filter = 2: filter = null" :class="{'active': filter === 2}">Червячный</button></li>
+                                    <li><button type="button" @click="filter !==3 ?filter = 3: filter = null" :class="{'active': filter === 3}">Цилиндрический</button></li>
+                                    <li><button type="button" @click="filter !==4 ?filter = 4: filter = null" :class="{'active': filter === 4}">Планетарный</button></li>
+                                    <li><button type="button" @click="filter !==5 ?filter = 5: filter = null" :class="{'active': filter === 5}">Червячный моторредуктор</button></li>
+                                </ul>
+                            </div>
                         </li>
                         <li>
-                            <details x-data="{filter: ''}">
-                                <summary>Количество ступеней
-                                    <ul class="filter__icon-list" role="list">
-                                        <svg class="filter__clear-list-icon" width="16" height="16" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg" @click="filter = ''">
-                                            <path d="M30.0003 4.66666C30.3685 4.29847 30.9655 4.29847 31.3337 4.66666C31.7018 5.03485 31.7018 5.6318 31.3337 5.99998L6.00055 31.3331C5.63236 31.7013 5.03541 31.7013 4.66723 31.3331C4.29904 30.9649 4.29904 30.368 4.66722 29.9998L30.0003 4.66666Z" fill="#07012E"/>
-                                            <path d="M31.3333 29.9998C31.7015 30.368 31.7015 30.965 31.3333 31.3332C30.9652 31.7014 30.3682 31.7014 30 31.3332L4.66692 6.00006C4.29873 5.63187 4.29873 5.03493 4.66692 4.66674C5.03511 4.29855 5.63205 4.29855 6.00024 4.66674L31.3333 29.9998Z" fill="#07012E"/>
-                                            </svg>
-                                            <svg class="filter__arrow-icon" width="16" height="16" viewBox="0 0 28 14" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                                <rect width="19.2237" height="1.20148" transform="matrix(0.728345 -0.685211 0.728345 0.685211 13.1235 13.1724)" fill="#07012E"/>
-                                                <rect width="19.2237" height="1.20148" transform="matrix(0.728345 0.685211 -0.728345 0.685211 0.875 0.00390625)" fill="#07012E"/>
-                                        </svg>          
-                                    </ul>
-                                </summary>
-                                <ul role="list" class="filter__list">
-                                    <li><button type="button" aria-label="button" @click="filter !==1 ?filter = 1: filter = null" :class="{'active': filter === 1}">Конический</button></li>
-                                    <li><button type="button" @click="filter !==2 ?filter = 2: filter = null" :class="{'active': filter === 2}">Червячный</button></li>
-                                    <li><button type="button" @click="filter !==3 ?filter = 3: filter = null" :class="{'active': filter === 3}">Цилиндрический</button></li>
-                                    <li><button type="button" @click="filter !==4 ?filter = 4: filter = null" :class="{'active': filter === 4}">Планетарный</button></li>
-                                    <li><button type="button" @click="filter !==5 ?filter = 5: filter = null" :class="{'active': filter === 5}">Червячный моторредуктор</button></li>
-                                </ul>
-                            </details>
-                        </li>
-                        <li>
-                            <details x-data="{filter: ''}">
-                                <summary>Передаточное отношение
-                                    <ul class="filter__icon-list" role="list">
-                                        <svg class="filter__clear-list-icon" width="16" height="16" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg" @click="filter = ''">
-                                            <path d="M30.0003 4.66666C30.3685 4.29847 30.9655 4.29847 31.3337 4.66666C31.7018 5.03485 31.7018 5.6318 31.3337 5.99998L6.00055 31.3331C5.63236 31.7013 5.03541 31.7013 4.66723 31.3331C4.29904 30.9649 4.29904 30.368 4.66722 29.9998L30.0003 4.66666Z" fill="#07012E"/>
-                                            <path d="M31.3333 29.9998C31.7015 30.368 31.7015 30.965 31.3333 31.3332C30.9652 31.7014 30.3682 31.7014 30 31.3332L4.66692 6.00006C4.29873 5.63187 4.29873 5.03493 4.66692 4.66674C5.03511 4.29855 5.63205 4.29855 6.00024 4.66674L31.3333 29.9998Z" fill="#07012E"/>
-                                            </svg>
-                                            <svg class="filter__arrow-icon" width="16" height="16" viewBox="0 0 28 14" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                                <rect width="19.2237" height="1.20148" transform="matrix(0.728345 -0.685211 0.728345 0.685211 13.1235 13.1724)" fill="#07012E"/>
-                                                <rect width="19.2237" height="1.20148" transform="matrix(0.728345 0.685211 -0.728345 0.685211 0.875 0.00390625)" fill="#07012E"/>
-                                        </svg>          
-                                    </ul>
-                                </summary>
-                                <ul role="list" class="filter__list">
-                                    <li><button type="button" aria-label="button" @click="filter !==1 ?filter = 1: filter = null" :class="{'active': filter === 1}">Конический</button></li>
-                                    <li><button type="button" @click="filter !==2 ?filter = 2: filter = null" :class="{'active': filter === 2}">Червячный</button></li>
-                                    <li><button type="button" @click="filter !==3 ?filter = 3: filter = null" :class="{'active': filter === 3}">Цилиндрический</button></li>
-                                    <li><button type="button" @click="filter !==4 ?filter = 4: filter = null" :class="{'active': filter === 4}">Планетарный</button></li>
-                                    <li><button type="button" @click="filter !==5 ?filter = 5: filter = null" :class="{'active': filter === 5}">Червячный моторредуктор</button></li>
-                                </ul>
-                            </details>
-                        </li>
-                        <li>
-                            <details x-data="{filter: ''}">
-                                <summary>Расположение осей
-                                    <ul class="filter__icon-list" role="list">
-                                        <svg class="filter__clear-list-icon" width="16" height="16" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg" @click="filter = ''">
-                                            <path d="M30.0003 4.66666C30.3685 4.29847 30.9655 4.29847 31.3337 4.66666C31.7018 5.03485 31.7018 5.6318 31.3337 5.99998L6.00055 31.3331C5.63236 31.7013 5.03541 31.7013 4.66723 31.3331C4.29904 30.9649 4.29904 30.368 4.66722 29.9998L30.0003 4.66666Z" fill="#07012E"/>
-                                            <path d="M31.3333 29.9998C31.7015 30.368 31.7015 30.965 31.3333 31.3332C30.9652 31.7014 30.3682 31.7014 30 31.3332L4.66692 6.00006C4.29873 5.63187 4.29873 5.03493 4.66692 4.66674C5.03511 4.29855 5.63205 4.29855 6.00024 4.66674L31.3333 29.9998Z" fill="#07012E"/>
-                                            </svg>
-                                            <svg class="filter__arrow-icon" width="16" height="16" viewBox="0 0 28 14" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                                <rect width="19.2237" height="1.20148" transform="matrix(0.728345 -0.685211 0.728345 0.685211 13.1235 13.1724)" fill="#07012E"/>
-                                                <rect width="19.2237" height="1.20148" transform="matrix(0.728345 0.685211 -0.728345 0.685211 0.875 0.00390625)" fill="#07012E"/>
-                                        </svg>          
-                                    </ul>
-                                </summary>
-                                <ul role="list" class="filter__list">
-                                    <li><button type="button" aria-label="button" @click="filter !==1 ?filter = 1: filter = null" :class="{'active': filter === 1}">Конический</button></li>
-                                    <li><button type="button" @click="filter !==2 ?filter = 2: filter = null" :class="{'active': filter === 2}">Червячный</button></li>
-                                    <li><button type="button" @click="filter !==3 ?filter = 3: filter = null" :class="{'active': filter === 3}">Цилиндрический</button></li>
-                                    <li><button type="button" @click="filter !==4 ?filter = 4: filter = null" :class="{'active': filter === 4}">Планетарный</button></li>
-                                    <li><button type="button" @click="filter !==5 ?filter = 5: filter = null" :class="{'active': filter === 5}">Червячный моторредуктор</button></li>
-                                </ul>
-                            </details>
-                        </li>
-                        <li>
-                            <details x-data="{filter: ''}">
-                                <summary>Консольная нагрузка
-                                    <ul class="filter__icon-list" role="list">
-                                        <svg class="filter__clear-list-icon" width="16" height="16" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg" @click="filter = ''">
-                                            <path d="M30.0003 4.66666C30.3685 4.29847 30.9655 4.29847 31.3337 4.66666C31.7018 5.03485 31.7018 5.6318 31.3337 5.99998L6.00055 31.3331C5.63236 31.7013 5.03541 31.7013 4.66723 31.3331C4.29904 30.9649 4.29904 30.368 4.66722 29.9998L30.0003 4.66666Z" fill="#07012E"/>
-                                            <path d="M31.3333 29.9998C31.7015 30.368 31.7015 30.965 31.3333 31.3332C30.9652 31.7014 30.3682 31.7014 30 31.3332L4.66692 6.00006C4.29873 5.63187 4.29873 5.03493 4.66692 4.66674C5.03511 4.29855 5.63205 4.29855 6.00024 4.66674L31.3333 29.9998Z" fill="#07012E"/>
-                                            </svg>
-                                            <svg class="filter__arrow-icon" width="16" height="16" viewBox="0 0 28 14" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                                <rect width="19.2237" height="1.20148" transform="matrix(0.728345 -0.685211 0.728345 0.685211 13.1235 13.1724)" fill="#07012E"/>
-                                                <rect width="19.2237" height="1.20148" transform="matrix(0.728345 0.685211 -0.728345 0.685211 0.875 0.00390625)" fill="#07012E"/>
-                                        </svg>          
-                                    </ul>
-                                </summary>
-                                <ul role="list" class="filter__list">
-                                    <li><button type="button" aria-label="button" @click="filter !==1 ?filter = 1: filter = null" :class="{'active': filter === 1}">Конический</button></li>
-                                    <li><button type="button" @click="filter !==2 ?filter = 2: filter = null" :class="{'active': filter === 2}">Червячный</button></li>
-                                    <li><button type="button" @click="filter !==3 ?filter = 3: filter = null" :class="{'active': filter === 3}">Цилиндрический</button></li>
-                                    <li><button type="button" @click="filter !==4 ?filter = 4: filter = null" :class="{'active': filter === 4}">Планетарный</button></li>
-                                    <li><button type="button" @click="filter !==5 ?filter = 5: filter = null" :class="{'active': filter === 5}">Червячный моторредуктор</button></li>
-                                </ul>
-                            </details>
-                        </li>
-                        <li>
-                            <details x-data="{filter: ''}">
-                                <summary>Масса
-                                    <ul class="filter__icon-list" role="list">
-                                        <svg class="filter__clear-list-icon" width="16" height="16" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg" @click="filter = ''">
-                                            <path d="M30.0003 4.66666C30.3685 4.29847 30.9655 4.29847 31.3337 4.66666C31.7018 5.03485 31.7018 5.6318 31.3337 5.99998L6.00055 31.3331C5.63236 31.7013 5.03541 31.7013 4.66723 31.3331C4.29904 30.9649 4.29904 30.368 4.66722 29.9998L30.0003 4.66666Z" fill="#07012E"/>
-                                            <path d="M31.3333 29.9998C31.7015 30.368 31.7015 30.965 31.3333 31.3332C30.9652 31.7014 30.3682 31.7014 30 31.3332L4.66692 6.00006C4.29873 5.63187 4.29873 5.03493 4.66692 4.66674C5.03511 4.29855 5.63205 4.29855 6.00024 4.66674L31.3333 29.9998Z" fill="#07012E"/>
-                                            </svg>
-                                            <svg class="filter__arrow-icon" width="16" height="16" viewBox="0 0 28 14" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                                <rect width="19.2237" height="1.20148" transform="matrix(0.728345 -0.685211 0.728345 0.685211 13.1235 13.1724)" fill="#07012E"/>
-                                                <rect width="19.2237" height="1.20148" transform="matrix(0.728345 0.685211 -0.728345 0.685211 0.875 0.00390625)" fill="#07012E"/>
-                                        </svg>          
-                                    </ul>
-                                </summary>
-                                <ul role="list" class="filter__list">
-                                    <li><button type="button" aria-label="button" @click="filter !==1 ?filter = 1: filter = null" :class="{'active': filter === 1}">Конический</button></li>
-                                    <li><button type="button" @click="filter !==2 ?filter = 2: filter = null" :class="{'active': filter === 2}">Червячный</button></li>
-                                    <li><button type="button" @click="filter !==3 ?filter = 3: filter = null" :class="{'active': filter === 3}">Цилиндрический</button></li>
-                                    <li><button type="button" @click="filter !==4 ?filter = 4: filter = null" :class="{'active': filter === 4}">Планетарный</button></li>
-                                    <li><button type="button" @click="filter !==5 ?filter = 5: filter = null" :class="{'active': filter === 5}">Червячный моторредуктор</button></li>
-                                </ul>
-                            </details>
+                            <button class="filter__clear-btn" type="button"><svg width="16" height="16">
+                                <use xlink:href="resources/svgSprites/svgSprite.svg#clear-filter-icon"></use>
+                                </svg>Удалить фильтры</button>
                         </li>
                     </ul>
-                    <button class="filter__clear-btn" type="button"><svg width="16" height="16">
-                        <use xlink:href="resources/svgSprites/svgSprite.svg#clear-filter-icon"></use>
-                        </svg>Удалить фильтры</button>
                 </nav>
             </aside>
         <div class="catalog__main">
@@ -171,162 +179,211 @@
            <button class="filter-btn catalog-filter-btn" type="button" @click="filter = true"><svg width="68" height="48">
             <use xlink:href="resources/svgSprites/svgSprite.svg#filter-btn-icon"></use>
             </svg>Фильтры</button>
-            <nav class="filter filter--mobile" :class="{'active': filter === true}">
-                <button class="filter__close-btn" type="button" @click="filter = false">
-                    <svg width="20" height="28" class="filter__close-btn-icon filter__close-btn-icon--mobile">
-                    <use xlink:href="resources/svgSprites/svgSprite.svg#filter-arrow"></use>
-                    </svg>
+            <nav class="filter filter--mobile" :class="{'active': filter === true}" x-data="{filterChoice: ''}">
+                <button class="filter__close-btn filter__close-btn--mobile" type="button" @click="filter = false">
+                    <!-- <svg width="20" height="28" class="filter__close-btn-icon filter__close-btn-icon--mobile">
+                    <use xlink:href="resources/svgSprites/svgSprite.svg#catalog-filter-arrow"></use>
+                    </svg> -->
+                    <svg width="36" height="36" class="filter__close-btn-icon filter__close-btn-icon--tablet">
+                        <use xlink:href="resources/svgSprites/svgSprite.svg#icon-exit"></use>
+                        </svg>
+                </button>
+                <button class="filter__close-btn filter__close-btn--tablet" type="button" @click="filter = false">
                     <svg width="36" height="36" class="filter__close-btn-icon filter__close-btn-icon--tablet">
                         <use xlink:href="resources/svgSprites/svgSprite.svg#icon-exit"></use>
                         </svg>
                 </button>
                     <div class="container">
                         <ul role="list">
-                            <li>
-                                <details x-data="{filter: ''}">
-                                    <summary>Тип передачи
-                                        <ul class="filter__icon-list" role="list">
-                                            <svg class="filter__clear-list-icon" width="16" height="16" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg" @click="filter = ''">
+                            <li @click="filterChoice = '1'">
+                                <div class="filter-dropdown" x-data="{filter: ''}">
+                                    <div class="filter-dropdown__top">
+                                    <p>Тип передачи</p>
+                                        <ul class="filter-dropdown__icon-list" role="list">
+                                            <svg class="filter-dropdown__clear-list-icon" width="16" height="16" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg" @click="filter = ''" :class="{'active': filter !== ''}">
                                                 <path d="M30.0003 4.66666C30.3685 4.29847 30.9655 4.29847 31.3337 4.66666C31.7018 5.03485 31.7018 5.6318 31.3337 5.99998L6.00055 31.3331C5.63236 31.7013 5.03541 31.7013 4.66723 31.3331C4.29904 30.9649 4.29904 30.368 4.66722 29.9998L30.0003 4.66666Z" fill="#07012E"/>
                                                 <path d="M31.3333 29.9998C31.7015 30.368 31.7015 30.965 31.3333 31.3332C30.9652 31.7014 30.3682 31.7014 30 31.3332L4.66692 6.00006C4.29873 5.63187 4.29873 5.03493 4.66692 4.66674C5.03511 4.29855 5.63205 4.29855 6.00024 4.66674L31.3333 29.9998Z" fill="#07012E"/>
                                                 </svg>
-                                                <svg class="filter__arrow-icon" width="16" height="16" viewBox="0 0 28 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                <svg class="filter-dropdown__arrow-icon" width="16" height="16" viewBox="0 0 28 14" fill="none" xmlns="http://www.w3.org/2000/svg" :class="{'active': filterChoice === 1}">
                                                     <rect width="19.2237" height="1.20148" transform="matrix(0.728345 -0.685211 0.728345 0.685211 13.1235 13.1724)" fill="#07012E"/>
                                                     <rect width="19.2237" height="1.20148" transform="matrix(0.728345 0.685211 -0.728345 0.685211 0.875 0.00390625)" fill="#07012E"/>
                                             </svg>          
                                         </ul>
-                                    </summary>
-                                    <ul role="list" class="filter__list">
+                                    </div>
+                                    <ul role="list" class="filter-dropdown__list" x-show="filterChoice === '1'" x-transition.origin.top.duration.300ms>
                                         <li><button type="button" aria-label="button" @click="filter !==1 ?filter = 1: filter = null" :class="{'active': filter === 1}">Конический</button></li>
                                         <li><button type="button" @click="filter !==2 ?filter = 2: filter = null" :class="{'active': filter === 2}">Червячный</button></li>
                                         <li><button type="button" @click="filter !==3 ?filter = 3: filter = null" :class="{'active': filter === 3}">Цилиндрический</button></li>
                                         <li><button type="button" @click="filter !==4 ?filter = 4: filter = null" :class="{'active': filter === 4}">Планетарный</button></li>
                                         <li><button type="button" @click="filter !==5 ?filter = 5: filter = null" :class="{'active': filter === 5}">Червячный моторредуктор</button></li>
                                     </ul>
-                                </details>
+                                </div>
+                            </li>
+                            <li @click="filterChoice = '2'">
+                                <div class="filter-dropdown" x-data="{filter: ''}">
+                                    <div class="filter-dropdown__top">
+                                    <p>Количество ступеней</p>
+                                        <ul class="filter-dropdown__icon-list" role="list">
+                                            <svg class="filter-dropdown__clear-list-icon" width="16" height="16" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg" @click="filter = ''" :class="{'active': filter !== ''}">
+                                                <path d="M30.0003 4.66666C30.3685 4.29847 30.9655 4.29847 31.3337 4.66666C31.7018 5.03485 31.7018 5.6318 31.3337 5.99998L6.00055 31.3331C5.63236 31.7013 5.03541 31.7013 4.66723 31.3331C4.29904 30.9649 4.29904 30.368 4.66722 29.9998L30.0003 4.66666Z" fill="#07012E"/>
+                                                <path d="M31.3333 29.9998C31.7015 30.368 31.7015 30.965 31.3333 31.3332C30.9652 31.7014 30.3682 31.7014 30 31.3332L4.66692 6.00006C4.29873 5.63187 4.29873 5.03493 4.66692 4.66674C5.03511 4.29855 5.63205 4.29855 6.00024 4.66674L31.3333 29.9998Z" fill="#07012E"/>
+                                                </svg>
+                                                <svg class="filter-dropdown__arrow-icon" width="16" height="16" viewBox="0 0 28 14" fill="none" xmlns="http://www.w3.org/2000/svg" :class="{'active': filterChoice === 1}">
+                                                    <rect width="19.2237" height="1.20148" transform="matrix(0.728345 -0.685211 0.728345 0.685211 13.1235 13.1724)" fill="#07012E"/>
+                                                    <rect width="19.2237" height="1.20148" transform="matrix(0.728345 0.685211 -0.728345 0.685211 0.875 0.00390625)" fill="#07012E"/>
+                                            </svg>          
+                                        </ul>
+                                    </div>
+                                    <ul role="list" class="filter-dropdown__list" x-show="filterChoice === '2'" x-transition.origin.top.duration.300ms>
+                                        <li><button type="button" aria-label="button" @click="filter !==1 ?filter = 1: filter = null" :class="{'active': filter === 1}">Конический</button></li>
+                                        <li><button type="button" @click="filter !==2 ?filter = 2: filter = null" :class="{'active': filter === 2}">Червячный</button></li>
+                                        <li><button type="button" @click="filter !==3 ?filter = 3: filter = null" :class="{'active': filter === 3}">Цилиндрический</button></li>
+                                        <li><button type="button" @click="filter !==4 ?filter = 4: filter = null" :class="{'active': filter === 4}">Планетарный</button></li>
+                                        <li><button type="button" @click="filter !==5 ?filter = 5: filter = null" :class="{'active': filter === 5}">Червячный моторредуктор</button></li>
+                                    </ul>
+                                </div>
+                            </li>
+                            <li @click="filterChoice = '3'">
+                                <div class="filter-dropdown" x-data="{filter: ''}">
+                                    <div class="filter-dropdown__top">
+                                    <p>Передаточное отношение</p>
+                                        <ul class="filter-dropdown__icon-list" role="list">
+                                            <svg class="filter-dropdown__clear-list-icon" width="16" height="16" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg" @click="filter = ''" :class="{'active': filter !== ''}">
+                                                <path d="M30.0003 4.66666C30.3685 4.29847 30.9655 4.29847 31.3337 4.66666C31.7018 5.03485 31.7018 5.6318 31.3337 5.99998L6.00055 31.3331C5.63236 31.7013 5.03541 31.7013 4.66723 31.3331C4.29904 30.9649 4.29904 30.368 4.66722 29.9998L30.0003 4.66666Z" fill="#07012E"/>
+                                                <path d="M31.3333 29.9998C31.7015 30.368 31.7015 30.965 31.3333 31.3332C30.9652 31.7014 30.3682 31.7014 30 31.3332L4.66692 6.00006C4.29873 5.63187 4.29873 5.03493 4.66692 4.66674C5.03511 4.29855 5.63205 4.29855 6.00024 4.66674L31.3333 29.9998Z" fill="#07012E"/>
+                                                </svg>
+                                                <svg class="filter-dropdown__arrow-icon" width="16" height="16" viewBox="0 0 28 14" fill="none" xmlns="http://www.w3.org/2000/svg" :class="{'active': filterChoice === 1}">
+                                                    <rect width="19.2237" height="1.20148" transform="matrix(0.728345 -0.685211 0.728345 0.685211 13.1235 13.1724)" fill="#07012E"/>
+                                                    <rect width="19.2237" height="1.20148" transform="matrix(0.728345 0.685211 -0.728345 0.685211 0.875 0.00390625)" fill="#07012E"/>
+                                            </svg>          
+                                        </ul>
+                                    </div>
+                                    <ul role="list" class="filter-dropdown__list" x-show="filterChoice === '3'" x-transition.origin.top.duration.300ms>
+                                        <li><button type="button" aria-label="button" @click="filter !==1 ?filter = 1: filter = null" :class="{'active': filter === 1}">Конический</button></li>
+                                        <li><button type="button" @click="filter !==2 ?filter = 2: filter = null" :class="{'active': filter === 2}">Червячный</button></li>
+                                        <li><button type="button" @click="filter !==3 ?filter = 3: filter = null" :class="{'active': filter === 3}">Цилиндрический</button></li>
+                                        <li><button type="button" @click="filter !==4 ?filter = 4: filter = null" :class="{'active': filter === 4}">Планетарный</button></li>
+                                        <li><button type="button" @click="filter !==5 ?filter = 5: filter = null" :class="{'active': filter === 5}">Червячный моторредуктор</button></li>
+                                    </ul>
+                                </div>
+                            </li>
+                            <li @click="filterChoice = '4'">
+                                <div class="filter-dropdown" x-data="{filter: ''}">
+                                    <div class="filter-dropdown__top">
+                                    <p>Расположение осей</p>
+                                        <ul class="filter-dropdown__icon-list" role="list">
+                                            <svg class="filter-dropdown__clear-list-icon" width="16" height="16" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg" @click="filter = ''" :class="{'active': filter !== ''}">
+                                                <path d="M30.0003 4.66666C30.3685 4.29847 30.9655 4.29847 31.3337 4.66666C31.7018 5.03485 31.7018 5.6318 31.3337 5.99998L6.00055 31.3331C5.63236 31.7013 5.03541 31.7013 4.66723 31.3331C4.29904 30.9649 4.29904 30.368 4.66722 29.9998L30.0003 4.66666Z" fill="#07012E"/>
+                                                <path d="M31.3333 29.9998C31.7015 30.368 31.7015 30.965 31.3333 31.3332C30.9652 31.7014 30.3682 31.7014 30 31.3332L4.66692 6.00006C4.29873 5.63187 4.29873 5.03493 4.66692 4.66674C5.03511 4.29855 5.63205 4.29855 6.00024 4.66674L31.3333 29.9998Z" fill="#07012E"/>
+                                                </svg>
+                                                <svg class="filter-dropdown__arrow-icon" width="16" height="16" viewBox="0 0 28 14" fill="none" xmlns="http://www.w3.org/2000/svg" :class="{'active': filterChoice === 1}">
+                                                    <rect width="19.2237" height="1.20148" transform="matrix(0.728345 -0.685211 0.728345 0.685211 13.1235 13.1724)" fill="#07012E"/>
+                                                    <rect width="19.2237" height="1.20148" transform="matrix(0.728345 0.685211 -0.728345 0.685211 0.875 0.00390625)" fill="#07012E"/>
+                                            </svg>          
+                                        </ul>
+                                    </div>
+                                    <ul role="list" class="filter-dropdown__list" x-show="filterChoice === '4'" x-transition.origin.top.duration.300ms>
+                                        <li><button type="button" aria-label="button" @click="filter !==1 ?filter = 1: filter = null" :class="{'active': filter === 1}">Конический</button></li>
+                                        <li><button type="button" @click="filter !==2 ?filter = 2: filter = null" :class="{'active': filter === 2}">Червячный</button></li>
+                                        <li><button type="button" @click="filter !==3 ?filter = 3: filter = null" :class="{'active': filter === 3}">Цилиндрический</button></li>
+                                        <li><button type="button" @click="filter !==4 ?filter = 4: filter = null" :class="{'active': filter === 4}">Планетарный</button></li>
+                                        <li><button type="button" @click="filter !==5 ?filter = 5: filter = null" :class="{'active': filter === 5}">Червячный моторредуктор</button></li>
+                                    </ul>
+                                </div>
+                            </li>
+                            <li @click="filterChoice = '5'">
+                                <div class="filter-dropdown" x-data="{filter: ''}">
+                                    <div class="filter-dropdown__top">
+                                    <p>Консольная нагрузка</p>
+                                        <ul class="filter-dropdown__icon-list" role="list">
+                                            <svg class="filter-dropdown__clear-list-icon" width="16" height="16" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg" @click="filter = ''" :class="{'active': filter !== ''}">
+                                                <path d="M30.0003 4.66666C30.3685 4.29847 30.9655 4.29847 31.3337 4.66666C31.7018 5.03485 31.7018 5.6318 31.3337 5.99998L6.00055 31.3331C5.63236 31.7013 5.03541 31.7013 4.66723 31.3331C4.29904 30.9649 4.29904 30.368 4.66722 29.9998L30.0003 4.66666Z" fill="#07012E"/>
+                                                <path d="M31.3333 29.9998C31.7015 30.368 31.7015 30.965 31.3333 31.3332C30.9652 31.7014 30.3682 31.7014 30 31.3332L4.66692 6.00006C4.29873 5.63187 4.29873 5.03493 4.66692 4.66674C5.03511 4.29855 5.63205 4.29855 6.00024 4.66674L31.3333 29.9998Z" fill="#07012E"/>
+                                                </svg>
+                                                <svg class="filter-dropdown__arrow-icon" width="16" height="16" viewBox="0 0 28 14" fill="none" xmlns="http://www.w3.org/2000/svg" :class="{'active': filterChoice === 1}">
+                                                    <rect width="19.2237" height="1.20148" transform="matrix(0.728345 -0.685211 0.728345 0.685211 13.1235 13.1724)" fill="#07012E"/>
+                                                    <rect width="19.2237" height="1.20148" transform="matrix(0.728345 0.685211 -0.728345 0.685211 0.875 0.00390625)" fill="#07012E"/>
+                                            </svg>          
+                                        </ul>
+                                    </div>
+                                    <ul role="list" class="filter-dropdown__list" x-show="filterChoice === '5'" x-transition.origin.top.duration.300ms>
+                                        <li><button type="button" aria-label="button" @click="filter !==1 ?filter = 1: filter = null" :class="{'active': filter === 1}">Конический</button></li>
+                                        <li><button type="button" @click="filter !==2 ?filter = 2: filter = null" :class="{'active': filter === 2}">Червячный</button></li>
+                                        <li><button type="button" @click="filter !==3 ?filter = 3: filter = null" :class="{'active': filter === 3}">Цилиндрический</button></li>
+                                        <li><button type="button" @click="filter !==4 ?filter = 4: filter = null" :class="{'active': filter === 4}">Планетарный</button></li>
+                                        <li><button type="button" @click="filter !==5 ?filter = 5: filter = null" :class="{'active': filter === 5}">Червячный моторредуктор</button></li>
+                                    </ul>
+                                </div>
+                            </li>
+                            <li @click="filterChoice = '6'">
+                                <div class="filter-dropdown" x-data="{filter: ''}">
+                                    <div class="filter-dropdown__top">
+                                    <p>Масса</p>
+                                        <ul class="filter-dropdown__icon-list" role="list">
+                                            <svg class="filter-dropdown__clear-list-icon" width="16" height="16" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg" @click="filter = ''" :class="{'active': filter !== ''}">
+                                                <path d="M30.0003 4.66666C30.3685 4.29847 30.9655 4.29847 31.3337 4.66666C31.7018 5.03485 31.7018 5.6318 31.3337 5.99998L6.00055 31.3331C5.63236 31.7013 5.03541 31.7013 4.66723 31.3331C4.29904 30.9649 4.29904 30.368 4.66722 29.9998L30.0003 4.66666Z" fill="#07012E"/>
+                                                <path d="M31.3333 29.9998C31.7015 30.368 31.7015 30.965 31.3333 31.3332C30.9652 31.7014 30.3682 31.7014 30 31.3332L4.66692 6.00006C4.29873 5.63187 4.29873 5.03493 4.66692 4.66674C5.03511 4.29855 5.63205 4.29855 6.00024 4.66674L31.3333 29.9998Z" fill="#07012E"/>
+                                                </svg>
+                                                <svg class="filter-dropdown__arrow-icon" width="16" height="16" viewBox="0 0 28 14" fill="none" xmlns="http://www.w3.org/2000/svg" :class="{'active': filterChoice === 1}">
+                                                    <rect width="19.2237" height="1.20148" transform="matrix(0.728345 -0.685211 0.728345 0.685211 13.1235 13.1724)" fill="#07012E"/>
+                                                    <rect width="19.2237" height="1.20148" transform="matrix(0.728345 0.685211 -0.728345 0.685211 0.875 0.00390625)" fill="#07012E"/>
+                                            </svg>          
+                                        </ul>
+                                    </div>
+                                    <ul role="list" class="filter-dropdown__list" x-show="filterChoice === '6'" x-transition.origin.top.duration.300ms>
+                                        <li><button type="button" aria-label="button" @click="filter !==1 ?filter = 1: filter = null" :class="{'active': filter === 1}">Конический</button></li>
+                                        <li><button type="button" @click="filter !==2 ?filter = 2: filter = null" :class="{'active': filter === 2}">Червячный</button></li>
+                                        <li><button type="button" @click="filter !==3 ?filter = 3: filter = null" :class="{'active': filter === 3}">Цилиндрический</button></li>
+                                        <li><button type="button" @click="filter !==4 ?filter = 4: filter = null" :class="{'active': filter === 4}">Планетарный</button></li>
+                                        <li><button type="button" @click="filter !==5 ?filter = 5: filter = null" :class="{'active': filter === 5}">Червячный моторредуктор</button></li>
+                                    </ul>
+                                </div>
                             </li>
                             <li>
-                                <details x-data="{filter: ''}">
-                                    <summary>Количество ступеней
-                                        <ul class="filter__icon-list" role="list">
-                                            <svg class="filter__clear-list-icon" width="16" height="16" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg" @click="filter = ''">
-                                                <path d="M30.0003 4.66666C30.3685 4.29847 30.9655 4.29847 31.3337 4.66666C31.7018 5.03485 31.7018 5.6318 31.3337 5.99998L6.00055 31.3331C5.63236 31.7013 5.03541 31.7013 4.66723 31.3331C4.29904 30.9649 4.29904 30.368 4.66722 29.9998L30.0003 4.66666Z" fill="#07012E"/>
-                                                <path d="M31.3333 29.9998C31.7015 30.368 31.7015 30.965 31.3333 31.3332C30.9652 31.7014 30.3682 31.7014 30 31.3332L4.66692 6.00006C4.29873 5.63187 4.29873 5.03493 4.66692 4.66674C5.03511 4.29855 5.63205 4.29855 6.00024 4.66674L31.3333 29.9998Z" fill="#07012E"/>
-                                                </svg>
-                                                <svg class="filter__arrow-icon" width="16" height="16" viewBox="0 0 28 14" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                                    <rect width="19.2237" height="1.20148" transform="matrix(0.728345 -0.685211 0.728345 0.685211 13.1235 13.1724)" fill="#07012E"/>
-                                                    <rect width="19.2237" height="1.20148" transform="matrix(0.728345 0.685211 -0.728345 0.685211 0.875 0.00390625)" fill="#07012E"/>
-                                            </svg>          
-                                        </ul>
-                                    </summary>
-                                    <ul role="list" class="filter__list">
-                                        <li><button type="button" aria-label="button" @click="filter !==1 ?filter = 1: filter = null" :class="{'active': filter === 1}">Конический</button></li>
-                                        <li><button type="button" @click="filter !==2 ?filter = 2: filter = null" :class="{'active': filter === 2}">Червячный</button></li>
-                                        <li><button type="button" @click="filter !==3 ?filter = 3: filter = null" :class="{'active': filter === 3}">Цилиндрический</button></li>
-                                        <li><button type="button" @click="filter !==4 ?filter = 4: filter = null" :class="{'active': filter === 4}">Планетарный</button></li>
-                                        <li><button type="button" @click="filter !==5 ?filter = 5: filter = null" :class="{'active': filter === 5}">Червячный моторредуктор</button></li>
-                                    </ul>
-                                </details>
-                            </li>
-                            <li>
-                                <details x-data="{filter: ''}">
-                                    <summary>Передаточное отношение
-                                        <ul class="filter__icon-list" role="list">
-                                            <svg class="filter__clear-list-icon" width="16" height="16" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg" @click="filter = ''">
-                                                <path d="M30.0003 4.66666C30.3685 4.29847 30.9655 4.29847 31.3337 4.66666C31.7018 5.03485 31.7018 5.6318 31.3337 5.99998L6.00055 31.3331C5.63236 31.7013 5.03541 31.7013 4.66723 31.3331C4.29904 30.9649 4.29904 30.368 4.66722 29.9998L30.0003 4.66666Z" fill="#07012E"/>
-                                                <path d="M31.3333 29.9998C31.7015 30.368 31.7015 30.965 31.3333 31.3332C30.9652 31.7014 30.3682 31.7014 30 31.3332L4.66692 6.00006C4.29873 5.63187 4.29873 5.03493 4.66692 4.66674C5.03511 4.29855 5.63205 4.29855 6.00024 4.66674L31.3333 29.9998Z" fill="#07012E"/>
-                                                </svg>
-                                                <svg class="filter__arrow-icon" width="16" height="16" viewBox="0 0 28 14" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                                    <rect width="19.2237" height="1.20148" transform="matrix(0.728345 -0.685211 0.728345 0.685211 13.1235 13.1724)" fill="#07012E"/>
-                                                    <rect width="19.2237" height="1.20148" transform="matrix(0.728345 0.685211 -0.728345 0.685211 0.875 0.00390625)" fill="#07012E"/>
-                                            </svg>          
-                                        </ul>
-                                    </summary>
-                                    <ul role="list" class="filter__list">
-                                        <li><button type="button" aria-label="button" @click="filter !==1 ?filter = 1: filter = null" :class="{'active': filter === 1}">Конический</button></li>
-                                        <li><button type="button" @click="filter !==2 ?filter = 2: filter = null" :class="{'active': filter === 2}">Червячный</button></li>
-                                        <li><button type="button" @click="filter !==3 ?filter = 3: filter = null" :class="{'active': filter === 3}">Цилиндрический</button></li>
-                                        <li><button type="button" @click="filter !==4 ?filter = 4: filter = null" :class="{'active': filter === 4}">Планетарный</button></li>
-                                        <li><button type="button" @click="filter !==5 ?filter = 5: filter = null" :class="{'active': filter === 5}">Червячный моторредуктор</button></li>
-                                    </ul>
-                                </details>
-                            </li>
-                            <li>
-                                <details x-data="{filter: ''}">
-                                    <summary>Расположение осей
-                                        <ul class="filter__icon-list" role="list">
-                                            <svg class="filter__clear-list-icon" width="16" height="16" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg" @click="filter = ''">
-                                                <path d="M30.0003 4.66666C30.3685 4.29847 30.9655 4.29847 31.3337 4.66666C31.7018 5.03485 31.7018 5.6318 31.3337 5.99998L6.00055 31.3331C5.63236 31.7013 5.03541 31.7013 4.66723 31.3331C4.29904 30.9649 4.29904 30.368 4.66722 29.9998L30.0003 4.66666Z" fill="#07012E"/>
-                                                <path d="M31.3333 29.9998C31.7015 30.368 31.7015 30.965 31.3333 31.3332C30.9652 31.7014 30.3682 31.7014 30 31.3332L4.66692 6.00006C4.29873 5.63187 4.29873 5.03493 4.66692 4.66674C5.03511 4.29855 5.63205 4.29855 6.00024 4.66674L31.3333 29.9998Z" fill="#07012E"/>
-                                                </svg>
-                                                <svg class="filter__arrow-icon" width="16" height="16" viewBox="0 0 28 14" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                                    <rect width="19.2237" height="1.20148" transform="matrix(0.728345 -0.685211 0.728345 0.685211 13.1235 13.1724)" fill="#07012E"/>
-                                                    <rect width="19.2237" height="1.20148" transform="matrix(0.728345 0.685211 -0.728345 0.685211 0.875 0.00390625)" fill="#07012E"/>
-                                            </svg>          
-                                        </ul>
-                                    </summary>
-                                    <ul role="list" class="filter__list">
-                                        <li><button type="button" aria-label="button" @click="filter !==1 ?filter = 1: filter = null" :class="{'active': filter === 1}">Конический</button></li>
-                                        <li><button type="button" @click="filter !==2 ?filter = 2: filter = null" :class="{'active': filter === 2}">Червячный</button></li>
-                                        <li><button type="button" @click="filter !==3 ?filter = 3: filter = null" :class="{'active': filter === 3}">Цилиндрический</button></li>
-                                        <li><button type="button" @click="filter !==4 ?filter = 4: filter = null" :class="{'active': filter === 4}">Планетарный</button></li>
-                                        <li><button type="button" @click="filter !==5 ?filter = 5: filter = null" :class="{'active': filter === 5}">Червячный моторредуктор</button></li>
-                                    </ul>
-                                </details>
-                            </li>
-                            <li>
-                                <details x-data="{filter: ''}">
-                                    <summary>Консольная нагрузка
-                                        <ul class="filter__icon-list" role="list">
-                                            <svg class="filter__clear-list-icon" width="16" height="16" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg" @click="filter = ''">
-                                                <path d="M30.0003 4.66666C30.3685 4.29847 30.9655 4.29847 31.3337 4.66666C31.7018 5.03485 31.7018 5.6318 31.3337 5.99998L6.00055 31.3331C5.63236 31.7013 5.03541 31.7013 4.66723 31.3331C4.29904 30.9649 4.29904 30.368 4.66722 29.9998L30.0003 4.66666Z" fill="#07012E"/>
-                                                <path d="M31.3333 29.9998C31.7015 30.368 31.7015 30.965 31.3333 31.3332C30.9652 31.7014 30.3682 31.7014 30 31.3332L4.66692 6.00006C4.29873 5.63187 4.29873 5.03493 4.66692 4.66674C5.03511 4.29855 5.63205 4.29855 6.00024 4.66674L31.3333 29.9998Z" fill="#07012E"/>
-                                                </svg>
-                                                <svg class="filter__arrow-icon" width="16" height="16" viewBox="0 0 28 14" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                                    <rect width="19.2237" height="1.20148" transform="matrix(0.728345 -0.685211 0.728345 0.685211 13.1235 13.1724)" fill="#07012E"/>
-                                                    <rect width="19.2237" height="1.20148" transform="matrix(0.728345 0.685211 -0.728345 0.685211 0.875 0.00390625)" fill="#07012E"/>
-                                            </svg>          
-                                        </ul>
-                                    </summary>
-                                    <ul role="list" class="filter__list">
-                                        <li><button type="button" aria-label="button" @click="filter !==1 ?filter = 1: filter = null" :class="{'active': filter === 1}">Конический</button></li>
-                                        <li><button type="button" @click="filter !==2 ?filter = 2: filter = null" :class="{'active': filter === 2}">Червячный</button></li>
-                                        <li><button type="button" @click="filter !==3 ?filter = 3: filter = null" :class="{'active': filter === 3}">Цилиндрический</button></li>
-                                        <li><button type="button" @click="filter !==4 ?filter = 4: filter = null" :class="{'active': filter === 4}">Планетарный</button></li>
-                                        <li><button type="button" @click="filter !==5 ?filter = 5: filter = null" :class="{'active': filter === 5}">Червячный моторредуктор</button></li>
-                                    </ul>
-                                </details>
-                            </li>
-                            <li>
-                                <details x-data="{filter: ''}">
-                                    <summary>Масса
-                                        <ul class="filter__icon-list" role="list">
-                                            <svg class="filter__clear-list-icon" width="16" height="16" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg" @click="filter = ''">
-                                                <path d="M30.0003 4.66666C30.3685 4.29847 30.9655 4.29847 31.3337 4.66666C31.7018 5.03485 31.7018 5.6318 31.3337 5.99998L6.00055 31.3331C5.63236 31.7013 5.03541 31.7013 4.66723 31.3331C4.29904 30.9649 4.29904 30.368 4.66722 29.9998L30.0003 4.66666Z" fill="#07012E"/>
-                                                <path d="M31.3333 29.9998C31.7015 30.368 31.7015 30.965 31.3333 31.3332C30.9652 31.7014 30.3682 31.7014 30 31.3332L4.66692 6.00006C4.29873 5.63187 4.29873 5.03493 4.66692 4.66674C5.03511 4.29855 5.63205 4.29855 6.00024 4.66674L31.3333 29.9998Z" fill="#07012E"/>
-                                                </svg>
-                                                <svg class="filter__arrow-icon" width="16" height="16" viewBox="0 0 28 14" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                                    <rect width="19.2237" height="1.20148" transform="matrix(0.728345 -0.685211 0.728345 0.685211 13.1235 13.1724)" fill="#07012E"/>
-                                                    <rect width="19.2237" height="1.20148" transform="matrix(0.728345 0.685211 -0.728345 0.685211 0.875 0.00390625)" fill="#07012E"/>
-                                            </svg>          
-                                        </ul>
-                                    </summary>
-                                    <ul role="list" class="filter__list">
-                                        <li><button type="button" aria-label="button" @click="filter !==1 ?filter = 1: filter = null" :class="{'active': filter === 1}">Конический</button></li>
-                                        <li><button type="button" @click="filter !==2 ?filter = 2: filter = null" :class="{'active': filter === 2}">Червячный</button></li>
-                                        <li><button type="button" @click="filter !==3 ?filter = 3: filter = null" :class="{'active': filter === 3}">Цилиндрический</button></li>
-                                        <li><button type="button" @click="filter !==4 ?filter = 4: filter = null" :class="{'active': filter === 4}">Планетарный</button></li>
-                                        <li><button type="button" @click="filter !==5 ?filter = 5: filter = null" :class="{'active': filter === 5}">Червячный моторредуктор</button></li>
-                                    </ul>
-                                </details>
+                                <button class="filter__clear-btn" type="button"><svg width="16" height="16">
+                                    <use xlink:href="resources/svgSprites/svgSprite.svg#clear-filter-icon"></use>
+                                    </svg>Удалить фильтры</button>
                             </li>
                         </ul>
-                <button class="filter__clear-btn" type="button"><svg width="16" height="16">
-                    <use xlink:href="resources/svgSprites/svgSprite.svg#clear-filter-icon"></use>
-                    </svg>Удалить фильтры</button>
             </div>
             <button type="submit" class="filter__submit-btn">Применить</button>
             </nav>
+            <!-- <script>
+                 @touchstart="handleFilterTouchStart(event)"
+            @touchmove="handleFilterTouchMove(event)"
+            @touchend="handleFilterTouchEnd(event)"
+                let mobileFilter = document.querySelector('.filter--mobile');
+   let startingY;
+   console.log(screen);
+
+   function handleFilterTouchStart(e) {
+    startingY = e.touches[0].clientY;
+   };
+
+   function handleFilterTouchMove(e) {
+    let touch = e.touches[0];
+    let change = startingY + touch.clientY;
+    if (change < 0) {
+        return;
+    };
+
+    mobileFilter.style.transform = `translateY(${change}px)`;
+    e.preventDefault();
+};
+
+function handleFilterTouchEnd(e) {
+  let change = startingY + e.changedTouches[0].clientY;
+  let threshold = screen.height / 3;
+  console.log('change:'+ change);
+  console.log('threshold:'+ threshold);
+  if (change < threshold) {
+    mobileFilter.style.transform = `translateY(0)`;
+  } else {
+    mobileFilter.style.transition = 'all .9s';
+    mobileFilter.style.transform = `translateY(100%)`;
+  }
+}
+            </script> -->
             <ul class="catalog-list" role="list">
               <li data-aos="fade-in" data-aos-delay="200">
                 <figure class="catalog-card">
@@ -349,6 +406,87 @@
                     <figcaption>
                         <h3 class="title title-h3">Мотор-редуктор 1МПз2-40 (3МП-40)</h3>
                     </figcaption>
+                    <div class="catalog-card__link-btn-wrapper">
+                        <a href="#" class="secondary-btn catalog-card__link-btn">Подробнее</a>
+                       </div>
+                </div>
+                <div class="catalog-card__aside">
+                    <ul class="catalog-card__descr">
+                        <li><span>Тип передачи</span><span>Планетарный</span></li>
+                        <li><span>Передаточные ступени</span><span>4</span></li>
+                        <li><span>Передаточное<br> отношение</span><span>от 1 до 80</span></li>
+                        <li><span>Расположение осей</span><span>Соосные</span></li>
+                        <li><span>Климатическое<br> исполнение</span><span>У, Т
+                      </span></li>
+                      <li><span>Масса</span><span>от 1 до 100
+                      </span></li>
+                    </ul>
+                </div>
+                </figure>
+              </li>
+              <li data-aos="fade-in" data-aos-delay="400">
+                <figure class="catalog-card">
+                    <div class="catalog-card__main">
+                    <div class="catalog-card__top">
+                        <picture>
+                            <img src="resources/images/catalog-card-img.png" loading="lazy" decoding="async" alt="image" width="328" height="264">
+                          </picture>
+                          <ul class="catalog-card__descr catalog-card__descr--pos-abs">
+                              <li><span>Тип передачи</span><span>Планетарный</span></li>
+                              <li><span>Передаточные ступени</span><span>4</span></li>
+                              <li><span>Передаточное<br>отношение</span><span>от 1 до 80</span></li>
+                              <li><span>Расположение осей</span><span>Соосные</span></li>
+                              <li><span>Климатическое<br>исполнение</span><span>У, Т
+                            </span></li>
+                            <li><span>Масса</span><span>от 1 до 100
+                            </span></li>
+                          </ul>
+                      </div>
+                    <figcaption>
+                        <h3 class="title title-h3">Мотор-редуктор 1МПз2-40 (3МП-40)</h3>
+                    </figcaption>
+                    <div class="catalog-card__link-btn-wrapper">
+                        <a href="#" class="secondary-btn catalog-card__link-btn">Подробнее</a>
+                       </div>
+                </div>
+                <div class="catalog-card__aside">
+                    <ul class="catalog-card__descr">
+                        <li><span>Тип передачи</span><span>Планетарный</span></li>
+                        <li><span>Передаточные ступени</span><span>4</span></li>
+                        <li><span>Передаточное<br> отношение</span><span>от 1 до 80</span></li>
+                        <li><span>Расположение осей</span><span>Соосные</span></li>
+                        <li><span>Климатическое<br> исполнение</span><span>У, Т
+                      </span></li>
+                      <li><span>Масса</span><span>от 1 до 100
+                      </span></li>
+                    </ul>
+                </div>
+                </figure>
+              </li>
+              <li data-aos="fade-in" data-aos-delay="600">
+                <figure class="catalog-card">
+                    <div class="catalog-card__main">
+                    <div class="catalog-card__top">
+                        <picture>
+                            <img src="resources/images/catalog-card-img.png" loading="lazy" decoding="async" alt="image" width="328" height="264">
+                          </picture>
+                          <ul class="catalog-card__descr catalog-card__descr--pos-abs">
+                              <li><span>Тип передачи</span><span>Планетарный</span></li>
+                              <li><span>Передаточные ступени</span><span>4</span></li>
+                              <li><span>Передаточное<br>отношение</span><span>от 1 до 80</span></li>
+                              <li><span>Расположение осей</span><span>Соосные</span></li>
+                              <li><span>Климатическое<br>исполнение</span><span>У, Т
+                            </span></li>
+                            <li><span>Масса</span><span>от 1 до 100
+                            </span></li>
+                          </ul>
+                      </div>
+                    <figcaption>
+                        <h3 class="title title-h3">Мотор-редуктор 1МПз2-40 (3МП-40)</h3>
+                    </figcaption>
+                    <div class="catalog-card__link-btn-wrapper">
+                        <a href="#" class="secondary-btn catalog-card__link-btn">Подробнее</a>
+                       </div>
                 </div>
                 <div class="catalog-card__aside">
                     <ul class="catalog-card__descr">
@@ -385,6 +523,87 @@
                     <figcaption>
                         <h3 class="title title-h3">Мотор-редуктор 1МПз2-40 (3МП-40)</h3>
                     </figcaption>
+                    <div class="catalog-card__link-btn-wrapper">
+                        <a href="#" class="secondary-btn catalog-card__link-btn">Подробнее</a>
+                       </div>
+                </div>
+                <div class="catalog-card__aside">
+                    <ul class="catalog-card__descr">
+                        <li><span>Тип передачи</span><span>Планетарный</span></li>
+                        <li><span>Передаточные ступени</span><span>4</span></li>
+                        <li><span>Передаточное<br> отношение</span><span>от 1 до 80</span></li>
+                        <li><span>Расположение осей</span><span>Соосные</span></li>
+                        <li><span>Климатическое<br> исполнение</span><span>У, Т
+                      </span></li>
+                      <li><span>Масса</span><span>от 1 до 100
+                      </span></li>
+                    </ul>
+                </div>
+                </figure>
+              </li>
+              <li data-aos="fade-in" data-aos-delay="400">
+                <figure class="catalog-card">
+                    <div class="catalog-card__main">
+                    <div class="catalog-card__top">
+                        <picture>
+                            <img src="resources/images/catalog-card-img.png" loading="lazy" decoding="async" alt="image" width="328" height="264">
+                          </picture>
+                          <ul class="catalog-card__descr catalog-card__descr--pos-abs">
+                              <li><span>Тип передачи</span><span>Планетарный</span></li>
+                              <li><span>Передаточные ступени</span><span>4</span></li>
+                              <li><span>Передаточное<br>отношение</span><span>от 1 до 80</span></li>
+                              <li><span>Расположение осей</span><span>Соосные</span></li>
+                              <li><span>Климатическое<br>исполнение</span><span>У, Т
+                            </span></li>
+                            <li><span>Масса</span><span>от 1 до 100
+                            </span></li>
+                          </ul>
+                      </div>
+                    <figcaption>
+                        <h3 class="title title-h3">Мотор-редуктор 1МПз2-40 (3МП-40)</h3>
+                    </figcaption>
+                    <div class="catalog-card__link-btn-wrapper">
+                        <a href="#" class="secondary-btn catalog-card__link-btn">Подробнее</a>
+                       </div>
+                </div>
+                <div class="catalog-card__aside">
+                    <ul class="catalog-card__descr">
+                        <li><span>Тип передачи</span><span>Планетарный</span></li>
+                        <li><span>Передаточные ступени</span><span>4</span></li>
+                        <li><span>Передаточное<br> отношение</span><span>от 1 до 80</span></li>
+                        <li><span>Расположение осей</span><span>Соосные</span></li>
+                        <li><span>Климатическое<br> исполнение</span><span>У, Т
+                      </span></li>
+                      <li><span>Масса</span><span>от 1 до 100
+                      </span></li>
+                    </ul>
+                </div>
+                </figure>
+              </li>
+              <li data-aos="fade-in" data-aos-delay="600">
+                <figure class="catalog-card">
+                    <div class="catalog-card__main">
+                    <div class="catalog-card__top">
+                        <picture>
+                            <img src="resources/images/catalog-card-img.png" loading="lazy" decoding="async" alt="image" width="328" height="264">
+                          </picture>
+                          <ul class="catalog-card__descr catalog-card__descr--pos-abs">
+                              <li><span>Тип передачи</span><span>Планетарный</span></li>
+                              <li><span>Передаточные ступени</span><span>4</span></li>
+                              <li><span>Передаточное<br>отношение</span><span>от 1 до 80</span></li>
+                              <li><span>Расположение осей</span><span>Соосные</span></li>
+                              <li><span>Климатическое<br>исполнение</span><span>У, Т
+                            </span></li>
+                            <li><span>Масса</span><span>от 1 до 100
+                            </span></li>
+                          </ul>
+                      </div>
+                    <figcaption>
+                        <h3 class="title title-h3">Мотор-редуктор 1МПз2-40 (3МП-40)</h3>
+                    </figcaption>
+                    <div class="catalog-card__link-btn-wrapper">
+                        <a href="#" class="secondary-btn catalog-card__link-btn">Подробнее</a>
+                       </div>
                 </div>
                 <div class="catalog-card__aside">
                     <ul class="catalog-card__descr">
@@ -421,6 +640,87 @@
                     <figcaption>
                         <h3 class="title title-h3">Мотор-редуктор 1МПз2-40 (3МП-40)</h3>
                     </figcaption>
+                    <div class="catalog-card__link-btn-wrapper">
+                        <a href="#" class="secondary-btn catalog-card__link-btn">Подробнее</a>
+                       </div>
+                </div>
+                <div class="catalog-card__aside">
+                    <ul class="catalog-card__descr">
+                        <li><span>Тип передачи</span><span>Планетарный</span></li>
+                        <li><span>Передаточные ступени</span><span>4</span></li>
+                        <li><span>Передаточное<br> отношение</span><span>от 1 до 80</span></li>
+                        <li><span>Расположение осей</span><span>Соосные</span></li>
+                        <li><span>Климатическое<br> исполнение</span><span>У, Т
+                      </span></li>
+                      <li><span>Масса</span><span>от 1 до 100
+                      </span></li>
+                    </ul>
+                </div>
+                </figure>
+              </li>
+              <li data-aos="fade-in" data-aos-delay="400">
+                <figure class="catalog-card">
+                    <div class="catalog-card__main">
+                    <div class="catalog-card__top">
+                        <picture>
+                            <img src="resources/images/catalog-card-img.png" loading="lazy" decoding="async" alt="image" width="328" height="264">
+                          </picture>
+                          <ul class="catalog-card__descr catalog-card__descr--pos-abs">
+                              <li><span>Тип передачи</span><span>Планетарный</span></li>
+                              <li><span>Передаточные ступени</span><span>4</span></li>
+                              <li><span>Передаточное<br>отношение</span><span>от 1 до 80</span></li>
+                              <li><span>Расположение осей</span><span>Соосные</span></li>
+                              <li><span>Климатическое<br>исполнение</span><span>У, Т
+                            </span></li>
+                            <li><span>Масса</span><span>от 1 до 100
+                            </span></li>
+                          </ul>
+                      </div>
+                    <figcaption>
+                        <h3 class="title title-h3">Мотор-редуктор 1МПз2-40 (3МП-40)</h3>
+                    </figcaption>
+                    <div class="catalog-card__link-btn-wrapper">
+                        <a href="#" class="secondary-btn catalog-card__link-btn">Подробнее</a>
+                       </div>
+                </div>
+                <div class="catalog-card__aside">
+                    <ul class="catalog-card__descr">
+                        <li><span>Тип передачи</span><span>Планетарный</span></li>
+                        <li><span>Передаточные ступени</span><span>4</span></li>
+                        <li><span>Передаточное<br> отношение</span><span>от 1 до 80</span></li>
+                        <li><span>Расположение осей</span><span>Соосные</span></li>
+                        <li><span>Климатическое<br> исполнение</span><span>У, Т
+                      </span></li>
+                      <li><span>Масса</span><span>от 1 до 100
+                      </span></li>
+                    </ul>
+                </div>
+                </figure>
+              </li>
+              <li data-aos="fade-in" data-aos-delay="600">
+                <figure class="catalog-card">
+                    <div class="catalog-card__main">
+                    <div class="catalog-card__top">
+                        <picture>
+                            <img src="resources/images/catalog-card-img.png" loading="lazy" decoding="async" alt="image" width="328" height="264">
+                          </picture>
+                          <ul class="catalog-card__descr catalog-card__descr--pos-abs">
+                              <li><span>Тип передачи</span><span>Планетарный</span></li>
+                              <li><span>Передаточные ступени</span><span>4</span></li>
+                              <li><span>Передаточное<br>отношение</span><span>от 1 до 80</span></li>
+                              <li><span>Расположение осей</span><span>Соосные</span></li>
+                              <li><span>Климатическое<br>исполнение</span><span>У, Т
+                            </span></li>
+                            <li><span>Масса</span><span>от 1 до 100
+                            </span></li>
+                          </ul>
+                      </div>
+                    <figcaption>
+                        <h3 class="title title-h3">Мотор-редуктор 1МПз2-40 (3МП-40)</h3>
+                    </figcaption>
+                    <div class="catalog-card__link-btn-wrapper">
+                        <a href="#" class="secondary-btn catalog-card__link-btn">Подробнее</a>
+                       </div>
                 </div>
                 <div class="catalog-card__aside">
                     <ul class="catalog-card__descr">
@@ -457,6 +757,9 @@
                     <figcaption>
                         <h3 class="title title-h3">Мотор-редуктор 1МПз2-40 (3МП-40)</h3>
                     </figcaption>
+                    <div class="catalog-card__link-btn-wrapper">
+                        <a href="#" class="secondary-btn catalog-card__link-btn">Подробнее</a>
+                       </div>
                 </div>
                 <div class="catalog-card__aside">
                     <ul class="catalog-card__descr">
@@ -472,7 +775,7 @@
                 </div>
                 </figure>
               </li>
-              <li data-aos="fade-in" data-aos-delay="200">
+              <li data-aos="fade-in" data-aos-delay="400">
                 <figure class="catalog-card">
                     <div class="catalog-card__main">
                     <div class="catalog-card__top">
@@ -493,6 +796,9 @@
                     <figcaption>
                         <h3 class="title title-h3">Мотор-редуктор 1МПз2-40 (3МП-40)</h3>
                     </figcaption>
+                    <div class="catalog-card__link-btn-wrapper">
+                        <a href="#" class="secondary-btn catalog-card__link-btn">Подробнее</a>
+                       </div>
                 </div>
                 <div class="catalog-card__aside">
                     <ul class="catalog-card__descr">
@@ -508,7 +814,7 @@
                 </div>
                 </figure>
               </li>
-              <li data-aos="fade-in" data-aos-delay="200">
+              <li data-aos="fade-in" data-aos-delay="600">
                 <figure class="catalog-card">
                     <div class="catalog-card__main">
                     <div class="catalog-card__top">
@@ -529,222 +835,9 @@
                     <figcaption>
                         <h3 class="title title-h3">Мотор-редуктор 1МПз2-40 (3МП-40)</h3>
                     </figcaption>
-                </div>
-                <div class="catalog-card__aside">
-                    <ul class="catalog-card__descr">
-                        <li><span>Тип передачи</span><span>Планетарный</span></li>
-                        <li><span>Передаточные ступени</span><span>4</span></li>
-                        <li><span>Передаточное<br> отношение</span><span>от 1 до 80</span></li>
-                        <li><span>Расположение осей</span><span>Соосные</span></li>
-                        <li><span>Климатическое<br> исполнение</span><span>У, Т
-                      </span></li>
-                      <li><span>Масса</span><span>от 1 до 100
-                      </span></li>
-                    </ul>
-                </div>
-                </figure>
-              </li>
-              <li data-aos="fade-in" data-aos-delay="200">
-                <figure class="catalog-card">
-                    <div class="catalog-card__main">
-                    <div class="catalog-card__top">
-                        <picture>
-                            <img src="resources/images/catalog-card-img.png" loading="lazy" decoding="async" alt="image" width="328" height="264">
-                          </picture>
-                          <ul class="catalog-card__descr catalog-card__descr--pos-abs">
-                              <li><span>Тип передачи</span><span>Планетарный</span></li>
-                              <li><span>Передаточные ступени</span><span>4</span></li>
-                              <li><span>Передаточное<br>отношение</span><span>от 1 до 80</span></li>
-                              <li><span>Расположение осей</span><span>Соосные</span></li>
-                              <li><span>Климатическое<br>исполнение</span><span>У, Т
-                            </span></li>
-                            <li><span>Масса</span><span>от 1 до 100
-                            </span></li>
-                          </ul>
-                      </div>
-                    <figcaption>
-                        <h3 class="title title-h3">Мотор-редуктор 1МПз2-40 (3МП-40)</h3>
-                    </figcaption>
-                </div>
-                <div class="catalog-card__aside">
-                    <ul class="catalog-card__descr">
-                        <li><span>Тип передачи</span><span>Планетарный</span></li>
-                        <li><span>Передаточные ступени</span><span>4</span></li>
-                        <li><span>Передаточное<br> отношение</span><span>от 1 до 80</span></li>
-                        <li><span>Расположение осей</span><span>Соосные</span></li>
-                        <li><span>Климатическое<br> исполнение</span><span>У, Т
-                      </span></li>
-                      <li><span>Масса</span><span>от 1 до 100
-                      </span></li>
-                    </ul>
-                </div>
-                </figure>
-              </li>
-              <li data-aos="fade-in" data-aos-delay="200">
-                <figure class="catalog-card">
-                    <div class="catalog-card__main">
-                    <div class="catalog-card__top">
-                        <picture>
-                            <img src="resources/images/catalog-card-img.png" loading="lazy" decoding="async" alt="image" width="328" height="264">
-                          </picture>
-                          <ul class="catalog-card__descr catalog-card__descr--pos-abs">
-                              <li><span>Тип передачи</span><span>Планетарный</span></li>
-                              <li><span>Передаточные ступени</span><span>4</span></li>
-                              <li><span>Передаточное<br>отношение</span><span>от 1 до 80</span></li>
-                              <li><span>Расположение осей</span><span>Соосные</span></li>
-                              <li><span>Климатическое<br>исполнение</span><span>У, Т
-                            </span></li>
-                            <li><span>Масса</span><span>от 1 до 100
-                            </span></li>
-                          </ul>
-                      </div>
-                    <figcaption>
-                        <h3 class="title title-h3">Мотор-редуктор 1МПз2-40 (3МП-40)</h3>
-                    </figcaption>
-                </div>
-                <div class="catalog-card__aside">
-                    <ul class="catalog-card__descr">
-                        <li><span>Тип передачи</span><span>Планетарный</span></li>
-                        <li><span>Передаточные ступени</span><span>4</span></li>
-                        <li><span>Передаточное<br> отношение</span><span>от 1 до 80</span></li>
-                        <li><span>Расположение осей</span><span>Соосные</span></li>
-                        <li><span>Климатическое<br> исполнение</span><span>У, Т
-                      </span></li>
-                      <li><span>Масса</span><span>от 1 до 100
-                      </span></li>
-                    </ul>
-                </div>
-                </figure>
-              </li>
-              <li data-aos="fade-in" data-aos-delay="200">
-                <figure class="catalog-card">
-                    <div class="catalog-card__main">
-                    <div class="catalog-card__top">
-                        <picture>
-                            <img src="resources/images/catalog-card-img.png" loading="lazy" decoding="async" alt="image" width="328" height="264">
-                          </picture>
-                          <ul class="catalog-card__descr catalog-card__descr--pos-abs">
-                              <li><span>Тип передачи</span><span>Планетарный</span></li>
-                              <li><span>Передаточные ступени</span><span>4</span></li>
-                              <li><span>Передаточное<br>отношение</span><span>от 1 до 80</span></li>
-                              <li><span>Расположение осей</span><span>Соосные</span></li>
-                              <li><span>Климатическое<br>исполнение</span><span>У, Т
-                            </span></li>
-                            <li><span>Масса</span><span>от 1 до 100
-                            </span></li>
-                          </ul>
-                      </div>
-                    <figcaption>
-                        <h3 class="title title-h3">Мотор-редуктор 1МПз2-40 (3МП-40)</h3>
-                    </figcaption>
-                </div>
-                <div class="catalog-card__aside">
-                    <ul class="catalog-card__descr">
-                        <li><span>Тип передачи</span><span>Планетарный</span></li>
-                        <li><span>Передаточные ступени</span><span>4</span></li>
-                        <li><span>Передаточное<br> отношение</span><span>от 1 до 80</span></li>
-                        <li><span>Расположение осей</span><span>Соосные</span></li>
-                        <li><span>Климатическое<br> исполнение</span><span>У, Т
-                      </span></li>
-                      <li><span>Масса</span><span>от 1 до 100
-                      </span></li>
-                    </ul>
-                </div>
-                </figure>
-              </li>
-              <li data-aos="fade-in" data-aos-delay="200">
-                <figure class="catalog-card">
-                    <div class="catalog-card__main">
-                    <div class="catalog-card__top">
-                        <picture>
-                            <img src="resources/images/catalog-card-img.png" loading="lazy" decoding="async" alt="image" width="328" height="264">
-                          </picture>
-                          <ul class="catalog-card__descr catalog-card__descr--pos-abs">
-                              <li><span>Тип передачи</span><span>Планетарный</span></li>
-                              <li><span>Передаточные ступени</span><span>4</span></li>
-                              <li><span>Передаточное<br>отношение</span><span>от 1 до 80</span></li>
-                              <li><span>Расположение осей</span><span>Соосные</span></li>
-                              <li><span>Климатическое<br>исполнение</span><span>У, Т
-                            </span></li>
-                            <li><span>Масса</span><span>от 1 до 100
-                            </span></li>
-                          </ul>
-                      </div>
-                    <figcaption>
-                        <h3 class="title title-h3">Мотор-редуктор 1МПз2-40 (3МП-40)</h3>
-                    </figcaption>
-                </div>
-                <div class="catalog-card__aside">
-                    <ul class="catalog-card__descr">
-                        <li><span>Тип передачи</span><span>Планетарный</span></li>
-                        <li><span>Передаточные ступени</span><span>4</span></li>
-                        <li><span>Передаточное<br> отношение</span><span>от 1 до 80</span></li>
-                        <li><span>Расположение осей</span><span>Соосные</span></li>
-                        <li><span>Климатическое<br> исполнение</span><span>У, Т
-                      </span></li>
-                      <li><span>Масса</span><span>от 1 до 100
-                      </span></li>
-                    </ul>
-                </div>
-                </figure>
-              </li>
-              <li data-aos="fade-in" data-aos-delay="200">
-                <figure class="catalog-card">
-                    <div class="catalog-card__main">
-                    <div class="catalog-card__top">
-                        <picture>
-                            <img src="resources/images/catalog-card-img.png" loading="lazy" decoding="async" alt="image" width="328" height="264">
-                          </picture>
-                          <ul class="catalog-card__descr catalog-card__descr--pos-abs">
-                              <li><span>Тип передачи</span><span>Планетарный</span></li>
-                              <li><span>Передаточные ступени</span><span>4</span></li>
-                              <li><span>Передаточное<br>отношение</span><span>от 1 до 80</span></li>
-                              <li><span>Расположение осей</span><span>Соосные</span></li>
-                              <li><span>Климатическое<br>исполнение</span><span>У, Т
-                            </span></li>
-                            <li><span>Масса</span><span>от 1 до 100
-                            </span></li>
-                          </ul>
-                      </div>
-                    <figcaption>
-                        <h3 class="title title-h3">Мотор-редуктор 1МПз2-40 (3МП-40)</h3>
-                    </figcaption>
-                </div>
-                <div class="catalog-card__aside">
-                    <ul class="catalog-card__descr">
-                        <li><span>Тип передачи</span><span>Планетарный</span></li>
-                        <li><span>Передаточные ступени</span><span>4</span></li>
-                        <li><span>Передаточное<br> отношение</span><span>от 1 до 80</span></li>
-                        <li><span>Расположение осей</span><span>Соосные</span></li>
-                        <li><span>Климатическое<br> исполнение</span><span>У, Т
-                      </span></li>
-                      <li><span>Масса</span><span>от 1 до 100
-                      </span></li>
-                    </ul>
-                </div>
-                </figure>
-              </li>
-              <li data-aos="fade-in" data-aos-delay="200">
-                <figure class="catalog-card">
-                    <div class="catalog-card__main">
-                    <div class="catalog-card__top">
-                        <picture>
-                            <img src="resources/images/catalog-card-img.png" loading="lazy" decoding="async" alt="image" width="328" height="264">
-                          </picture>
-                          <ul class="catalog-card__descr catalog-card__descr--pos-abs">
-                              <li><span>Тип передачи</span><span>Планетарный</span></li>
-                              <li><span>Передаточные ступени</span><span>4</span></li>
-                              <li><span>Передаточное<br>отношение</span><span>от 1 до 80</span></li>
-                              <li><span>Расположение осей</span><span>Соосные</span></li>
-                              <li><span>Климатическое<br>исполнение</span><span>У, Т
-                            </span></li>
-                            <li><span>Масса</span><span>от 1 до 100
-                            </span></li>
-                          </ul>
-                      </div>
-                    <figcaption>
-                        <h3 class="title title-h3">Мотор-редуктор 1МПз2-40 (3МП-40)</h3>
-                    </figcaption>
+                    <div class="catalog-card__link-btn-wrapper">
+                        <a href="#" class="secondary-btn catalog-card__link-btn">Подробнее</a>
+                       </div>
                 </div>
                 <div class="catalog-card__aside">
                     <ul class="catalog-card__descr">

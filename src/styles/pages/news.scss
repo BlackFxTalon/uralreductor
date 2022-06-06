@@ -13,8 +13,11 @@
         gap: 52px;
         margin-bottom: 52px;
 
-        @include media-medium() {
+        @include media-custom(480px) {
             grid-template-columns: repeat(2,1fr);
+        }
+
+        @include media-medium() {
             column-gap: 20px;
             row-gap: 52px;
         }
@@ -67,14 +70,17 @@
         img {
             transition: .3s ease-in-out;
             height: 180px;
+            width: 100%;
+            object-fit: cover;
+            border-radius: 4px;
 
             @include media-medium() {
                 height: 200px;
             }
             @include media-custom(1024px) {
-                width: 100%;
                 height: 220px;
             }
+
         }
     
         img:hover {
@@ -87,8 +93,9 @@
             font-weight: 400;
             font-size: 16px;
             line-height: 20px;
-            color: var(--dark-color);
-            padding-bottom: 8px;
+            color: var(--grey-dark-color);
+            padding-bottom: 16px;
+            display: block;
         }
     
         h3 {

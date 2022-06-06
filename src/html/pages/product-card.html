@@ -17,9 +17,14 @@
         </nav>
         <section class="product-card">
             <div class="container">
-            <h2 class="title title-h2 product-card__title" onclick="history.back();"><svg width="18" height="32">
+            <h2 class="title title-h2 product-card__title">
+                <a class="previous-page-link" href="#">
+                <svg width="18" height="32">
                 <use xlink:href="resources/svgSprites/svgSprite.svg#product-title-arrow"></use>
-                </svg>Мотор-редуктор 1МПз2-40 (3МП-40)</h2>
+                </svg>
+                </a>
+                Мотор-редуктор 1МПз2-40 (3МП-40)
+                </h2>
                 <div class="product-card__grid">
                 <div class="product-card__main">
                 <div class="product-card__gallery">
@@ -243,13 +248,13 @@
                 <button class="primary-btn order-btn order-btn--desktop" type="button" @click="orderForm === true">Заказать</button>
                 </aside>
             </div>
-            <div x-data="{productCardTabs: 'descr'}">
+            <div class="product-card__info">
             <ul class="product-card__tabs" role="list">
-                <li @click="productCardTabs = 'descr'" :class="{'active': productCardTabs === 'descr'}"><h3>Описание</h3></li>
-                <li @click="productCardTabs = 'sizes'" :class="{'active': productCardTabs === 'sizes'}"><h3>Размеры</h3></li>
-                <li @click="productCardTabs = 'question-answer'" :class="{'active': productCardTabs === 'question-answer'}"><h3>Вопрос-ответ</h3></li>
+                <li @click="toggleProductCardTabs(event,'productCardDescr')" class="active"><h3>Описание</h3></li>
+                <li @click="toggleProductCardTabs(event,'productCardSizes')"><h3>Размеры</h3></li>
+                <li @click="toggleProductCardTabs(event,'productCardQuestionAnswer')"><h3>Вопрос-ответ</h3></li>
             </ul>
-            <div x-show="productCardTabs === 'descr'" x-transition.origin.top.300ms style="display:none;" class="product-card__descr">
+            <div class="product-card-info product-card__descr" id="productCardDescr" style="max-height: 100%;">
               <ul role="list">
                   <li>
                       <h4>Назначение</h4>
@@ -284,7 +289,7 @@
                   </li>
               </ul>
             </div>
-            <div x-show="productCardTabs === 'sizes'" x-transition.origin.top.300ms style="display:none;" class="product-card__sizes">
+            <div class="product-card-info product-card__sizes" id="productCardSizes">
                 <ul role="list">
                     <li>
                         <h4>Габаритные и присоединительные размеры мотор-редукторов 1МПЗ
@@ -302,45 +307,43 @@
                     </li>
                 </ul>
               </div>
-              <div x-show="productCardTabs === 'question-answer'" x-transition.origin.top.300ms style="display:none;" class="product-card__question-answer">
+              <div class="product-card-info product-card__question-answer" id="productCardQuestionAnswer">
                 <div class="product-card__question-answer-top">
                  <h3>Нужно больше информации?</h3>
                     <p>Напишите свой вопрос и наши менеджеры свяжутся с Вами в максимально короткое время.</p>
                 </div>
                 <div>
-                <form action="#" class="request-form" x-data="{inputTextValue: ''}">
+                <form action="#" class="request-form">
                     <fieldset>
                         <div class="request-form__input-group">
                         <label for="name">Ваше имя</label>
-                          <div class="request-form__input-wrapper">
-                            <input type="text" name="name" id="name" placeholder="Иван" x-model="inputTextValue" :class="{'correct': inputTextValue.length > 0}" required>
-                            <div class="request-form__icons">
+                        <div class="form-controls-wrapper request-form__form-controls-wrapper">
+                            <input type="text" name="name" id="name" placeholder="Иван">
                             <svg class="icon-error" width="28" height="28">
                                 <use xlink:href="resources/svgSprites/svgSprite.svg#icon-error"></use>
                             </svg>
                             <svg class="icon-correct" width="28" height="28">
                                 <use xlink:href="resources/svgSprites/svgSprite.svg#icon-correct"></use>
                             </svg>
-                            </div>
                         </div>
                     </div>
                     <div class="request-form__input-group">
                         <label for="email">Ваш e-mail</label>
-                        <div class="request-form__input-wrapper">
-                            <input type="email" name="email" id="email" placeholder="ivan@mail.ru" required>
-                            <div class="request-form__icons">
-                                <svg class="icon-error" width="28" height="28">
-                                    <use xlink:href="resources/svgSprites/svgSprite.svg#icon-error"></use>
-                                </svg>
-                                <svg class="icon-correct" width="28" height="28">
-                                    <use xlink:href="resources/svgSprites/svgSprite.svg#icon-correct"></use>
-                                </svg>
-                                </div>
+                        <div class="form-controls-wrapper request-form__form-controls-wrapper">
+                            <input type="email" name="email" id="email" placeholder="ivan@mail.ru">
+                            <svg class="icon-error" width="28" height="28">
+                                <use xlink:href="resources/svgSprites/svgSprite.svg#icon-error"></use>
+                            </svg>
+                            <svg class="icon-correct" width="28" height="28">
+                                <use xlink:href="resources/svgSprites/svgSprite.svg#icon-correct"></use>
+                            </svg>
                         </div>
                     </div>
                     <div class="request-form__input-group">
                         <label for="textarea">Задайте вопрос</label>
+                        <div class="form-controls-wrapper request-form__form-controls-wrapper">
                             <textarea name="textarea" id="textarea" placeholder="Введите текст"></textarea>
+                       </div>
                     </div>
                     <button type="submit" class="secondary-btn request-form__submit-btn">Задать вопрос</button>
                     </fieldset>
@@ -398,6 +401,25 @@
            </div>
             </div>
         </section>
+        <script>
+            function toggleProductCardTabs(evt, tab) {
+  let productCardsInfo, productCardTabs, currentTab;
+  productCardsInfo = document.querySelectorAll(".product-card-info");
+  productCardTabs = document.querySelectorAll(".product-card__tabs li");
+  currentTab = document.getElementById(tab);
+
+  productCardsInfo.forEach(element => {
+    element.style.maxHeight = null;
+  });
+
+  productCardTabs.forEach(element => {
+    element.className = element.className.replace("active", "");
+  });
+  
+    currentTab.style.maxHeight = currentTab.scrollHeight + "px";
+  evt.currentTarget.className += "active";
+}
+        </script>
 		</main>
 		@@include('../parts/footer.html')
 	</body>
