@@ -613,8 +613,15 @@ svg {
 
 
 .errors-page {
-  padding-top: clampBuilder(360, 1440, 68, 157);
-  padding-bottom: clampBuilder(360, 1440, 148, 267);
+  padding-top: 116px;
+
+  @include media-medium() {
+    padding-top: 210px;
+  }
+
+  @include media-custom(1024px) {
+    padding-top: 204px;
+  }
 
   &__container {
     display: flex;

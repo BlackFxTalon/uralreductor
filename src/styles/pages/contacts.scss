@@ -1,7 +1,7 @@
 // contacts styles
 .contacts {
     padding-top: 28px;
-    padding-bottom: 160px;
+
 
     &__title {
         padding-bottom: clampBuilder(360, 1440, 80, 112);
@@ -126,18 +126,15 @@ line-height: 20px;
 color: var(--dark-color);
 text-align: left;
 margin: 0 16px;
+margin-top: 1rem;
 
 @include media-medium() {
     max-width: 660px;
-    margin-top: 1rem;
     margin-left: 32px;
 }
 
 @include media-custom(1024px) {
     margin-left: 0;
-}
-
-@include media-custom(1440px) {
     margin-right: 0;
 }
             }
