@@ -31,7 +31,16 @@ font-style: normal;
 font-weight: 400;
 font-size: 16px;
 line-height: 20px;
-color: var(--dark-color);
+color: var(--grey-dark-color);
+display: none;
+
+@include media-medium() {
+    color: var(--dark-color);
+}
+
+@include media-custom(1024px) {
+    display: block;
+}
         }
     }
 
@@ -47,11 +56,15 @@ color: var(--dark-color);
             margin-right: 15px;
 
             @include media-medium() {
-                margin-right: 79px;
+                margin-right: 55px;
             }
 
             @include media-custom(1024px) {
                 margin-right: 56px;
+            }
+
+            @include media-custom(1440px) {
+                margin-right: 92px;
             }
         }
 
@@ -128,12 +141,13 @@ font-style: normal;
 font-weight: 400;
 font-size: 16px;
 line-height: 20px;
-color: var(--dark-color);
+color: var(--grey-dark-color);
 display: none;
 padding-bottom: 8px;
 
 @include media-medium() {
     display: block;
+    color: var(--dark-color);
 }
         }
 
@@ -163,18 +177,23 @@ display: none;
         margin-left: 5rem;
     }
 
+    @include media-custom(1440px) {
+        margin-left: 7rem;
+    }
+
     time {
         font-family: 'Roboto',sans-serif;
 font-style: normal;
 font-weight: 400;
 font-size: 16px;
 line-height: 20px;
-color: var(--dark-color);
+color: var(--grey-dark-color);
 padding-bottom: 16px;
 display: block;
 
 @include media-medium() {
     margin-left: auto;
+    color: var(--dark-color);
 }
 
 @include media-custom(1024px) {
@@ -202,11 +221,15 @@ ul {
     padding: 0;
     display: grid;
     gap: 8px;
-    padding-left: 2rem;
+    padding-left: 2.4rem;
     padding-top: 5px;
 
+    @include media-medium() {
+        padding-left: 5.3rem;
+    }
+
     @include media-custom(1440px) {
-        margin-left: 5rem;
+        padding-left: 7rem;
     }
 }
 }
@@ -333,6 +356,10 @@ line-height: 20px;
         margin-bottom: 52px;
     }
 
+    @include media-custom(1440px) {
+        margin-left: 7rem;
+    }
+
 
     &--adaptive {
         @include media-custom(1024px) {
@@ -420,6 +447,11 @@ color: var(--dark-color);
         display: grid;
         gap: 36px;
         padding-bottom: 52px;
+        scrollbar-width: none;
+
+        &::-webkit-scrollbar {
+            display: none;
+        }
 
         @include media-medium() {
             grid-auto-flow: column;
@@ -449,7 +481,7 @@ color: var(--dark-color);
             height: 336px;
 
             @include media-medium() {
-                width: 340px;
+                width: 330px;
             }
 
             @include media-custom(1024px) {
@@ -475,7 +507,7 @@ color: var(--dark-color);
         display: flex;
         align-items: center;
         justify-content: center;
-        margin-bottom: 48px;
+        margin-bottom: 36px;
 
         @include media-medium() {
             display: none;
@@ -498,6 +530,14 @@ color: var(--dark-color);
     &__formula-lists {
         padding-bottom: 14px;
         margin-bottom: 52px;
+        overflow: auto;
+        display: grid;
+        gap: 12px;
+
+        @include media-custom(1024px) {
+            margin-bottom: 36px;
+            padding-bottom: 0;
+        }
 
         @include media-custom(1440px) {
             max-width: toRem(911);
@@ -515,15 +555,14 @@ color: var(--dark-color);
         }
 
         .simplebar-scrollbar {
-            width: 0 !important;
-        }
-
-        .simplebar-scrollbar::before {
-            width: 52px;
             height: 5px;
             background-color: var(--grey-light-color);
             border-radius: 8px;
-            opacity: 1;
+            margin: 0 2px;
+        }
+
+        .simplebar-scrollbar::before {
+            display: none;
           }
 
         ul {
@@ -560,6 +599,10 @@ line-height: 20px;
     padding-right: 2px;
     grid-column: span 2;
 white-space: nowrap;
+
+sup {
+    font-size: 10px;
+}
 
 @include media-custom(1024px) {
     text-align: left;

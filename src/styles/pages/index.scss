@@ -56,16 +56,20 @@ color: var(--dark-color);
             order: 1;
             width: toRem(540);
             padding-bottom: 0;
+            position: relative;
+            top: 35px;
         }
 
         @include media-custom(1024px) {
             width: toRem(741);
             transform: translateX(15px) translateY(58px);
+            top: 50px;
         }
 
         @include media-custom(1440px) {
             transform: translateX(0) translateY(80px);
             width: toRem(900);
+            top: 80px;
         }
     }
     

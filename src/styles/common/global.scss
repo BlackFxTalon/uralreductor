@@ -537,6 +537,16 @@ svg {
   line-height: 20px;
   color: var(--dark-color);
   cursor: pointer;
+  transition: .3s ease-in-out;
+
+  &.active {
+    margin-bottom: 16px;
+
+    .filter-dropdown__arrow-icon {
+      transform: rotate(180deg);
+    }
+  
+  }
   }
 
   &__clear-list-icon {
@@ -548,19 +558,20 @@ svg {
     }
   }
 
-  &__arrow-icon.active {
-    transform: rotate(180deg);
+  &__arrow-icon {
+    transition: .3s ease-in-out;
   }
 
   &__list {
-    margin-top: 16px !important;
     gap: 8px;
     font-family: 'Roboto',sans-serif;
   font-style: normal;
   font-weight: 400;
   font-size: 16px;
   line-height: 20px;
-  display: none;
+  height: 0;
+  overflow: hidden;
+  transition: .3s ease-in-out;
   
     li {
         padding: 0;
@@ -1403,7 +1414,7 @@ width: 100%;
   }
 
   @include media-custom(1024px) {
-    padding-bottom: 4rem;
+    padding-bottom: toRem(42);
   }
 
   &__left {
@@ -1510,7 +1521,6 @@ max-width: 236px;
     padding: 0;
     margin: 0;
     margin-right: 16px;
-    margin-bottom: 16px;
     z-index: 99;
 
     @include media-custom(1024px) {

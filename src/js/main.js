@@ -276,6 +276,3 @@ const stickyFilter = new Sticksy('.filter--desktop', {
   topSpacing: 70,
   listen: true,
 })
-
-
-new SimpleBar(document.querySelector('.articles-card-main-info__formula-lists'));
