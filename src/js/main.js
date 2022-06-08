@@ -270,8 +270,6 @@ function simpleClientSideFormValidation(form) {
 
  simpleClientSideFormValidation('.question-modal form');
 
- simpleClientSideFormValidation('.request-form');
-
 const stickyFilter = new Sticksy('.filter--desktop', {
   topSpacing: 70,
   listen: true,

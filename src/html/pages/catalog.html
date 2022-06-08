@@ -5,6 +5,9 @@
 	})
 	<body x-data="{mobileMenu: false, mobileSubMenu: false, searchMenu: false, headerSubMenu:false, filter: false, orderForm: false, questionModal: false}" :class="{'mobileMenuOpened': mobileMenu === true || searchMenu === true || filter === true || orderForm === true || questionModal === true}">
 		@@include('../parts/header.html')
+
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/noUiSlider/15.6.0/nouislider.min.js" integrity="sha512-1mDhG//LAjM3pLXCJyaA+4c+h5qmMoTc7IuJyuNNPaakrWT9rVTxICK4tIizf7YwJsXgDC2JP74PGCc7qxLAHw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
 		<main>
         <nav class="breadcrumbs">
             <div class="container">
@@ -22,7 +25,7 @@
                     <ul role="list">
                         <li>
                             <div class="filter-dropdown" x-data="{filter: ''}">
-                                <div class="filter-dropdown__top" onclick="toggleDropdown(event,'filter1')">
+                                <div class="filter-dropdown__top">
                                 <p>Тип передачи</p>
                                     <ul class="filter-dropdown__icon-list" role="list">
                                         <svg class="filter-dropdown__clear-list-icon" width="16" height="16" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg" @click="filter = ''" :class="{'active': filter !== ''}">
@@ -46,7 +49,7 @@
                         </li>
                         <li>
                             <div class="filter-dropdown" x-data="{filter: ''}">
-                                <div class="filter-dropdown__top" onclick="toggleDropdown(event,'filter2')">
+                                <div class="filter-dropdown__top">
                                 <p>Количество ступеней</p>
                                     <ul class="filter-dropdown__icon-list" role="list">
                                         <svg class="filter-dropdown__clear-list-icon" width="16" height="16" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg" @click="filter = ''" :class="{'active': filter !== ''}">
@@ -70,7 +73,7 @@
                         </li>
                         <li>
                             <div class="filter-dropdown" x-data="{filter: ''}">
-                                <div class="filter-dropdown__top" onclick="toggleDropdown(event,'filter3')">
+                                <div class="filter-dropdown__top">
                                 <p>Передаточное отношение</p>
                                     <ul class="filter-dropdown__icon-list" role="list">
                                         <svg class="filter-dropdown__clear-list-icon" width="16" height="16" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg" @click="filter = ''" :class="{'active': filter !== ''}">
@@ -94,7 +97,7 @@
                         </li>
                         <li>
                             <div class="filter-dropdown" x-data="{filter: ''}">
-                                <div class="filter-dropdown__top" onclick="toggleDropdown(event,'filter4')">
+                                <div class="filter-dropdown__top">
                                 <p>Расположение осей</p>
                                     <ul class="filter-dropdown__icon-list" role="list">
                                         <svg class="filter-dropdown__clear-list-icon" width="16" height="16" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg" @click="filter = ''" :class="{'active': filter !== ''}">
@@ -118,7 +121,7 @@
                         </li>
                         <li>
                             <div class="filter-dropdown" x-data="{filter: ''}">
-                                <div class="filter-dropdown__top" onclick="toggleDropdown(event,'filter5')">
+                                <div class="filter-dropdown__top">
                                 <p>Консольная нагрузка</p>
                                     <ul class="filter-dropdown__icon-list" role="list">
                                         <svg class="filter-dropdown__clear-list-icon" width="16" height="16" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg" @click="filter = ''" :class="{'active': filter !== ''}">
@@ -142,8 +145,8 @@
                         </li>
                         <li>
                             <div class="filter-dropdown" x-data="{filter: ''}">
-                                <div class="filter-dropdown__top" onclick="toggleDropdown(event,'filter6')">
-                                <p>Консольная нагрузка</p>
+                                <div class="filter-dropdown__top">
+                                <p>Масса</p>
                                     <ul class="filter-dropdown__icon-list" role="list">
                                         <svg class="filter-dropdown__clear-list-icon" width="16" height="16" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg" @click="filter = ''" :class="{'active': filter !== ''}">
                                             <path d="M30.0003 4.66666C30.3685 4.29847 30.9655 4.29847 31.3337 4.66666C31.7018 5.03485 31.7018 5.6318 31.3337 5.99998L6.00055 31.3331C5.63236 31.7013 5.03541 31.7013 4.66723 31.3331C4.29904 30.9649 4.29904 30.368 4.66722 29.9998L30.0003 4.66666Z" fill="#07012E"/>
@@ -156,11 +159,15 @@
                                     </ul>
                                 </div>
                                 <ul role="list" class="filter-dropdown__list" id="filter6">
-                                    <li><button type="button" aria-label="button" @click="filter !==1 ?filter = 1: filter = null" :class="{'active': filter === 1}">Конический</button></li>
-                                    <li><button type="button" @click="filter !==2 ?filter = 2: filter = null" :class="{'active': filter === 2}">Червячный</button></li>
-                                    <li><button type="button" @click="filter !==3 ?filter = 3: filter = null" :class="{'active': filter === 3}">Цилиндрический</button></li>
-                                    <li><button type="button" @click="filter !==4 ?filter = 4: filter = null" :class="{'active': filter === 4}">Планетарный</button></li>
-                                    <li><button type="button" @click="filter !==5 ?filter = 5: filter = null" :class="{'active': filter === 5}">Червячный моторредуктор</button></li>
+                                    <li>
+                                        <div class="range-slider-wrapper">
+                                        <div class="range-slider range-slider--desktop"></div>
+                                        <div class="range-slider-values">
+                                            <p>от<span class="range-slider-min-value range-slider-min-value--desktop"></span></p>
+                                            <p>до<span class="range-slider-max-value range-slider-max-value--desktop"></span></p>
+                                        </div>
+                                       </div>
+                                    </li>
                                 </ul>
                             </div>
                         </li>
@@ -197,7 +204,7 @@
                         <ul role="list">
                             <li>
                                 <div class="filter-dropdown" x-data="{filter: ''}">
-                                    <div class="filter-dropdown__top" onclick="toggleDropdown(event,'mobileFilter1')">
+                                    <div class="filter-dropdown__top">
                                     <p>Тип передачи</p>
                                         <ul class="filter-dropdown__icon-list" role="list">
                                             <svg class="filter-dropdown__clear-list-icon" width="16" height="16" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg" @click="filter = ''" :class="{'active': filter !== ''}">
@@ -221,7 +228,7 @@
                             </li>
                             <li>
                                 <div class="filter-dropdown" x-data="{filter: ''}">
-                                    <div class="filter-dropdown__top" onclick="toggleDropdown(event,'mobileFilter2')">
+                                    <div class="filter-dropdown__top">
                                     <p>Количество ступеней</p>
                                         <ul class="filter-dropdown__icon-list" role="list">
                                             <svg class="filter-dropdown__clear-list-icon" width="16" height="16" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg" @click="filter = ''" :class="{'active': filter !== ''}">
@@ -245,7 +252,7 @@
                             </li>
                             <li>
                                 <div class="filter-dropdown" x-data="{filter: ''}">
-                                    <div class="filter-dropdown__top" onclick="toggleDropdown(event,'mobileFilter3')">
+                                    <div class="filter-dropdown__top">
                                     <p>Передаточное отношение</p>
                                         <ul class="filter-dropdown__icon-list" role="list">
                                             <svg class="filter-dropdown__clear-list-icon" width="16" height="16" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg" @click="filter = ''" :class="{'active': filter !== ''}">
@@ -269,7 +276,7 @@
                             </li>
                             <li>
                                 <div class="filter-dropdown" x-data="{filter: ''}">
-                                    <div class="filter-dropdown__top" onclick="toggleDropdown(event,'mobileFilter4')">
+                                    <div class="filter-dropdown__top">
                                     <p>Расположение осей</p>
                                         <ul class="filter-dropdown__icon-list" role="list">
                                             <svg class="filter-dropdown__clear-list-icon" width="16" height="16" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg" @click="filter = ''" :class="{'active': filter !== ''}">
@@ -293,7 +300,7 @@
                             </li>
                             <li>
                                 <div class="filter-dropdown" x-data="{filter: ''}">
-                                    <div class="filter-dropdown__top" onclick="toggleDropdown(event,'mobileFilter5')">
+                                    <div class="filter-dropdown__top">
                                     <p>Консольная нагрузка</p>
                                         <ul class="filter-dropdown__icon-list" role="list">
                                             <svg class="filter-dropdown__clear-list-icon" width="16" height="16" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg" @click="filter = ''" :class="{'active': filter !== ''}">
@@ -317,8 +324,8 @@
                             </li>
                             <li>
                                 <div class="filter-dropdown" x-data="{filter: ''}">
-                                    <div class="filter-dropdown__top" onclick="toggleDropdown(event,'mobileFilter6')">
-                                    <p>Консольная нагрузка</p>
+                                    <div class="filter-dropdown__top">
+                                    <p>Масса</p>
                                         <ul class="filter-dropdown__icon-list" role="list">
                                             <svg class="filter-dropdown__clear-list-icon" width="16" height="16" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg" @click="filter = ''" :class="{'active': filter !== ''}">
                                                 <path d="M30.0003 4.66666C30.3685 4.29847 30.9655 4.29847 31.3337 4.66666C31.7018 5.03485 31.7018 5.6318 31.3337 5.99998L6.00055 31.3331C5.63236 31.7013 5.03541 31.7013 4.66723 31.3331C4.29904 30.9649 4.29904 30.368 4.66722 29.9998L30.0003 4.66666Z" fill="#07012E"/>
@@ -331,11 +338,15 @@
                                         </ul>
                                     </div>
                                     <ul role="list" class="filter-dropdown__list" id="mobileFilter6">
-                                        <li><button type="button" aria-label="button" @click="filter !==1 ?filter = 1: filter = null" :class="{'active': filter === 1}">Конический</button></li>
-                                        <li><button type="button" @click="filter !==2 ?filter = 2: filter = null" :class="{'active': filter === 2}">Червячный</button></li>
-                                        <li><button type="button" @click="filter !==3 ?filter = 3: filter = null" :class="{'active': filter === 3}">Цилиндрический</button></li>
-                                        <li><button type="button" @click="filter !==4 ?filter = 4: filter = null" :class="{'active': filter === 4}">Планетарный</button></li>
-                                        <li><button type="button" @click="filter !==5 ?filter = 5: filter = null" :class="{'active': filter === 5}">Червячный моторредуктор</button></li>
+                                        <li>
+                                            <div class="range-slider-wrapper">
+                                            <div class="range-slider range-slider--mobile"></div>
+                                            <div class="range-slider-values">
+                                                <p>от<span class="range-slider-min-value range-slider-min-value--mobile"></span></p>
+                                                <p>до<span class="range-slider-max-value range-slider-max-value--mobile"></span></p>
+                                            </div>
+                                           </div>
+                                        </li>
                                     </ul>
                                 </div>
                             </li>
@@ -862,23 +873,88 @@ function handleFilterTouchEnd(e) {
         </div>         
         </section>
         <script>
-            function toggleDropdown(evt, dropdown) {
-  let filterDropdownList, filterDropdownTop, currentTab;
-  filterDropdownList = document.querySelectorAll(".filter-dropdown__list");
-  filterDropdownTop = document.querySelectorAll(".filter-dropdown__top");
-  currentDropdown = document.getElementById(dropdown);
-
-  filterDropdownList.forEach(element => {
-    element.style.height = null;
-  });
+            function toggleDropdown() {
+  const filterDropdownTop = document.querySelectorAll(".filter-dropdown__top");
 
   filterDropdownTop.forEach(element => {
-    element.className = element.className.replace(" active", "");
+    element.addEventListener('click',()=>{
+        const currentDropdownList = element.nextElementSibling;
+        element.classList.toggle('active');
+        if (currentDropdownList.style.height) {
+            currentDropdownList.style.height = null;
+    } else {
+        currentDropdownList.style.height = currentDropdownList.scrollHeight + 'px';
+    } 
+})
+  });
+}
+
+toggleDropdown();
+
+function filterRangeSlider() {
+                const rangeSliderDesktop = document.querySelector('.range-slider--desktop');
+                const rangeSliderMobile = document.querySelector('.range-slider--mobile');
+                
+                noUiSlider.create(rangeSliderDesktop, {
+    start: [5000, 1000000],
+    connect: true,
+    snap: true,
+    behaviour: 'smooth-steps',
+    range: {
+        'min': 5000,
+        'max': 1000000
+    },
+    format: {
+        to: function (value) {
+            return Number(value);
+        },
+        from: function (value) {
+            return Math.round(value);
+        }
+    }
   });
   
-  currentDropdown.style.height = currentDropdown.scrollHeight + "px";
-  evt.currentTarget.className += " active";
-}
+  let snapValuesDesktop = [
+    document.querySelector('.range-slider-min-value--desktop'),
+    document.querySelector('.range-slider-max-value--desktop')
+];
+
+rangeSliderDesktop.noUiSlider.on('update', function (values, handle) {
+    snapValuesDesktop[handle].innerHTML = values[handle];
+});
+
+noUiSlider.create(rangeSliderMobile, {
+    start: [5000, 1000000],
+    connect: true,
+    snap: true,
+    behaviour: 'smooth-steps',
+    range: {
+        'min': 5000,
+        'max': 1000000
+    },
+    format: {
+        to: function (value) {
+            return Number(value);
+        },
+        from: function (value) {
+            return Math.round(value);
+        }
+    }
+  });
+  
+  let snapValuesMobile = [
+    document.querySelector('.range-slider-min-value--mobile'),
+    document.querySelector('.range-slider-max-value--mobile')
+];
+
+rangeSliderMobile.noUiSlider.on('update', function (values, handle) {
+    snapValuesMobile[handle].innerHTML = values[handle];
+});            
+};
+
+
+filterRangeSlider();
+
         </script>
 		</main>
 		@@include('../parts/footer.html')
