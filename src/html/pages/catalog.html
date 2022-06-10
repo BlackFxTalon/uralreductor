@@ -5,9 +5,8 @@
 	})
 	<body x-data="{mobileMenu: false, mobileSubMenu: false, searchMenu: false, headerSubMenu:false, filter: false, orderForm: false, questionModal: false}" :class="{'mobileMenuOpened': mobileMenu === true || searchMenu === true || filter === true || orderForm === true || questionModal === true}">
 		@@include('../parts/header.html')
-
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/noUiSlider/15.6.0/nouislider.min.js" integrity="sha512-1mDhG//LAjM3pLXCJyaA+4c+h5qmMoTc7IuJyuNNPaakrWT9rVTxICK4tIizf7YwJsXgDC2JP74PGCc7qxLAHw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/ion-rangeslider/2.3.1/js/ion.rangeSlider.min.js"></script>
 		<main>
         <nav class="breadcrumbs">
             <div class="container">
@@ -21,11 +20,11 @@
         <section class="catalog">
          <div class="container catalog__container">
             <aside class="catalog__aside">
-                <nav class="filter filter--desktop">
+                <nav class="filter filter--desktop" x-data="{filterDropdown: ''}">
                     <ul role="list">
                         <li>
                             <div class="filter-dropdown" x-data="{filter: ''}">
-                                <div class="filter-dropdown__top">
+                                <div class="filter-dropdown__top" @click="filterDropdown !==1 ? filterDropdown = 1: filterDropdown = null" :class="{'active': filterDropdown === 1}">
                                 <p>Тип передачи</p>
                                     <ul class="filter-dropdown__icon-list" role="list">
                                         <svg class="filter-dropdown__clear-list-icon" width="16" height="16" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg" @click="filter = ''" :class="{'active': filter !== ''}">
@@ -38,7 +37,7 @@
                                         </svg>          
                                     </ul>
                                 </div>
-                                <ul role="list" class="filter-dropdown__list" id="filter1">
+                                <ul role="list" class="filter-dropdown__list" id="filter1" x-ref="selectDropdownList" x-bind:style="filterDropdown === 1 ? 'height: ' + $refs.selectDropdownList.scrollHeight + 'px' : ''">
                                     <li><button type="button" aria-label="button" @click="filter !==1 ?filter = 1: filter = null" :class="{'active': filter === 1}">Конический</button></li>
                                     <li><button type="button" @click="filter !==2 ?filter = 2: filter = null" :class="{'active': filter === 2}">Червячный</button></li>
                                     <li><button type="button" @click="filter !==3 ?filter = 3: filter = null" :class="{'active': filter === 3}">Цилиндрический</button></li>
@@ -49,7 +48,7 @@
                         </li>
                         <li>
                             <div class="filter-dropdown" x-data="{filter: ''}">
-                                <div class="filter-dropdown__top">
+                                <div class="filter-dropdown__top" @click="filterDropdown !==2 ? filterDropdown = 2: filterDropdown = null" :class="{'active': filterDropdown === 2}">
                                 <p>Количество ступеней</p>
                                     <ul class="filter-dropdown__icon-list" role="list">
                                         <svg class="filter-dropdown__clear-list-icon" width="16" height="16" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg" @click="filter = ''" :class="{'active': filter !== ''}">
@@ -62,7 +61,7 @@
                                         </svg>          
                                     </ul>
                                 </div>
-                                <ul role="list" class="filter-dropdown__list" id="filter2">
+                                <ul role="list" class="filter-dropdown__list" id="filter2" x-ref="selectDropdownList" x-bind:style="filterDropdown === 2 ? 'height: ' + $refs.selectDropdownList.scrollHeight + 'px' : ''">
                                     <li><button type="button" aria-label="button" @click="filter !==1 ?filter = 1: filter = null" :class="{'active': filter === 1}">Конический</button></li>
                                     <li><button type="button" @click="filter !==2 ?filter = 2: filter = null" :class="{'active': filter === 2}">Червячный</button></li>
                                     <li><button type="button" @click="filter !==3 ?filter = 3: filter = null" :class="{'active': filter === 3}">Цилиндрический</button></li>
@@ -73,7 +72,7 @@
                         </li>
                         <li>
                             <div class="filter-dropdown" x-data="{filter: ''}">
-                                <div class="filter-dropdown__top">
+                                <div class="filter-dropdown__top" @click="filterDropdown !==3 ? filterDropdown = 3: filterDropdown = null" :class="{'active': filterDropdown === 3}">
                                 <p>Передаточное отношение</p>
                                     <ul class="filter-dropdown__icon-list" role="list">
                                         <svg class="filter-dropdown__clear-list-icon" width="16" height="16" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg" @click="filter = ''" :class="{'active': filter !== ''}">
@@ -86,7 +85,7 @@
                                         </svg>          
                                     </ul>
                                 </div>
-                                <ul role="list" class="filter-dropdown__list" id="filter3">
+                                <ul role="list" class="filter-dropdown__list" id="filter3" x-ref="selectDropdownList" x-bind:style="filterDropdown === 3 ? 'height: ' + $refs.selectDropdownList.scrollHeight + 'px' : ''">
                                     <li><button type="button" aria-label="button" @click="filter !==1 ?filter = 1: filter = null" :class="{'active': filter === 1}">Конический</button></li>
                                     <li><button type="button" @click="filter !==2 ?filter = 2: filter = null" :class="{'active': filter === 2}">Червячный</button></li>
                                     <li><button type="button" @click="filter !==3 ?filter = 3: filter = null" :class="{'active': filter === 3}">Цилиндрический</button></li>
@@ -97,7 +96,7 @@
                         </li>
                         <li>
                             <div class="filter-dropdown" x-data="{filter: ''}">
-                                <div class="filter-dropdown__top">
+                                <div class="filter-dropdown__top" @click="filterDropdown !==4 ? filterDropdown = 4: filterDropdown = null" :class="{'active': filterDropdown === 4}">
                                 <p>Расположение осей</p>
                                     <ul class="filter-dropdown__icon-list" role="list">
                                         <svg class="filter-dropdown__clear-list-icon" width="16" height="16" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg" @click="filter = ''" :class="{'active': filter !== ''}">
@@ -110,7 +109,7 @@
                                         </svg>          
                                     </ul>
                                 </div>
-                                <ul role="list" class="filter-dropdown__list" id="filter4">
+                                <ul role="list" class="filter-dropdown__list" id="filter4" x-ref="selectDropdownList" x-bind:style="filterDropdown === 4 ? 'height: ' + $refs.selectDropdownList.scrollHeight + 'px' : ''">
                                     <li><button type="button" aria-label="button" @click="filter !==1 ?filter = 1: filter = null" :class="{'active': filter === 1}">Конический</button></li>
                                     <li><button type="button" @click="filter !==2 ?filter = 2: filter = null" :class="{'active': filter === 2}">Червячный</button></li>
                                     <li><button type="button" @click="filter !==3 ?filter = 3: filter = null" :class="{'active': filter === 3}">Цилиндрический</button></li>
@@ -121,7 +120,7 @@
                         </li>
                         <li>
                             <div class="filter-dropdown" x-data="{filter: ''}">
-                                <div class="filter-dropdown__top">
+                                <div class="filter-dropdown__top" @click="filterDropdown !==5 ? filterDropdown = 5: filterDropdown = null" :class="{'active': filterDropdown === 5}">
                                 <p>Консольная нагрузка</p>
                                     <ul class="filter-dropdown__icon-list" role="list">
                                         <svg class="filter-dropdown__clear-list-icon" width="16" height="16" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg" @click="filter = ''" :class="{'active': filter !== ''}">
@@ -134,7 +133,7 @@
                                         </svg>          
                                     </ul>
                                 </div>
-                                <ul role="list" class="filter-dropdown__list" id="filter5">
+                                <ul role="list" class="filter-dropdown__list" id="filter5" x-ref="selectDropdownList" x-bind:style="filterDropdown === 5 ? 'height: ' + $refs.selectDropdownList.scrollHeight + 'px' : ''">
                                     <li><button type="button" aria-label="button" @click="filter !==1 ?filter = 1: filter = null" :class="{'active': filter === 1}">Конический</button></li>
                                     <li><button type="button" @click="filter !==2 ?filter = 2: filter = null" :class="{'active': filter === 2}">Червячный</button></li>
                                     <li><button type="button" @click="filter !==3 ?filter = 3: filter = null" :class="{'active': filter === 3}">Цилиндрический</button></li>
@@ -145,7 +144,7 @@
                         </li>
                         <li>
                             <div class="filter-dropdown" x-data="{filter: ''}">
-                                <div class="filter-dropdown__top">
+                                <div class="filter-dropdown__top" @click="filterDropdown !==6 ? filterDropdown = 6: filterDropdown = null" :class="{'active': filterDropdown === 6}">
                                 <p>Масса</p>
                                     <ul class="filter-dropdown__icon-list" role="list">
                                         <svg class="filter-dropdown__clear-list-icon" width="16" height="16" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg" @click="filter = ''" :class="{'active': filter !== ''}">
@@ -158,15 +157,19 @@
                                         </svg>          
                                     </ul>
                                 </div>
-                                <ul role="list" class="filter-dropdown__list" id="filter6">
+                                <ul role="list" class="filter-dropdown__list" id="filter6" x-ref="selectDropdownList" x-bind:style="filterDropdown === 6 ? 'height: ' + $refs.selectDropdownList.scrollHeight + 'px' : ''">
                                     <li>
-                                        <div class="range-slider-wrapper">
-                                        <div class="range-slider range-slider--desktop"></div>
-                                        <div class="range-slider-values">
-                                            <p>от<span class="range-slider-min-value range-slider-min-value--desktop"></span></p>
-                                            <p>до<span class="range-slider-max-value range-slider-max-value--desktop"></span></p>
-                                        </div>
-                                       </div>
+                                        <input type="text" class="js-range-slider" name="my_range" value=""
+                        data-type="double"
+                        data-min="5000"
+                        data-max="1000000"
+                        data-from="5000"
+                        data-to="1000000"
+                    />
+                    <div class="range-slider-values">
+                        <p>От<span class="range-slider-min-value">5000</span></p>
+                        <p>До<span class="range-slider-max-value">1 000 000</span></p>
+                    </div>
                                     </li>
                                 </ul>
                             </div>
@@ -180,13 +183,13 @@
                 </nav>
             </aside>
         <div class="catalog__main">
-          <h2 class="title title-h2 catalog-title"><svg width="68" height="48">
+          <h1 class="title title-h2 catalog-title"><svg width="68" height="48">
             <use xlink:href="resources/svgSprites/svgSprite.svg#icon-motor"></use>
-            </svg>Червячные мотор-редукторы</h2>  
+            </svg>Червячные мотор-редукторы</h1>  
            <button class="filter-btn catalog-filter-btn" type="button" @click="filter = true"><svg width="68" height="48">
             <use xlink:href="resources/svgSprites/svgSprite.svg#filter-btn-icon"></use>
             </svg>Фильтры</button>
-            <nav class="filter filter--mobile" :class="{'active': filter === true}">
+            <nav class="filter filter--mobile" :class="{'active': filter === true}" x-data="{filterDropdown: ''}">
                 <button class="filter__close-btn filter__close-btn--mobile" type="button" @click="filter = false">
                     <!-- <svg width="20" height="28" class="filter__close-btn-icon filter__close-btn-icon--mobile">
                     <use xlink:href="resources/svgSprites/svgSprite.svg#catalog-filter-arrow"></use>
@@ -204,7 +207,7 @@
                         <ul role="list">
                             <li>
                                 <div class="filter-dropdown" x-data="{filter: ''}">
-                                    <div class="filter-dropdown__top">
+                                    <div class="filter-dropdown__top" @click="filterDropdown !==1 ? filterDropdown = 1: filterDropdown = null" :class="{'active': filterDropdown === 1}">
                                     <p>Тип передачи</p>
                                         <ul class="filter-dropdown__icon-list" role="list">
                                             <svg class="filter-dropdown__clear-list-icon" width="16" height="16" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg" @click="filter = ''" :class="{'active': filter !== ''}">
@@ -217,7 +220,7 @@
                                             </svg>          
                                         </ul>
                                     </div>
-                                    <ul role="list" class="filter-dropdown__list" id="mobileFilter1">
+                                    <ul role="list" class="filter-dropdown__list" id="filter1" x-ref="selectDropdownList" x-bind:style="filterDropdown === 1 ? 'height: ' + $refs.selectDropdownList.scrollHeight + 'px' : ''">
                                         <li><button type="button" aria-label="button" @click="filter !==1 ?filter = 1: filter = null" :class="{'active': filter === 1}">Конический</button></li>
                                         <li><button type="button" @click="filter !==2 ?filter = 2: filter = null" :class="{'active': filter === 2}">Червячный</button></li>
                                         <li><button type="button" @click="filter !==3 ?filter = 3: filter = null" :class="{'active': filter === 3}">Цилиндрический</button></li>
@@ -228,7 +231,7 @@
                             </li>
                             <li>
                                 <div class="filter-dropdown" x-data="{filter: ''}">
-                                    <div class="filter-dropdown__top">
+                                    <div class="filter-dropdown__top" @click="filterDropdown !==2 ? filterDropdown = 2: filterDropdown = null" :class="{'active': filterDropdown === 2}">
                                     <p>Количество ступеней</p>
                                         <ul class="filter-dropdown__icon-list" role="list">
                                             <svg class="filter-dropdown__clear-list-icon" width="16" height="16" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg" @click="filter = ''" :class="{'active': filter !== ''}">
@@ -241,7 +244,7 @@
                                             </svg>          
                                         </ul>
                                     </div>
-                                    <ul role="list" class="filter-dropdown__list" id="mobileFilter2">
+                                    <ul role="list" class="filter-dropdown__list" id="filter2" x-ref="selectDropdownList" x-bind:style="filterDropdown === 2 ? 'height: ' + $refs.selectDropdownList.scrollHeight + 'px' : ''">
                                         <li><button type="button" aria-label="button" @click="filter !==1 ?filter = 1: filter = null" :class="{'active': filter === 1}">Конический</button></li>
                                         <li><button type="button" @click="filter !==2 ?filter = 2: filter = null" :class="{'active': filter === 2}">Червячный</button></li>
                                         <li><button type="button" @click="filter !==3 ?filter = 3: filter = null" :class="{'active': filter === 3}">Цилиндрический</button></li>
@@ -252,7 +255,7 @@
                             </li>
                             <li>
                                 <div class="filter-dropdown" x-data="{filter: ''}">
-                                    <div class="filter-dropdown__top">
+                                    <div class="filter-dropdown__top" @click="filterDropdown !==3 ? filterDropdown = 3: filterDropdown = null" :class="{'active': filterDropdown === 3}">
                                     <p>Передаточное отношение</p>
                                         <ul class="filter-dropdown__icon-list" role="list">
                                             <svg class="filter-dropdown__clear-list-icon" width="16" height="16" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg" @click="filter = ''" :class="{'active': filter !== ''}">
@@ -265,7 +268,7 @@
                                             </svg>          
                                         </ul>
                                     </div>
-                                    <ul role="list" class="filter-dropdown__list" id="mobileFilter3">
+                                    <ul role="list" class="filter-dropdown__list" id="filter3" x-ref="selectDropdownList" x-bind:style="filterDropdown === 3 ? 'height: ' + $refs.selectDropdownList.scrollHeight + 'px' : ''">
                                         <li><button type="button" aria-label="button" @click="filter !==1 ?filter = 1: filter = null" :class="{'active': filter === 1}">Конический</button></li>
                                         <li><button type="button" @click="filter !==2 ?filter = 2: filter = null" :class="{'active': filter === 2}">Червячный</button></li>
                                         <li><button type="button" @click="filter !==3 ?filter = 3: filter = null" :class="{'active': filter === 3}">Цилиндрический</button></li>
@@ -276,7 +279,7 @@
                             </li>
                             <li>
                                 <div class="filter-dropdown" x-data="{filter: ''}">
-                                    <div class="filter-dropdown__top">
+                                    <div class="filter-dropdown__top" @click="filterDropdown !==4 ? filterDropdown = 4: filterDropdown = null" :class="{'active': filterDropdown === 4}">
                                     <p>Расположение осей</p>
                                         <ul class="filter-dropdown__icon-list" role="list">
                                             <svg class="filter-dropdown__clear-list-icon" width="16" height="16" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg" @click="filter = ''" :class="{'active': filter !== ''}">
@@ -289,7 +292,7 @@
                                             </svg>          
                                         </ul>
                                     </div>
-                                    <ul role="list" class="filter-dropdown__list" id="mobileFilter4">
+                                    <ul role="list" class="filter-dropdown__list" id="filter4" x-ref="selectDropdownList" x-bind:style="filterDropdown === 4 ? 'height: ' + $refs.selectDropdownList.scrollHeight + 'px' : ''">
                                         <li><button type="button" aria-label="button" @click="filter !==1 ?filter = 1: filter = null" :class="{'active': filter === 1}">Конический</button></li>
                                         <li><button type="button" @click="filter !==2 ?filter = 2: filter = null" :class="{'active': filter === 2}">Червячный</button></li>
                                         <li><button type="button" @click="filter !==3 ?filter = 3: filter = null" :class="{'active': filter === 3}">Цилиндрический</button></li>
@@ -300,7 +303,7 @@
                             </li>
                             <li>
                                 <div class="filter-dropdown" x-data="{filter: ''}">
-                                    <div class="filter-dropdown__top">
+                                    <div class="filter-dropdown__top" @click="filterDropdown !==5 ? filterDropdown = 5: filterDropdown = null" :class="{'active': filterDropdown === 5}">
                                     <p>Консольная нагрузка</p>
                                         <ul class="filter-dropdown__icon-list" role="list">
                                             <svg class="filter-dropdown__clear-list-icon" width="16" height="16" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg" @click="filter = ''" :class="{'active': filter !== ''}">
@@ -313,7 +316,7 @@
                                             </svg>          
                                         </ul>
                                     </div>
-                                    <ul role="list" class="filter-dropdown__list" id="mobileFilter5">
+                                    <ul role="list" class="filter-dropdown__list" id="filter5" x-ref="selectDropdownList" x-bind:style="filterDropdown === 5 ? 'height: ' + $refs.selectDropdownList.scrollHeight + 'px' : ''">
                                         <li><button type="button" aria-label="button" @click="filter !==1 ?filter = 1: filter = null" :class="{'active': filter === 1}">Конический</button></li>
                                         <li><button type="button" @click="filter !==2 ?filter = 2: filter = null" :class="{'active': filter === 2}">Червячный</button></li>
                                         <li><button type="button" @click="filter !==3 ?filter = 3: filter = null" :class="{'active': filter === 3}">Цилиндрический</button></li>
@@ -324,7 +327,7 @@
                             </li>
                             <li>
                                 <div class="filter-dropdown" x-data="{filter: ''}">
-                                    <div class="filter-dropdown__top">
+                                    <div class="filter-dropdown__top" @click="filterDropdown !==6 ? filterDropdown = 6: filterDropdown = null" :class="{'active': filterDropdown === 6}">
                                     <p>Масса</p>
                                         <ul class="filter-dropdown__icon-list" role="list">
                                             <svg class="filter-dropdown__clear-list-icon" width="16" height="16" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg" @click="filter = ''" :class="{'active': filter !== ''}">
@@ -337,15 +340,19 @@
                                             </svg>          
                                         </ul>
                                     </div>
-                                    <ul role="list" class="filter-dropdown__list" id="mobileFilter6">
+                                    <ul role="list" class="filter-dropdown__list" id="filter6" x-ref="selectDropdownList" x-bind:style="filterDropdown === 6 ? 'height: ' + $refs.selectDropdownList.scrollHeight + 'px' : ''">
                                         <li>
-                                            <div class="range-slider-wrapper">
-                                            <div class="range-slider range-slider--mobile"></div>
-                                            <div class="range-slider-values">
-                                                <p>от<span class="range-slider-min-value range-slider-min-value--mobile"></span></p>
-                                                <p>до<span class="range-slider-max-value range-slider-max-value--mobile"></span></p>
-                                            </div>
-                                           </div>
+                                            <input type="text" class="js-range-slider" name="my_range" value=""
+                            data-type="double"
+                            data-min="5000"
+                            data-max="1000000"
+                            data-from="5000"
+                            data-to="1000000"
+                        />
+                        <div class="range-slider-values">
+                            <p>От<span class="range-slider-min-value">5000</span></p>
+                            <p>До<span class="range-slider-max-value">1 000 000</span></p>
+                        </div>
                                         </li>
                                     </ul>
                                 </div>
@@ -873,87 +880,18 @@ function handleFilterTouchEnd(e) {
         </div>         
         </section>
         <script>
-            function toggleDropdown() {
-  const filterDropdownTop = document.querySelectorAll(".filter-dropdown__top");
 
-  filterDropdownTop.forEach(element => {
-    element.addEventListener('click',()=>{
-        const currentDropdownList = element.nextElementSibling;
-        element.classList.toggle('active');
-        if (currentDropdownList.style.height) {
-            currentDropdownList.style.height = null;
-    } else {
-        currentDropdownList.style.height = currentDropdownList.scrollHeight + 'px';
-    } 
-})
-  });
-}
-
-toggleDropdown();
-
-function filterRangeSlider() {
-                const rangeSliderDesktop = document.querySelector('.range-slider--desktop');
-                const rangeSliderMobile = document.querySelector('.range-slider--mobile');
-                
-                noUiSlider.create(rangeSliderDesktop, {
-    start: [5000, 1000000],
-    connect: true,
-    snap: true,
-    behaviour: 'smooth-steps',
-    range: {
-        'min': 5000,
-        'max': 1000000
-    },
-    format: {
-        to: function (value) {
-            return Number(value);
-        },
-        from: function (value) {
-            return Math.round(value);
-        }
-    }
-  });
-  
-  let snapValuesDesktop = [
-    document.querySelector('.range-slider-min-value--desktop'),
-    document.querySelector('.range-slider-max-value--desktop')
-];
-
-rangeSliderDesktop.noUiSlider.on('update', function (values, handle) {
-    snapValuesDesktop[handle].innerHTML = values[handle];
-});
-
-noUiSlider.create(rangeSliderMobile, {
-    start: [5000, 1000000],
-    connect: true,
-    snap: true,
-    behaviour: 'smooth-steps',
-    range: {
-        'min': 5000,
-        'max': 1000000
-    },
-    format: {
-        to: function (value) {
-            return Number(value);
-        },
-        from: function (value) {
-            return Math.round(value);
-        }
-    }
-  });
-  
-  let snapValuesMobile = [
-    document.querySelector('.range-slider-min-value--mobile'),
-    document.querySelector('.range-slider-max-value--mobile')
-];
-
-rangeSliderMobile.noUiSlider.on('update', function (values, handle) {
-    snapValuesMobile[handle].innerHTML = values[handle];
-});            
-};
+$(".js-range-slider").ionRangeSlider();
 
 
-filterRangeSlider();
+$(".js-range-slider").on("change", function () {
+        const inputValue = $(this);
+        const minValue = inputValue.data("from");
+        const maxValue = inputValue.data("to");
+
+        $('.range-slider-min-value').text(minValue);
+        $('.range-slider-max-value').text(maxValue);
+    });
 
         </script>
 		</main>

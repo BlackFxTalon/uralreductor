@@ -254,9 +254,7 @@ body #magicMouseCursor.faded {
   }
 }
 .primary-btn.disable {
-  background-color: var(--red-light-color);
-  border-color: var(--red-light-color);
-  color: var(--white-color);
+  opacity: .3;
   pointer-events: none;
 }
 .secondary-btn {
@@ -298,6 +296,7 @@ body #magicMouseCursor.faded {
 .form-controls-wrapper input.disabled,
 .form-controls-wrapper textarea.disabled {
    opacity: .5;
+   pointer-events: none;
 }
 .form-controls-wrapper:hover input,
 .form-controls-wrapper:hover textarea {
@@ -801,43 +800,31 @@ color: var(--white-color);
     width: 28px;
   }
 }
-
-.range-slider-wrapper {
-  max-width: 246px;
+.irs--flat .irs-line {
+  background-color: var(--grey-light-color);
+  height: 1px;
+  top: 30px;
 }
-.range-slider.noUi-target {
-  background: var(--grey-light-color);
-    border-radius: 0;
-    box-shadow: none;
-    border:none;
-    height: 1px;
-    top: 10px;
-    left: 4px;
-
-    .noUi-connect {
-      background: black;
-    }
-
-    .noUi-handle {
-      width: 20px;
-      height: 20px;
-      border-radius: 50%;
-      border:none;
-      box-shadow: none;
-      background: var(--primary-color);
-      top: -10px;
-
-      &::before,
-      &::after {
-        display: none;
-      }
-    }
-
-    // .noUi-handle-upper {
-    //   right: 0;
-    // }
+.irs--flat .irs-bar {
+  top: 30px;
+  height: 1px;
+  background: black;
 }
-
+.irs--flat .irs-handle {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background-color: var(--primary-color);
+}
+.irs--flat .irs-min, .irs--flat .irs-max {
+  display: none;
+}
+.irs--flat .irs-from, .irs--flat .irs-to, .irs--flat .irs-single {
+  display: none;
+}
+.irs--flat .irs-handle>i:first-child {
+  display: none;
+}
 .range-slider-values {
   display: flex;
   flex-wrap: wrap;
@@ -854,7 +841,17 @@ span {
   padding-left: 5px;
 }
 }
-
+.simplebar-track {
+  background-color: var(--grey-light-color-1);
+  border-radius: 8px;
+}
+.simplebar-scrollbar:before {
+  background: var(--grey-light-color);
+  border-radius: 4px;
+}
+.simplebar-scrollbar.simplebar-visible:before {
+  opacity: 1;
+}
 // header styles
 .header {
   padding: 9.5px 0;

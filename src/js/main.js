@@ -179,7 +179,7 @@ function reduceButtonOnClick() {
               el.classList.add('reduce');
           })
         }
-        document.querySelectorAll('.primary-btn:not(.order-btn), .secondary-btn:not(.request-form__submit-btn)').forEach(reduceBtn);
+        document.querySelectorAll('.secondary-btn:not(.request-form__submit-btn)').forEach(reduceBtn);
   }
 }
 
@@ -208,7 +208,7 @@ document.querySelectorAll('.question-modal input').forEach(toggleLabelAnimation)
 function simpleClientSideFormValidation(form) {
   const el = document.querySelector(form);
 
-  const inputs = el.querySelectorAll('input');
+  const inputs = el.querySelectorAll('.form-controls-wrapper input');
 
 
   inputs.forEach(input => {
@@ -260,7 +260,7 @@ function simpleClientSideFormValidation(form) {
             label.classList.add('active');
           });
           input.value = 'Введен неправильный текст';
-          el.querySelector('input').focus();
+          el.querySelector('.form-controls-wrapper input').focus();
         } 
   
       });
@@ -269,6 +269,10 @@ function simpleClientSideFormValidation(form) {
  }
 
  simpleClientSideFormValidation('.question-modal form');
+
+ simpleClientSideFormValidation('.request-form');
+
+ simpleClientSideFormValidation('.order-form form');
 
 const stickyFilter = new Sticksy('.filter--desktop', {
   topSpacing: 70,
