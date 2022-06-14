@@ -258,4 +258,4 @@
   </ul>
 </nav>
 </header>
-<div class="overlay" :class="{'active':mobileMenu === true || searchMenu === true || filter === true || orderForm === true || questionModal === true,'z-998': filter === true || orderForm === true}" @click="mobileMenu = false;searchMenu = false;filter = false;orderForm = false; questionModal = false"></div>
+<div class="overlay" :class="{'active':mobileMenu === true || searchMenu === true || filter === true || orderForm === true || questionModal === true || orderCompleteModal === true,'z-998': filter === true || orderForm === true || orderCompleteModal === true}" @click="mobileMenu = false;searchMenu = false;filter = false;orderForm = false; questionModal = false; orderCompleteModal = false"></div>
