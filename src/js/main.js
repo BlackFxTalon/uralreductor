@@ -120,70 +120,70 @@ function addShadowOnHeaderScroll() {
 }
 addShadowOnHeaderScroll();
 
-import { magicMouse } from 'magicmouse.js';
+// import { magicMouse } from 'magicmouse.js';
 
 
-const options = {
-	"cursorOuter": "circle-basic",
-	"hoverEffect": "circle-move",
-	"hoverItemMove": true,
-	"defaultCursor": true,
-	"outerWidth": 16,
-	"outerHeight": 16
-  };
-  magicMouse(options);
+// const options = {
+// 	"cursorOuter": "circle-basic",
+// 	"hoverEffect": "circle-move",
+// 	"hoverItemMove": true,
+// 	"defaultCursor": true,
+// 	"outerWidth": 16,
+// 	"outerHeight": 16
+//   };
+//   magicMouse(options);
 
 
-function targetsForMagicMouse(elems) {
-  elems.classList.add('magic-hover','magic-hover__square');
-}
+// function targetsForMagicMouse(elems) {
+//   elems.classList.add('magic-hover','magic-hover__square');
+// }
 
-document.querySelectorAll('a, button, .reductor-types__card, .header__search, .catalog-card, summary, .product-card__tabs h3').forEach(targetsForMagicMouse);
+// document.querySelectorAll('a, button, .reductor-types__card, .header__search, .catalog-card, summary, .product-card__tabs h3').forEach(targetsForMagicMouse);
 
-const customCursor = document.querySelector('#magicMouseCursor');
+// const customCursor = document.querySelector('#magicMouseCursor');
 
-function toggleFadedClassOnCursor(elems) {
-  if(window.innerWidth >= 980) {
-    elems.addEventListener('focusin',()=>{
-      customCursor.classList.add('faded');
-    })
-    elems.addEventListener('focusout',()=>{
-      customCursor.classList.remove('faded');
-    })
-  }
-}
+// function toggleFadedClassOnCursor(elems) {
+//   if(window.innerWidth >= 980) {
+//     elems.addEventListener('focusin',()=>{
+//       customCursor.classList.add('faded');
+//     })
+//     elems.addEventListener('focusout',()=>{
+//       customCursor.classList.remove('faded');
+//     })
+//   }
+// }
 
-document.querySelectorAll('input').forEach(toggleFadedClassOnCursor);
+// document.querySelectorAll('input').forEach(toggleFadedClassOnCursor);
 
-function toggleClassOnCursor(elems) {
-  if(window.innerWidth >= 980) {
-    elems.addEventListener('mouseover',()=>{
-      customCursor.classList.add('hovered');
-    })
-    elems.addEventListener('mouseout',()=>{
-      customCursor.classList.remove('hovered');
-      customCursor.classList.remove('clicked');
-    })
-    elems.addEventListener('click',()=>{
-      customCursor.classList.add('clicked');
-    })
-  }
-}
+// function toggleClassOnCursor(elems) {
+//   if(window.innerWidth >= 980) {
+//     elems.addEventListener('mouseover',()=>{
+//       customCursor.classList.add('hovered');
+//     })
+//     elems.addEventListener('mouseout',()=>{
+//       customCursor.classList.remove('hovered');
+//       customCursor.classList.remove('clicked');
+//     })
+//     elems.addEventListener('click',()=>{
+//       customCursor.classList.add('clicked');
+//     })
+//   }
+// }
 
-document.querySelectorAll('.magic-hover').forEach(toggleClassOnCursor);
+// document.querySelectorAll('.magic-hover').forEach(toggleClassOnCursor);
 
-function reduceButtonOnClick() {
-  if(window.innerWidth >= 980) {
-      const reduceBtn = (el) => {
-          el.addEventListener('click',()=>{
-              el.classList.add('reduce');
-          })
-        }
-        document.querySelectorAll('.secondary-btn:not(.request-form__submit-btn)').forEach(reduceBtn);
-  }
-}
+// function reduceButtonOnClick() {
+//   if(window.innerWidth >= 980) {
+//       const reduceBtn = (el) => {
+//           el.addEventListener('click',()=>{
+//               el.classList.add('reduce');
+//           })
+//         }
+//         document.querySelectorAll('.secondary-btn:not(.request-form__submit-btn)').forEach(reduceBtn);
+//   }
+// }
 
-reduceButtonOnClick();
+// reduceButtonOnClick();
 
 function toggleLabelAnimation(el) {
   const label = el.parentElement.querySelector('label');
