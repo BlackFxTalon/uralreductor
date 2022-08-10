@@ -96,6 +96,23 @@ const productCardGalleryMain = new Swiper(".product-card__gallery-main", {
   },
 });
 
+const productCardSeriesSlider = new Swiper(".product-card__series-slider", {
+  init:false,
+  loop: true,
+  breakpoints: {
+    1024: {
+      slidesPerView: 4,
+    },
+    1440: {
+      slidesPerView: 5,
+    },
+  }
+})
+
+if(window.innerWidth >= 1024) {
+  productCardSeriesSlider.init();
+}
+
 function toggleToTopBtn() {
   window.addEventListener('scroll',()=>{
     if(window.scrollY >= 600) {
