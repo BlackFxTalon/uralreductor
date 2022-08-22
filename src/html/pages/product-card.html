@@ -564,6 +564,27 @@
             </form>
             </div>
         </div>
+        <script type="module">
+            import Swiper from 'https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.esm.browser.min.js';
+
+            const productCardSeriesSlider = new Swiper(".product-card__series-slider", {
+  init:false,
+  loop: true,
+  breakpoints: {
+    1024: {
+      slidesPerView: 4,
+    },
+    1440: {
+      slidesPerView: 5,
+    },
+  }
+})
+
+if(window.innerWidth >= 1024) {
+  productCardSeriesSlider.init();
+}
+</script>
+
 		@@include('../parts/footer.html')
 	</body>
 </html>
