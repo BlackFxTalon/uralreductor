@@ -205,12 +205,15 @@
             </svg>Фильтры</button>
             </div>
             <nav class="catalog__series-list-nav" x-ref="catalogSeriesList" x-bind:style="series === true ? 'height: ' + $refs.catalogSeriesList.scrollHeight + 'px' : ''" :class="{'active': series === true}">
-            <ul role="list" class="catalog__series-list">
+            <form action="#" class="catalog__series-list-form">
+            <fieldset class="catalog__series-list-fieldset">
+            <ul role="list" class="catalog__series-list" x-data="{toggleBtn: null}">
                 <template x-for="i in 24">
                     <li class="catalog__series-list-item">
-                        <button type="button" aria-label="button" class="catalog__choice-series-btn" x-data="{toggleBtn: false}" x-on:click.self="toggleBtn = true" x-bind:class="{ 'active': toggleBtn === true }">
-                            <span x-on:click.self="toggleBtn = true">1МПз2</span>
-                            <svg class="catalog__choice-series-clear-icon" x-show="toggleBtn === true" x-on:click.self="toggleBtn = false" width="14" height="14" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <input type="radio" name="series-list-item-i" id="series-list-item-i" class="catalog__series-list-radio">
+                        <button type="button" aria-label="button" class="catalog__choice-series-btn"  x-on:click.self="toggleBtn = i" x-bind:class="{ 'active': toggleBtn === i }">
+                            <span x-on:click.self="toggleBtn = i">1МПз2</span>
+                            <svg class="catalog__choice-series-clear-icon" x-show="toggleBtn === i" x-on:click.self="toggleBtn = null" width="14" height="14" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg">
                                 <path d="M30.0003 4.66666C30.3685 4.29847 30.9655 4.29847 31.3337 4.66666C31.7018 5.03485 31.7018 5.6318 31.3337 5.99998L6.00055 31.3331C5.63236 31.7013 5.03541 31.7013 4.66723 31.3331C4.29904 30.9649 4.29904 30.368 4.66722 29.9998L30.0003 4.66666Z" fill="#77738C"/>
                                 <path d="M31.3333 29.9998C31.7015 30.368 31.7015 30.965 31.3333 31.3332C30.9652 31.7014 30.3682 31.7014 30 31.3332L4.66692 6.00006C4.29873 5.63187 4.29873 5.03493 4.66692 4.66674C5.03511 4.29855 5.63205 4.29855 6.00024 4.66674L31.3333 29.9998Z" fill="#77738C"/>
                             </svg>   
@@ -218,6 +221,8 @@
                     </li>
                 </template>
             </ul>
+            </fieldset>
+            </form>
             </nav>
             <nav class="filter filter--mobile" :class="{'active': filter === true}" x-data="{filterDropdown: ''}">
                 <button class="filter__close-btn filter__close-btn--mobile" type="button" @click="filter = false">
