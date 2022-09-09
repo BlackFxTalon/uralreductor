@@ -14,7 +14,7 @@ template for frontend development 2022
 
 ## clone project
 
-<code>git clone https://github.com/BlackFxTalon/ninji-frontend-template-2022</code>
+<code>git clone https://github.com/BlackFxTalon/uralreductor</code>
 
 ## install dependencies
 
