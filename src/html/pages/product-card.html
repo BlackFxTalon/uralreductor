@@ -163,6 +163,7 @@
             <div class="product-card__info">
             <ul class="product-card__tabs" role="list">
                 <li @click="toggleProductCardTabs(event,'productCardDescr')" class="active"><h3>Описание</h3></li>
+                <li @click="toggleProductCardTabs(event,'productCardChars')"><h3>Характеристики</h3></li>
                 <li @click="toggleProductCardTabs(event,'productCardSizes')"><h3>Размеры</h3></li>
                 <li @click="toggleProductCardTabs(event,'productCardQuestionAnswer')"><h3>Вопрос-ответ</h3></li>
             </ul>
@@ -200,6 +201,9 @@
                     <p>МПО2М - тип мотор-редуктора</p>
                   </li>
               </ul>
+            </div>
+            <div class="product-card-info product-card__chars product-card__sizes" id="productCardChars">
+                <h4>Таблицы</h4>
             </div>
             <div class="product-card-info product-card__sizes" id="productCardSizes">
                 <ul role="list">
